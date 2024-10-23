@@ -31,7 +31,7 @@ public class Trailex_Principal extends JFrame{
 				panel_arriba.add(boton_menu);
 				
 				// Creamos y añadimos un Desplegable a la parte de arriba
-				String[] generos = {"Humor", "Miedo", "Romantica"};
+				String[] generos = {"Comedia", "Terror", "Romantica", "Ciencia Ficción"};
 				JComboBox<String> lista_desplegable = new JComboBox<String>(generos);	
 				panel_arriba.add(lista_desplegable);
 				
