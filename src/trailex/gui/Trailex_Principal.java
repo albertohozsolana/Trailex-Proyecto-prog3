@@ -28,7 +28,12 @@ public class Trailex_Principal extends JFrame{
 				
 				// Creamos y añadimos el botón de Menú al panel de arriba:
 				JButton boton_menu = new JButton("MENU");
+				JButton boton_prueba = new JButton("Prueba");
+				JButton boton_prueba2 = new JButton("Prueba2");
 				panel_arriba.add(boton_menu);
+				panel_arriba.add(boton_prueba);
+				panel_arriba.add(boton_prueba2);
+				
 				
 				// Creamos y añadimos un Desplegable a la parte de arriba
 				String[] generos = {"Comedia", "Terror", "Romantica", "Ciencia Ficción"};
