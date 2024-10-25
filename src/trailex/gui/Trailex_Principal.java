@@ -119,6 +119,7 @@ public class Trailex_Principal extends JFrame{
 
 				
 				t_comedia = new JLabel("Comedia");
+				t_comedia.setForeground(turquesa);
 				p_norte_comedia = new JPanel(new FlowLayout(FlowLayout.LEFT));
 				p_norte_comedia.add(t_comedia);
 								
@@ -138,6 +139,7 @@ public class Trailex_Principal extends JFrame{
 				p_grid_romance.setLayout(grid_romance);
 
 				t_romance = new JLabel("Romance"); // Cambiado a t_romance
+				t_romance.setForeground(turquesa);
 				p_norte_romance = new JPanel(new FlowLayout(FlowLayout.LEFT));
 				p_norte_romance.add(t_romance);
 
@@ -155,6 +157,7 @@ public class Trailex_Principal extends JFrame{
 				p_grid_aventura.setLayout(grid_aventura);
 
 				t_aventura = new JLabel("Aventura");
+				t_aventura.setForeground(turquesa);
 				p_norte_aventura = new JPanel(new FlowLayout(FlowLayout.LEFT));
 				p_norte_aventura.add(t_aventura);
 
@@ -172,6 +175,7 @@ public class Trailex_Principal extends JFrame{
 				p_grid_drama.setLayout(grid_drama);
 
 				t_drama = new JLabel("Drama");
+				t_drama.setForeground(turquesa);
 				p_norte_drama = new JPanel(new FlowLayout(FlowLayout.LEFT));
 				p_norte_drama.add(t_drama);
 
@@ -189,6 +193,7 @@ public class Trailex_Principal extends JFrame{
 				p_grid_cf.setLayout(grid_cf);
 
 				t_cf = new JLabel("Ciencia Ficción");
+				t_cf.setForeground(turquesa);
 				p_norte_cf = new JPanel(new FlowLayout(FlowLayout.LEFT));
 				p_norte_cf.add(t_cf);
 
@@ -206,6 +211,7 @@ public class Trailex_Principal extends JFrame{
 				p_grid_terror.setLayout(grid_terror);
 
 				t_terror = new JLabel("Terror");
+				t_terror.setForeground(turquesa);
 				p_norte_terror = new JPanel(new FlowLayout(FlowLayout.LEFT));
 				p_norte_terror.add(t_terror);
 
@@ -214,7 +220,34 @@ public class Trailex_Principal extends JFrame{
 				panel_central.add(panel_terror);
 				
 				
-
+				panel_aventura.setBackground(Color.black);
+				p_grid_aventura.setBackground(Color.black);
+				p_norte_aventura.setBackground(Color.black);
+				
+				panel_terror.setBackground(Color.black);
+				p_grid_terror.setBackground(Color.black);
+				p_norte_terror.setBackground(Color.black);
+				
+				panel_comedia.setBackground(Color.black);
+				p_grid_comedia.setBackground(Color.black);
+				p_norte_comedia.setBackground(Color.black);
+				
+				panel_drama.setBackground(Color.black);
+				p_grid_drama.setBackground(Color.black);
+				p_norte_drama.setBackground(Color.black);
+				
+				panel_drama.setBackground(Color.black);
+				p_grid_drama.setBackground(Color.black);
+				p_norte_drama.setBackground(Color.black);
+				
+				panel_cf.setBackground(Color.black);
+				p_grid_cf.setBackground(Color.black);
+				p_norte_cf.setBackground(Color.black);
+				
+				panel_romance.setBackground(Color.black);
+				p_grid_romance.setBackground(Color.black);
+				p_norte_romance.setBackground(Color.black);
+				
 
 				cargarSeries();
 				
@@ -229,7 +262,7 @@ public class Trailex_Principal extends JFrame{
 				Image img_icono= img.getImage();
 				this.setIconImage(img_icono);
 				
-				JScrollPane scroll= new JScrollPane(panel_central, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+				JScrollPane scroll= new JScrollPane(panel_central, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); //cambiar a never 
 				panel_principal.add(scroll, BorderLayout.CENTER);
 				this.setVisible(true);
 	}
@@ -248,10 +281,9 @@ public class Trailex_Principal extends JFrame{
 			Border border=BorderFactory.createLineBorder(turquesa,2);
 			lblFoto.setBorder(border);
 			
-			p_grid_comedia.add(lblFoto);
-			
-			/*
+			//p_grid_comedia.add(lblFoto);
 			p_grid_romance.add(lblFoto);
+			/*
 			p_grid_drama.add(lblFoto);
 			p_grid_aventura.add(lblFoto);
 			p_grid_terror.add(lblFoto);
