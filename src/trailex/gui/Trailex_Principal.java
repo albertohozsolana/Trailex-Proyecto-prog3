@@ -100,8 +100,6 @@ public class Trailex_Principal extends JFrame{
 				panel_central.setBackground(Color.black);
 
 				
-				
-				
 
 				//ORGANIZAMOS LAS SERIES EN FILAS POR GENERO-----------------------------------------------------
 				
@@ -250,7 +248,6 @@ public class Trailex_Principal extends JFrame{
 				
 
 				cargarSeries();
-				
 				
 				
 				// Configuramos el panel principal
