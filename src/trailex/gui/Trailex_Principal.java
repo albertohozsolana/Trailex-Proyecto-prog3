@@ -9,6 +9,8 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -41,15 +43,44 @@ public class Trailex_Principal extends JFrame{
 	private JLabel t_comedia, t_romance, t_aventura, t_drama, t_cf, t_terror;
 	private JPanel p_norte_comedia, p_grid_comedia, p_norte_romance, p_grid_romance, p_norte_cf, p_norte_terror, p_norte_drama, p_norte_aventura, p_grid_aventura, p_grid_drama, p_grid_cf, p_grid_terror;
 	private GridLayout grid_comedia, grid_romance, grid_cf, grid_terror, grid_drama, grid_aventura;
+	private JTextField searchBar;
+    private JComboBox<String> genreSelector;
 	
 	private static final long serialVersionUID = 1L;
+
 
 	public Trailex_Principal() {
 		// Llamamos a la función que crea la ventana Básica de nuestro programa
 		Iniciar_Trailex();
 		cargarSeries();
-	}
+		inicializarFiltroPorGenero();
+		cargarPeliculas();
+		
 	
+	// Inicializar la barra de búsqueda
+    searchBar = new JTextField(20);
+    searchBar.setBorder(BorderFactory.createTitledBorder("Buscar Serie"));
+
+    searchBar.addKeyListener(new KeyAdapter() {
+        @Override
+        public void keyReleased(KeyEvent e) {
+            String searchText = searchBar.getText().toLowerCase();
+
+            for (Serie serie : Videoclub.getAlSeries()) {
+                if (serie.getTitulo().toLowerCase().contains(searchText)) {
+                    JLabel etiquetaSerie = new JLabel(serie.getTitulo());
+                    panel_central.add(etiquetaSerie);
+                }
+            }
+
+            panel_central.revalidate();
+            panel_central.repaint();
+        }
+    });
+
+    // Agregar la barra de búsqueda al panel superior
+    panel_arriba.add(searchBar, BorderLayout.NORTH);
+}
 	private void Iniciar_Trailex() {
 		// Creamos el panel con su disposición (BorderLayout) donde se mostrará la app
 				panel_principal = new JPanel(new BorderLayout());
@@ -266,6 +297,7 @@ public class Trailex_Principal extends JFrame{
 				
 
 				cargarSeries();
+				cargarPeliculas();
 				
 				
 				// Configuramos el panel principal
@@ -344,33 +376,158 @@ public class Trailex_Principal extends JFrame{
 		}
 	}
 	
-	private void cargarSeries() {
-		Videoclub.cargarSeries();
-		for(Serie s: Videoclub.getAlSeries()) { //Por cada Película que hay en la lista de la clase Videoclub
-			
-			ImageIcon im = new ImageIcon(s.getRutaFoto());
+	
+	
+
+	public void cargarSeries() {
+	    Videoclub.cargarSeries();
+
+	    // Verificar que la lista de series no sea nula
+	    if (Videoclub.getAlSeries() == null) {
+	        System.err.println("Error: La lista de series es nula.");
+	        return;
+	    }
+
+	    // Clasificar y agregar las series a los paneles correspondientes
+	    for (Serie serie : Videoclub.getAlSeries()) {
+	    	
+	    	ImageIcon im = new ImageIcon(serie.getRutaFoto());
 			Image im_tamaño= im.getImage().getScaledInstance(100, 140, Image.SCALE_SMOOTH);
 			ImageIcon imageicon_tamano= new ImageIcon(im_tamaño);
-			imageicon_tamano.setDescription(s.getRutaFoto());
+			imageicon_tamano.setDescription(serie.getRutaFoto());
 			
 			JLabel lblFoto = new JLabel(imageicon_tamano);
 			
 			Border border=BorderFactory.createLineBorder(turquesa,2);
 			lblFoto.setBorder(border);
 			
-			//p_grid_comedia.add(lblFoto);
-			p_grid_romance.add(lblFoto);
-			/*
-			p_grid_drama.add(lblFoto);
-			p_grid_aventura.add(lblFoto);
-			p_grid_terror.add(lblFoto);
-			p_grid_cf.add(lblFoto);
-			*/
-		}
-		panel_central.revalidate();
-		panel_central.repaint();
-		
+	        if (serie == null || serie.getGenero() == null) {
+	            System.err.println("Advertencia: Serie o género nulo encontrado.");
+	            continue;
+	        }
+
+	       
+
+	        switch (serie.getGenero().toLowerCase()) {
+            case "comedia":
+                p_grid_comedia.add(lblFoto);
+                break;
+            case "romance":               
+                p_grid_romance.add(lblFoto);
+                break;               
+            case "aventura":          	
+            	p_grid_aventura.add(lblFoto);
+                break;
+            case "drama":             
+                p_grid_drama.add(lblFoto);
+                break;
+            case "ciencia ficcion":              
+                p_grid_cf.add(lblFoto);
+                break;
+            case "terror":           
+                p_grid_terror.add(lblFoto);
+                break;
+            
+	        }
+	    }
+
+
+
+	    // Refrescar la interfaz
+	    panel_central.revalidate();
+	    panel_central.repaint();
 	}
+	
+	private void inicializarFiltroPorGenero() {
+	    // Inicializar la barra de géneros
+	    genreSelector = new JComboBox<>(new String[]{"Todos", "Comedia", "Romance", "Aventura", "Drama", "Ciencia Ficcion", "Terror"});
+	    genreSelector.setBorder(BorderFactory.createTitledBorder("Filtrar por Género"));
+
+	    genreSelector.addActionListener(new ActionListener() {
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	            String selectedGenre = (String) genreSelector.getSelectedItem();
+	            panel_central.removeAll();
+
+	            for (Serie serie : Videoclub.getAlSeries()) {
+	                if (selectedGenre.equals("Todos") || serie.getGenero().equalsIgnoreCase(selectedGenre)) {
+	                    JLabel etiquetaSerie = new JLabel(serie.getTitulo());
+	                    panel_central.add(etiquetaSerie);
+	                }
+	            }
+
+	            panel_central.revalidate();
+	            panel_central.repaint();
+	        }
+	    });
+
+	    // Agregar la barra de géneros al panel superior
+	    panel_arriba.add(genreSelector, BorderLayout.NORTH);
+	    
+	    panel_central.revalidate();
+	    panel_central.repaint();
+	}
+	
+	public void cargarPeliculas() {
+	    //Videoclub.cargarPeliculas();
+
+	    // Verificar que la lista de peliculas no sea nula
+	    if (Videoclub.getAlPeliculas() == null) {
+	        System.err.println("Error: La lista de peliculas es nula.");
+	        return;
+	    }
+
+	    // Clasificar y agregar las peliculas a los paneles correspondientes
+	    for (Pelicula pelicula : Videoclub.getAlPeliculas()) {
+	    
+	        ImageIcon im = new ImageIcon(pelicula.getRutaFoto());
+	        Image im_tamaño = im.getImage().getScaledInstance(100, 140, Image.SCALE_SMOOTH);
+	        ImageIcon imageicon_tamano = new ImageIcon(im_tamaño);
+	        imageicon_tamano.setDescription(pelicula.getRutaFoto());
+	        
+	        JLabel lblFoto = new JLabel(imageicon_tamano);
+	        
+	        Border border = BorderFactory.createLineBorder(turquesa, 2);
+	        lblFoto.setBorder(border);
+	        
+	        if (pelicula == null || pelicula.getGenero() == null) {
+	            System.err.println("Advertencia: Pelicula o género nulo encontrado.");
+	            continue;
+	        }
+
+	        switch (pelicula.getGenero().toLowerCase()) {
+	            case "comedia":
+	                p_grid_comedia.add(lblFoto);
+	                break;
+	            case "romance":
+	                p_grid_romance.add(lblFoto);
+	                break;
+	            case "aventura":
+	                p_grid_aventura.add(lblFoto);
+	                break;
+	            case "drama":
+	                p_grid_drama.add(lblFoto);
+	                break;
+	            case "ciencia ficcion":
+	                p_grid_cf.add(lblFoto);
+	                break;
+	            case "terror":
+	                p_grid_terror.add(lblFoto);
+	                break;
+	        }
+	    }
+
+	    // Refrescar la interfaz
+	    panel_central.revalidate();
+	    panel_central.repaint();
+	}
+
+	
+
+	
+	
+	
 	
 
 }
+
