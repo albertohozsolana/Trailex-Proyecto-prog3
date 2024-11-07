@@ -2,12 +2,16 @@ package trailex.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,6 +24,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 
 import trailex.elementos.Pelicula;
 import trailex.elementos.Serie;
@@ -65,6 +70,18 @@ public class Trailex_Principal extends JFrame{
 				boton_menu.setBackground(turquesa);
 				boton_menu.setToolTipText("Menú");
 				
+				// ACCIÓN PULSAR BOTÓN
+				boton_menu.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						Menu_Trailex(panel_principal);
+						
+					}
+					
+				});
+			
+				
 				boton_pelis = new JButton("Películas");
 				boton_pelis.setBackground(turquesa);
 				
@@ -87,6 +104,7 @@ public class Trailex_Principal extends JFrame{
 				
 				// Creamos y añadimos una Barra de Búsqueda NO FUNCIONA, a la parte de arriba
 				JTextField barra_buscar = new JTextField();
+				barra_buscar.setSize(500000, 500);
 				panel_arriba.add(barra_buscar);
 				
 				
@@ -262,6 +280,68 @@ public class Trailex_Principal extends JFrame{
 				JScrollPane scroll= new JScrollPane(panel_central, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); //cambiar a never 
 				panel_principal.add(scroll, BorderLayout.CENTER);
 				this.setVisible(true);
+	}
+	
+	private JPanel crearMenu_lat() {
+		JPanel menu = new JPanel();
+		menu.setLayout(new BoxLayout(menu, BoxLayout.Y_AXIS));
+		menu.add(Box.createVerticalStrut(40)); // Separación entre botones
+		
+		JButton b_cerrar = new JButton("CERRAR SESIÓN");
+		b_cerrar.setBackground(turquesa);
+		menu.add(b_cerrar);
+		
+		// CERRAR APP:
+		b_cerrar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				System.exit(0);
+			}
+		});
+		
+		JButton f_perfil = new JButton();
+		ImageIcon icon_perfil= new ImageIcon("img/perfil.jpg");
+		Image img_menu=icon_perfil.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH);
+		f_perfil.setIcon(new ImageIcon(img_menu));
+		
+		f_perfil.setOpaque(false); // Eliminar el fondo opaco del botón
+		f_perfil.setContentAreaFilled(false); // No rellenar el área del botón
+		f_perfil.setBorderPainted(false);
+		
+		f_perfil.setHorizontalAlignment(SwingConstants.CENTER);
+		f_perfil.setVerticalAlignment(SwingConstants.CENTER);
+		//f_perfil.setBorder(new EmptyBorder(0, 0, 40, 0));
+		
+		menu.add(Box.createVerticalGlue());
+		
+		menu.add(f_perfil);
+		
+		
+		return menu;
+	}
+	
+	private void Menu_Trailex(JPanel total) {
+		
+		if (((BorderLayout) total.getLayout()).getLayoutComponent(BorderLayout.WEST) != null) {
+			
+			BorderLayout layout = (BorderLayout) total.getLayout();
+			Component panelEnOeste = layout.getLayoutComponent(BorderLayout.WEST);
+			total.remove(panelEnOeste);
+			
+			total.revalidate();
+			total.repaint();
+			
+			
+		} else {
+			JPanel menu_lat = crearMenu_lat();
+			menu_lat.setBackground(Color.black);
+			
+			total.add(menu_lat, BorderLayout.WEST);
+			total.revalidate();
+			total.repaint();
+		}
 	}
 	
 	private void cargarSeries() {
