@@ -1,6 +1,8 @@
 package trailex.gui;
 
 import java.awt.BorderLayout;
+
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -11,7 +13,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -32,6 +35,10 @@ import trailex.elementos.Pelicula;
 import trailex.elementos.Serie;
 import trailex.elementos.Videoclub;
 
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
 
 public class Trailex_Principal extends JFrame{
 	private JPanel panel_central;
@@ -45,6 +52,7 @@ public class Trailex_Principal extends JFrame{
 	private GridLayout grid_comedia, grid_romance, grid_cf, grid_terror, grid_drama, grid_aventura;
 	private JTextField searchBar;
     private JComboBox<String> genreSelector;
+   
 	
 	private static final long serialVersionUID = 1L;
 
@@ -401,6 +409,14 @@ public class Trailex_Principal extends JFrame{
 			Border border=BorderFactory.createLineBorder(turquesa,2);
 			lblFoto.setBorder(border);
 			
+			lblFoto.addMouseListener(new MouseAdapter() {
+			    @Override
+			    public void mouseClicked(MouseEvent e) {
+			        mostrarInfoSerie(serie);
+			    }
+			});
+
+			
 	        if (serie == null || serie.getGenero() == null) {
 	            System.err.println("Advertencia: Serie o género nulo encontrado.");
 	            continue;
@@ -490,6 +506,13 @@ public class Trailex_Principal extends JFrame{
 	        Border border = BorderFactory.createLineBorder(turquesa, 2);
 	        lblFoto.setBorder(border);
 	        
+	        lblFoto.addMouseListener(new MouseAdapter() {
+	            @Override
+	            public void mouseClicked(MouseEvent e) {
+	                mostrarInfoPelicula(pelicula);
+	            }
+	        });
+;
 	        if (pelicula == null || pelicula.getGenero() == null) {
 	            System.err.println("Advertencia: Pelicula o género nulo encontrado.");
 	            continue;
@@ -522,12 +545,129 @@ public class Trailex_Principal extends JFrame{
 	    panel_central.repaint();
 	}
 
-	
+
+	class ImagePanel extends JPanel {
+	    private Image image;
+
+	    public ImagePanel(String imagePath) {
+	        this.image = new ImageIcon(imagePath).getImage();
+	    }
+
+	    @Override
+	    protected void paintComponent(Graphics g) {
+	        super.paintComponent(g);
+	        int x = (getWidth() - image.getWidth(this)) / 2;
+	        int y = (getHeight() - image.getHeight(this)) / 2;
+	        g.drawImage(image, x, y, this);
+	    }
+
+	    @Override
+	    public Dimension getPreferredSize() {
+	        return new Dimension(image.getWidth(this), image.getHeight(this));
+	    }
+	}
 
 	
-	
-	
-	
+
+
+	public void mostrarInfoPelicula(Pelicula pelicula) {
+	    JFrame ventanaInfo = new JFrame("Información de la Película");
+	    ventanaInfo.setSize(400, 500);
+	    ventanaInfo.setLayout(new BorderLayout());
+	    ventanaInfo.setLocationRelativeTo(null);
+
+	    // Configuración de fondo de imagen para la película
+	    JLabel background = new JLabel(new ImageIcon(pelicula.getRutaFoto()));
+	    background.setLayout(new BorderLayout());
+	    ventanaInfo.setContentPane(background);
+
+	    // Configuración del título
+	    JLabel labelTitulo = new JLabel(pelicula.getTitulo(), SwingConstants.CENTER);
+	    labelTitulo.setFont(new Font("Arial", Font.BOLD, 24));
+	    labelTitulo.setForeground(Color.WHITE); // Texto en blanco para visibilidad en la imagen
+	    labelTitulo.setBorder(new EmptyBorder(10, 10, 10, 10));
+
+	    // Edad recomendada
+	    JLabel labelEdadRecomendada = new JLabel("Edad recomendada: " + pelicula.getEdadRecomendada() + " años", SwingConstants.CENTER);
+	    labelEdadRecomendada.setFont(new Font("Arial", Font.PLAIN, 18));
+	    labelEdadRecomendada.setForeground(Color.WHITE);
+
+	    // Panel de detalles adicionales de la película
+	    JPanel panelDetalles = new JPanel();
+	    panelDetalles.setOpaque(false); // Hacer el panel transparente
+	    panelDetalles.setLayout(new GridLayout(3, 1, 5, 5));
+	    JLabel labelAnio = new JLabel("Año: " + pelicula.getAnio());
+	    JLabel labelGenero = new JLabel("Género: " + pelicula.getGenero());
+	    JLabel labelProtagonista = new JLabel("Protagonista: " + pelicula.getProtagonista());
+	    labelAnio.setFont(new Font("Arial", Font.PLAIN, 16));
+	    labelGenero.setFont(new Font("Arial", Font.PLAIN, 16));
+	    labelProtagonista.setFont(new Font("Arial", Font.PLAIN, 16));
+	    labelAnio.setForeground(Color.WHITE);
+	    labelGenero.setForeground(Color.WHITE);
+	    labelProtagonista.setForeground(Color.WHITE);
+	    panelDetalles.add(labelAnio);
+	    panelDetalles.add(labelGenero);
+	    panelDetalles.add(labelProtagonista);
+
+	    // Colocación de componentes en la ventana
+	    ventanaInfo.add(labelTitulo, BorderLayout.NORTH);
+	    ventanaInfo.add(labelEdadRecomendada, BorderLayout.CENTER);
+	    ventanaInfo.add(panelDetalles, BorderLayout.SOUTH);
+
+	    ventanaInfo.setVisible(true);
+	}
+
+	public void mostrarInfoSerie(Serie serie) {
+	    JFrame ventanaInfo = new JFrame("Información de la Serie");
+	    ventanaInfo.setSize(400, 500);
+	    ventanaInfo.setLayout(new BorderLayout());
+	    ventanaInfo.setLocationRelativeTo(null);
+
+	    // Configuración de fondo de imagen para la serie
+	    JLabel background = new JLabel(new ImageIcon(serie.getRutaFoto()));
+	    background.setLayout(new BorderLayout());
+	    ventanaInfo.setContentPane(background);
+
+	    // Configuración del título
+	    JLabel labelTitulo = new JLabel(serie.getTitulo(), SwingConstants.CENTER);
+	    labelTitulo.setFont(new Font("Arial", Font.BOLD, 24));
+	    labelTitulo.setForeground(Color.WHITE); // Texto en blanco para visibilidad en la imagen
+	    labelTitulo.setBorder(new EmptyBorder(10, 10, 10, 10));
+
+	    // Edad recomendada
+	    JLabel labelEdadRecomendada = new JLabel("Edad recomendada: " + serie.getEdadRecomendada() + " años", SwingConstants.CENTER);
+	    labelEdadRecomendada.setFont(new Font("Arial", Font.PLAIN, 18));
+	    labelEdadRecomendada.setForeground(Color.WHITE);
+
+	    // Panel de detalles adicionales de la serie
+	    JPanel panelDetalles = new JPanel();
+	    panelDetalles.setOpaque(false); // Hacer el panel transparente
+	    panelDetalles.setLayout(new GridLayout(4, 1, 5, 5));
+	    JLabel labelAnio = new JLabel("Año: " + serie.getAnio());
+	    JLabel labelGenero = new JLabel("Género: " + serie.getGenero());
+	    JLabel labelProtagonista = new JLabel("Protagonista: " + serie.getProtagonista());
+	    JLabel labelTemporadas = new JLabel("Temporadas: " + serie.getNumeroTemporadas());
+	    labelAnio.setFont(new Font("Arial", Font.PLAIN, 16));
+	    labelGenero.setFont(new Font("Arial", Font.PLAIN, 16));
+	    labelProtagonista.setFont(new Font("Arial", Font.PLAIN, 16));
+	    labelTemporadas.setFont(new Font("Arial", Font.PLAIN, 16));
+	    labelAnio.setForeground(Color.WHITE);
+	    labelGenero.setForeground(Color.WHITE);
+	    labelProtagonista.setForeground(Color.WHITE);
+	    labelTemporadas.setForeground(Color.WHITE);
+	    panelDetalles.add(labelAnio);
+	    panelDetalles.add(labelGenero);
+	    panelDetalles.add(labelProtagonista);
+	    panelDetalles.add(labelTemporadas);
+
+	    // Colocación de componentes en la ventana
+	    ventanaInfo.add(labelTitulo, BorderLayout.NORTH);
+	    ventanaInfo.add(labelEdadRecomendada, BorderLayout.CENTER);
+	    ventanaInfo.add(panelDetalles, BorderLayout.SOUTH);
+
+	    ventanaInfo.setVisible(true);
+	}
+
 
 }
 
