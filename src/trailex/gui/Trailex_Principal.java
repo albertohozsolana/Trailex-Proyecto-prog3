@@ -59,6 +59,7 @@ public class Trailex_Principal extends JFrame{
     
     private ArrayList<String> array_generos = new ArrayList<>(Arrays.asList("Comedia", "Romance", "Aventura", "Drama", "Ciencia Ficción", "Terror"));
     private ArrayList<JPanel> array_paneles = new ArrayList<>();
+    private ArrayList<JLabel> array_series = new ArrayList<>();
 	
 	private static final long serialVersionUID = 1L;
 
@@ -165,22 +166,6 @@ public class Trailex_Principal extends JFrame{
 				cargarSeries();
 				inicializarFiltroPorGenero();
 				
-				
-				// Configuramos el panel principal
-				this.add(panel_principal);
-				this.setTitle("Trailex");
-				this.setExtendedState(MAXIMIZED_BOTH); //para que ocupe toda la pantalla
-				this.setLocationRelativeTo(null);
-				ImageIcon img= new ImageIcon("img/icono.png");
-				Image img_icono= img.getImage();
-				this.setIconImage(img_icono);
-				
-				JScrollPane scroll= new JScrollPane(panel_central, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); //cambiar a never 
-				panel_principal.add(scroll, BorderLayout.CENTER);
-				this.setVisible(true);
-				
-				
-				
 				// Inicializar la barra de búsqueda
 			    searchBar = new JTextField(20);
 			    searchBar.setBorder(BorderFactory.createTitledBorder("Buscar Serie"));
@@ -207,6 +192,24 @@ public class Trailex_Principal extends JFrame{
 
 			    // Agregar la barra de búsqueda al panel superior
 			    panel_arriba.add(searchBar, BorderLayout.NORTH);
+				
+				
+				// Configuramos el panel principal
+				this.add(panel_principal);
+				this.setTitle("Trailex");
+				this.setExtendedState(MAXIMIZED_BOTH); //para que ocupe toda la pantalla
+				this.setLocationRelativeTo(null);
+				ImageIcon img= new ImageIcon("img/icono.png");
+				Image img_icono= img.getImage();
+				this.setIconImage(img_icono);
+				
+				JScrollPane scroll= new JScrollPane(panel_central, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); //cambiar a never 
+				panel_principal.add(scroll, BorderLayout.CENTER);
+				this.setVisible(true);
+				
+				
+				
+				
 			    
 			    
 	}
@@ -297,6 +300,8 @@ public class Trailex_Principal extends JFrame{
 			Border border=BorderFactory.createLineBorder(turquesa,2);
 			lblFoto.setBorder(border);
 			
+			array_series.add(lblFoto);
+			
 			lblFoto.addMouseListener(new MouseAdapter() {
 			    @Override
 			    public void mouseClicked(MouseEvent e) {
@@ -352,13 +357,118 @@ public class Trailex_Principal extends JFrame{
 	        public void actionPerformed(ActionEvent e) {
 	            String selectedGenre = (String) genreSelector.getSelectedItem();
 	            panel_central.removeAll();
-
-	            for (Serie serie : Videoclub.getAlSeries()) {
-	                if (selectedGenre.equals("Todos") || serie.getGenero().equalsIgnoreCase(selectedGenre)) {
-	                    JLabel etiquetaSerie = new JLabel(serie.getTitulo());
-	                    panel_central.add(etiquetaSerie);
+	            	
+	          
+	                if (selectedGenre.equals("Todos") ) {
+	                	int contador = 0;
+	                	for (JPanel panel : array_paneles) {
+	                		JPanel panel_genero = new JPanel();
+	    					panel_genero.setLayout(new BorderLayout());
+	    					panel_genero.setBackground(Color.black);
+	    					JLabel texto_genero = new JLabel(array_generos.get(contador));
+	    					texto_genero.setForeground(turquesa);
+	    					texto_genero.setBackground(Color.black);
+	    					JPanel panel_texto = new JPanel(new FlowLayout(FlowLayout.LEFT));
+	    					panel_texto.add(texto_genero);
+	    					panel_texto.setBackground(Color.black);
+	    					panel_genero.add(panel_texto, BorderLayout.NORTH);
+	    					panel_genero.add(panel, BorderLayout.SOUTH);
+	    					panel_central.add(panel_genero);
+	                		contador++;
+	                	}
 	                }
-	            }
+	                
+	                else if (selectedGenre.equals("Comedia")) {
+	                	JPanel panel_genero = new JPanel();
+    					panel_genero.setLayout(new BorderLayout());
+    					panel_genero.setBackground(Color.black);
+    					JLabel texto_genero = new JLabel("Comedia");
+    					texto_genero.setForeground(turquesa);
+    					texto_genero.setBackground(Color.black);
+    					JPanel panel_texto = new JPanel(new FlowLayout(FlowLayout.LEFT));
+    					panel_texto.add(texto_genero);
+    					panel_texto.setBackground(Color.black);
+    					panel_genero.add(panel_texto, BorderLayout.NORTH);
+    					panel_genero.add(array_paneles.get(0), BorderLayout.SOUTH);
+    					panel_central.add(panel_genero);
+	                }
+	                
+	                else if (selectedGenre.equals("Romance")) {
+	                	JPanel panel_genero = new JPanel();
+    					panel_genero.setLayout(new BorderLayout());
+    					panel_genero.setBackground(Color.black);
+    					JLabel texto_genero = new JLabel("Romance");
+    					texto_genero.setForeground(turquesa);
+    					texto_genero.setBackground(Color.black);
+    					JPanel panel_texto = new JPanel(new FlowLayout(FlowLayout.LEFT));
+    					panel_texto.add(texto_genero);
+    					panel_texto.setBackground(Color.black);
+    					panel_genero.add(panel_texto, BorderLayout.NORTH);
+    					panel_genero.add(array_paneles.get(1), BorderLayout.SOUTH);
+    					panel_central.add(panel_genero);
+	                }
+	                
+	                else if (selectedGenre.equals("Aventura")) {
+	                	JPanel panel_genero = new JPanel();
+    					panel_genero.setLayout(new BorderLayout());
+    					panel_genero.setBackground(Color.black);
+    					JLabel texto_genero = new JLabel("Aventura");
+    					texto_genero.setForeground(turquesa);
+    					texto_genero.setBackground(Color.black);
+    					JPanel panel_texto = new JPanel(new FlowLayout(FlowLayout.LEFT));
+    					panel_texto.add(texto_genero);
+    					panel_texto.setBackground(Color.black);
+    					panel_genero.add(panel_texto, BorderLayout.NORTH);
+    					panel_genero.add(array_paneles.get(2), BorderLayout.SOUTH);
+    					panel_central.add(panel_genero);
+	                }
+	                
+	                else if (selectedGenre.equals("Drama")) {
+	                	JPanel panel_genero = new JPanel();
+    					panel_genero.setLayout(new BorderLayout());
+    					panel_genero.setBackground(Color.black);
+    					JLabel texto_genero = new JLabel("Drama");
+    					texto_genero.setForeground(turquesa);
+    					texto_genero.setBackground(Color.black);
+    					JPanel panel_texto = new JPanel(new FlowLayout(FlowLayout.LEFT));
+    					panel_texto.add(texto_genero);
+    					panel_texto.setBackground(Color.black);
+    					panel_genero.add(panel_texto, BorderLayout.NORTH);
+    					panel_genero.add(array_paneles.get(3), BorderLayout.SOUTH);
+    					panel_central.add(panel_genero);
+	                }
+	                
+	                else if (selectedGenre.equals("Ciencia Ficción")) {
+	                	JPanel panel_genero = new JPanel();
+    					panel_genero.setLayout(new BorderLayout());
+    					panel_genero.setBackground(Color.black);
+    					JLabel texto_genero = new JLabel("Ciencia Ficción");
+    					texto_genero.setForeground(turquesa);
+    					texto_genero.setBackground(Color.black);
+    					JPanel panel_texto = new JPanel(new FlowLayout(FlowLayout.LEFT));
+    					panel_texto.add(texto_genero);
+    					panel_texto.setBackground(Color.black);
+    					panel_genero.add(panel_texto, BorderLayout.NORTH);
+    					panel_genero.add(array_paneles.get(0), BorderLayout.SOUTH);
+    					panel_central.add(panel_genero);
+    					
+	                }
+	                
+	                else if (selectedGenre.equals("Comedia")) {
+	                	JPanel panel_genero = new JPanel();
+    					panel_genero.setLayout(new BorderLayout());
+    					panel_genero.setBackground(Color.black);
+    					JLabel texto_genero = new JLabel("Comedia");
+    					texto_genero.setForeground(turquesa);
+    					texto_genero.setBackground(Color.black);
+    					JPanel panel_texto = new JPanel(new FlowLayout(FlowLayout.LEFT));
+    					panel_texto.add(texto_genero);
+    					panel_texto.setBackground(Color.black);
+    					panel_genero.add(panel_texto, BorderLayout.NORTH);
+    					panel_genero.add(array_paneles.get(0), BorderLayout.SOUTH);
+    					panel_central.add(panel_genero);
+	                }
+	               
 
 	            panel_central.revalidate();
 	            panel_central.repaint();
@@ -371,6 +481,7 @@ public class Trailex_Principal extends JFrame{
 	    panel_central.revalidate();
 	    panel_central.repaint();
 	}
+	
 	
 	public void cargarPeliculas() {
 	  
