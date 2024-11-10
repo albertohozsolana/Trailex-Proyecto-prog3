@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.color.ColorSpace;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -60,31 +61,9 @@ public class Trailex_Principal extends JFrame{
 	public Trailex_Principal() {
 		// Llamamos a la función que crea la ventana Básica de nuestro programa
 		Iniciar_Trailex();
-		cargarSeries();
-		inicializarFiltroPorGenero();
-		cargarPeliculas();
 		
 	
-	// Inicializar la barra de búsqueda
-    searchBar = new JTextField(20);
-    searchBar.setBorder(BorderFactory.createTitledBorder("Buscar Serie"));
-
-    searchBar.addKeyListener(new KeyAdapter() {
-        @Override
-        public void keyReleased(KeyEvent e) {
-            String searchText = searchBar.getText().toLowerCase();
-
-            for (Serie serie : Videoclub.getAlSeries()) {
-                if (serie.getTitulo().toLowerCase().contains(searchText)) {
-                    JLabel etiquetaSerie = new JLabel(serie.getTitulo());
-                    panel_central.add(etiquetaSerie);
-                }
-            }
-
-            panel_central.revalidate();
-            panel_central.repaint();
-        }
-    });
+	
 
     // Agregar la barra de búsqueda al panel superior
     panel_arriba.add(searchBar, BorderLayout.NORTH);
@@ -99,6 +78,7 @@ public class Trailex_Principal extends JFrame{
 				panel_arriba.setBackground(Color.black);
 
 				
+				
 				// Creamos y añadimos el botón de Menú al panel de arriba:
 				boton_menu = new JButton();
 				boton_menu.setPreferredSize(new Dimension(30,30));
@@ -108,6 +88,8 @@ public class Trailex_Principal extends JFrame{
 				boton_menu.setIcon(new ImageIcon(img_menu));
 				boton_menu.setBackground(turquesa);
 				boton_menu.setToolTipText("Menú");
+				
+			
 				
 				// ACCIÓN PULSAR BOTÓN
 				boton_menu.addActionListener(new ActionListener() {
@@ -132,19 +114,6 @@ public class Trailex_Principal extends JFrame{
 				panel_arriba.add(boton_series);
 				
 				
-				// Creamos y añadimos un Desplegable a la parte de arriba
-				String[] generos = {"Comedia", "Terror", "Romantica", "Ciencia Ficción","Aventura","Drama"};
-				JComboBox<String> lista_desplegable = new JComboBox<String>(generos);
-				
-				lista_desplegable.setSelectedIndex(-1);
-				lista_desplegable.setToolTipText("Selecciona un género");
-				lista_desplegable.setBackground(new Color(0x5FA6AD));
-				panel_arriba.add(lista_desplegable);
-				
-				// Creamos y añadimos una Barra de Búsqueda NO FUNCIONA, a la parte de arriba
-				JTextField barra_buscar = new JTextField();
-				barra_buscar.setSize(500000, 500);
-				panel_arriba.add(barra_buscar);
 				
 				
 				// Añadimos a la pantalla principal la parte de arriba y le decimos que queremos que esté arriba
@@ -306,6 +275,7 @@ public class Trailex_Principal extends JFrame{
 
 				cargarSeries();
 				cargarPeliculas();
+				inicializarFiltroPorGenero();
 				
 				
 				// Configuramos el panel principal
@@ -320,6 +290,37 @@ public class Trailex_Principal extends JFrame{
 				JScrollPane scroll= new JScrollPane(panel_central, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); //cambiar a never 
 				panel_principal.add(scroll, BorderLayout.CENTER);
 				this.setVisible(true);
+				
+				
+				
+				// Inicializar la barra de búsqueda
+			    searchBar = new JTextField(20);
+			    searchBar.setBorder(BorderFactory.createTitledBorder("Buscar Serie"));
+			    
+			    searchBar.setBackground(turquesa);
+
+			    searchBar.addKeyListener(new KeyAdapter() {
+			        @Override
+			        public void keyReleased(KeyEvent e) {
+			            String searchText = searchBar.getText().toLowerCase();
+			            panel_central.removeAll();
+
+			            for (Serie serie : Videoclub.getAlSeries()) {
+			                if (serie.getTitulo().toLowerCase().contains(searchText)) {
+			                    JLabel etiquetaSerie = new JLabel(serie.getTitulo());
+			                    panel_central.add(etiquetaSerie);
+			                }
+			            }
+
+			            panel_central.revalidate();
+			            panel_central.repaint();
+			        }
+			    });
+
+			    // Agregar la barra de búsqueda al panel superior
+			    panel_arriba.add(searchBar, BorderLayout.NORTH);
+			    
+			    
 	}
 	
 	private JPanel crearMenu_lat() {
@@ -388,7 +389,7 @@ public class Trailex_Principal extends JFrame{
 	
 
 	public void cargarSeries() {
-	    Videoclub.cargarSeries();
+	   
 
 	    // Verificar que la lista de series no sea nula
 	    if (Videoclub.getAlSeries() == null) {
@@ -459,6 +460,8 @@ public class Trailex_Principal extends JFrame{
 	    genreSelector = new JComboBox<>(new String[]{"Todos", "Comedia", "Romance", "Aventura", "Drama", "Ciencia Ficcion", "Terror"});
 	    genreSelector.setBorder(BorderFactory.createTitledBorder("Filtrar por Género"));
 
+	    genreSelector.setBackground(turquesa);
+	    
 	    genreSelector.addActionListener(new ActionListener() {
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
@@ -485,7 +488,7 @@ public class Trailex_Principal extends JFrame{
 	}
 	
 	public void cargarPeliculas() {
-	    //Videoclub.cargarPeliculas();
+	  
 
 	    // Verificar que la lista de peliculas no sea nula
 	    if (Videoclub.getAlPeliculas() == null) {
