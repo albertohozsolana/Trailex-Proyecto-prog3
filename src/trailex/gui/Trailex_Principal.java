@@ -16,6 +16,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -53,7 +56,9 @@ public class Trailex_Principal extends JFrame{
 	private GridLayout grid_comedia, grid_romance, grid_cf, grid_terror, grid_drama, grid_aventura;
 	private JTextField searchBar;
     private JComboBox<String> genreSelector;
-   
+    
+    private ArrayList<String> array_generos = new ArrayList<>(Arrays.asList("Comedia", "Romance", "Aventura", "Drama", "Ciencia Ficción", "Terror"));
+    private ArrayList<JPanel> array_paneles = new ArrayList<>();
 	
 	private static final long serialVersionUID = 1L;
 
@@ -129,152 +134,35 @@ public class Trailex_Principal extends JFrame{
 
 				//ORGANIZAMOS LAS SERIES EN FILAS POR GENERO-----------------------------------------------------
 				
-				//COMEDIA
-				panel_comedia = new JPanel();
 				
-				panel_comedia.setLayout(new BorderLayout());
-				
-				grid_comedia= new GridLayout(1,0);
-				
-				p_grid_comedia= new JPanel();
-				p_grid_comedia.setLayout(grid_comedia);
-				JScrollPane scroll_comedia= new JScrollPane(p_grid_comedia, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-				scroll_comedia.getHorizontalScrollBar().setAlignmentX(LEFT_ALIGNMENT);
-
-				
-				t_comedia = new JLabel("Comedia");
-				t_comedia.setForeground(turquesa);
-				p_norte_comedia = new JPanel(new FlowLayout(FlowLayout.LEFT));
-				p_norte_comedia.add(t_comedia);
-								
-				panel_comedia.add(p_norte_comedia, BorderLayout.NORTH);
-				//panel_comedia.add(p_grid_comedia, BorderLayout.CENTER);
-				panel_comedia.add(scroll_comedia, BorderLayout.CENTER);
-
-				panel_central.add(panel_comedia);
+				for (String genero : array_generos) {
+					JPanel panel_genero = new JPanel();
+					panel_genero.setLayout(new BorderLayout());
+					panel_genero.setBackground(Color.black);
 					
+					
+					JPanel panel_fotos = new JPanel();
+					panel_fotos.setLayout(new FlowLayout(FlowLayout.LEFT));
+					panel_fotos.setBackground(Color.black);
+					
+					JLabel texto_genero = new JLabel(genero);
+					texto_genero.setForeground(turquesa);
+					texto_genero.setBackground(Color.black);
+					
+					JPanel panel_texto = new JPanel(new FlowLayout(FlowLayout.LEFT));
+					panel_texto.add(texto_genero);
+					panel_texto.setBackground(Color.black);
+					
+					panel_genero.add(panel_texto, BorderLayout.NORTH);
+					panel_genero.add(panel_fotos, BorderLayout.SOUTH);
+					
+					
+					panel_central.add(panel_genero);
+					array_paneles.add(panel_fotos);
+					
+				}
 				
-				// ROMANCE
-				panel_romance = new JPanel();
-				panel_romance.setLayout(new BorderLayout());
-
-				grid_romance = new GridLayout(1, 0);
-				p_grid_romance = new JPanel();
-				p_grid_romance.setLayout(grid_romance);
-
-				t_romance = new JLabel("Romance"); // Cambiado a t_romance
-				t_romance.setForeground(turquesa);
-				p_norte_romance = new JPanel(new FlowLayout(FlowLayout.LEFT));
-				p_norte_romance.add(t_romance);
-
-				panel_romance.add(p_norte_romance, BorderLayout.NORTH);
-				panel_romance.add(p_grid_romance, BorderLayout.CENTER); // Usar CENTER para el grid
-				panel_central.add(panel_romance);
-				
-
-				// AVENTURA
-				panel_aventura = new JPanel();
-				panel_aventura.setLayout(new BorderLayout());
-
-				grid_aventura = new GridLayout(1, 0);
-				p_grid_aventura = new JPanel();
-				p_grid_aventura.setLayout(grid_aventura);
-
-				t_aventura = new JLabel("Aventura");
-				t_aventura.setForeground(turquesa);
-				p_norte_aventura = new JPanel(new FlowLayout(FlowLayout.LEFT));
-				p_norte_aventura.add(t_aventura);
-
-				panel_aventura.add(p_norte_aventura, BorderLayout.NORTH);
-				panel_aventura.add(p_grid_aventura, BorderLayout.CENTER); // Usar CENTER para el grid
-				panel_central.add(panel_aventura);
-				
-
-				// DRAMA
-				panel_drama = new JPanel();
-				panel_drama.setLayout(new BorderLayout());
-
-				grid_drama = new GridLayout(1, 0);
-				p_grid_drama = new JPanel();
-				p_grid_drama.setLayout(grid_drama);
-
-				t_drama = new JLabel("Drama");
-				t_drama.setForeground(turquesa);
-				p_norte_drama = new JPanel(new FlowLayout(FlowLayout.LEFT));
-				p_norte_drama.add(t_drama);
-
-				panel_drama.add(p_norte_drama, BorderLayout.NORTH);
-				panel_drama.add(p_grid_drama, BorderLayout.CENTER); // Usar CENTER para el grid
-				panel_central.add(panel_drama);
-				
-
-				// CIENCIA FICCIÓN
-				panel_cf = new JPanel();
-				panel_cf.setLayout(new BorderLayout());
-
-				grid_cf = new GridLayout(1, 0);
-				p_grid_cf = new JPanel();
-				p_grid_cf.setLayout(grid_cf);
-
-				t_cf = new JLabel("Ciencia Ficción");
-				t_cf.setForeground(turquesa);
-				p_norte_cf = new JPanel(new FlowLayout(FlowLayout.LEFT));
-				p_norte_cf.add(t_cf);
-
-				panel_cf.add(p_norte_cf, BorderLayout.NORTH);
-				panel_cf.add(p_grid_cf, BorderLayout.CENTER); // Usar CENTER para el grid
-				panel_central.add(panel_cf);
-
-				
-				// TERROR
-				panel_terror = new JPanel();
-				panel_terror.setLayout(new BorderLayout());
-
-				grid_terror = new GridLayout(1, 0);
-				p_grid_terror = new JPanel();
-				p_grid_terror.setLayout(grid_terror);
-
-				t_terror = new JLabel("Terror");
-				t_terror.setForeground(turquesa);
-				p_norte_terror = new JPanel(new FlowLayout(FlowLayout.LEFT));
-				p_norte_terror.add(t_terror);
-
-				panel_terror.add(p_norte_terror, BorderLayout.NORTH);
-				panel_terror.add(p_grid_terror, BorderLayout.CENTER); // Usar CENTER para el grid
-				panel_central.add(panel_terror);
-				
-				
-				panel_aventura.setBackground(Color.black);
-				p_grid_aventura.setBackground(Color.black);
-				p_norte_aventura.setBackground(Color.black);
-				
-				panel_terror.setBackground(Color.black);
-				p_grid_terror.setBackground(Color.black);
-				p_norte_terror.setBackground(Color.black);
-				
-				panel_comedia.setBackground(Color.black);
-				p_grid_comedia.setBackground(Color.black);
-				p_norte_comedia.setBackground(Color.black);
-				
-				panel_drama.setBackground(Color.black);
-				p_grid_drama.setBackground(Color.black);
-				p_norte_drama.setBackground(Color.black);
-				
-				panel_drama.setBackground(Color.black);
-				p_grid_drama.setBackground(Color.black);
-				p_norte_drama.setBackground(Color.black);
-				
-				panel_cf.setBackground(Color.black);
-				p_grid_cf.setBackground(Color.black);
-				p_norte_cf.setBackground(Color.black);
-				
-				panel_romance.setBackground(Color.black);
-				p_grid_romance.setBackground(Color.black);
-				p_norte_romance.setBackground(Color.black);
-				
-
 				cargarSeries();
-				cargarPeliculas();
 				inicializarFiltroPorGenero();
 				
 				
@@ -390,7 +278,6 @@ public class Trailex_Principal extends JFrame{
 
 	public void cargarSeries() {
 	   
-
 	    // Verificar que la lista de series no sea nula
 	    if (Videoclub.getAlSeries() == null) {
 	        System.err.println("Error: La lista de series es nula.");
@@ -423,26 +310,25 @@ public class Trailex_Principal extends JFrame{
 	            continue;
 	        }
 
-	       
 
 	        switch (serie.getGenero().toLowerCase()) {
             case "comedia":
-                p_grid_comedia.add(lblFoto);
+                array_paneles.get(0).add(lblFoto);
                 break;
             case "romance":               
-                p_grid_romance.add(lblFoto);
+            	array_paneles.get(1).add(lblFoto);
                 break;               
             case "aventura":          	
-            	p_grid_aventura.add(lblFoto);
+            	array_paneles.get(2).add(lblFoto);
                 break;
             case "drama":             
-                p_grid_drama.add(lblFoto);
+            	array_paneles.get(3).add(lblFoto);
                 break;
-            case "ciencia ficcion":              
-                p_grid_cf.add(lblFoto);
+            case "ciencia ficción":              
+            	array_paneles.get(4).add(lblFoto);
                 break;
             case "terror":           
-                p_grid_terror.add(lblFoto);
+            	array_paneles.get(5).add(lblFoto);
                 break;
             
 	        }
@@ -458,7 +344,6 @@ public class Trailex_Principal extends JFrame{
 	private void inicializarFiltroPorGenero() {
 	    // Inicializar la barra de géneros
 	    genreSelector = new JComboBox<>(new String[]{"Todos", "Comedia", "Romance", "Aventura", "Drama", "Ciencia Ficcion", "Terror"});
-	    genreSelector.setBorder(BorderFactory.createTitledBorder("Filtrar por Género"));
 
 	    genreSelector.setBackground(turquesa);
 	    
