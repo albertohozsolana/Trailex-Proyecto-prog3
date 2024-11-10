@@ -107,20 +107,7 @@ public class Trailex_Principal extends JFrame{
 					}
 					
 				});
-			
-				
-				boton_pelis = new JButton("Películas");
-				boton_pelis.setBackground(turquesa);
-				
-				boton_series = new JButton("Series");
-				boton_series.setBackground(turquesa);
-				
 				panel_arriba.add(boton_menu);
-				panel_arriba.add(boton_pelis);
-				panel_arriba.add(boton_series);
-				
-				
-				
 				
 				// Añadimos a la pantalla principal la parte de arriba y le decimos que queremos que esté arriba
 				panel_principal.add(panel_arriba, BorderLayout.NORTH);
@@ -168,7 +155,6 @@ public class Trailex_Principal extends JFrame{
 				
 				// Inicializar la barra de búsqueda
 			    searchBar = new JTextField(20);
-			    searchBar.setBorder(BorderFactory.createTitledBorder("Buscar Serie"));
 			    
 			    searchBar.setBackground(turquesa);
 
@@ -449,23 +435,23 @@ public class Trailex_Principal extends JFrame{
     					panel_texto.add(texto_genero);
     					panel_texto.setBackground(Color.black);
     					panel_genero.add(panel_texto, BorderLayout.NORTH);
-    					panel_genero.add(array_paneles.get(0), BorderLayout.SOUTH);
+    					panel_genero.add(array_paneles.get(4), BorderLayout.SOUTH);
     					panel_central.add(panel_genero);
     					
 	                }
 	                
-	                else if (selectedGenre.equals("Comedia")) {
+	                else if (selectedGenre.equals("Terror")) {
 	                	JPanel panel_genero = new JPanel();
     					panel_genero.setLayout(new BorderLayout());
     					panel_genero.setBackground(Color.black);
-    					JLabel texto_genero = new JLabel("Comedia");
+    					JLabel texto_genero = new JLabel("Terror");
     					texto_genero.setForeground(turquesa);
     					texto_genero.setBackground(Color.black);
     					JPanel panel_texto = new JPanel(new FlowLayout(FlowLayout.LEFT));
     					panel_texto.add(texto_genero);
     					panel_texto.setBackground(Color.black);
     					panel_genero.add(panel_texto, BorderLayout.NORTH);
-    					panel_genero.add(array_paneles.get(0), BorderLayout.SOUTH);
+    					panel_genero.add(array_paneles.get(5), BorderLayout.SOUTH);
     					panel_central.add(panel_genero);
 	                }
 	               
