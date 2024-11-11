@@ -39,6 +39,9 @@ import trailex.elementos.Pelicula;
 import trailex.elementos.Serie;
 import trailex.elementos.Videoclub;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 import java.awt.*;
 
 
@@ -299,7 +302,25 @@ public class Trailex_Principal extends JFrame{
 	}
 	
 	
+	private JFrame ventanaInfoPelicula;
+	private JFrame ventanaInfoSerie;
 	
+	// Función para cerrar la ventana de información de la película
+	public void cerrarInfoPelicula() {
+	    if (ventanaInfoPelicula != null) {
+	        ventanaInfoPelicula.dispose();
+	        ventanaInfoPelicula = null;
+	    }
+	}
+
+	// Función para cerrar la ventana de información de la serie
+	public void cerrarInfoSerie() {
+	    if (ventanaInfoSerie != null) {
+	        ventanaInfoSerie.dispose();
+	        ventanaInfoSerie = null;
+	    }
+	}
+
 
 	public void cargarSeries() {
 	   
@@ -329,10 +350,16 @@ public class Trailex_Principal extends JFrame{
 			
 			lblFoto.addMouseListener(new MouseAdapter() {
 			    @Override
-			    public void mouseClicked(MouseEvent e) {
-			        mostrarInfoSerie(serie);
+			    public void mouseEntered(MouseEvent e) {
+			        mostrarInfoSerie(serie); // Llamar a esta función para mostrar la información de la serie
+			    }
+
+			    @Override
+			    public void mouseExited(MouseEvent e) {
+			        cerrarInfoSerie(); // Llamar a esta función para cerrar la información cuando el ratón salga
 			    }
 			});
+
 
 			
 	        if (serie == null || serie.getGenero() == null) {
@@ -624,30 +651,49 @@ public class Trailex_Principal extends JFrame{
 
 
 	public void mostrarInfoPelicula(Pelicula pelicula) {
-	    JFrame ventanaInfo = new JFrame("Información de la Película");
-	    ventanaInfo.setSize(400, 500);
-	    ventanaInfo.setLayout(new BorderLayout());
-	    ventanaInfo.setLocationRelativeTo(null);
+	    if (ventanaInfoPelicula != null) {
+	        ventanaInfoPelicula.dispose();
+	    }
 
-	    // Configuración de fondo de imagen para la película
-	    JLabel background = new JLabel(new ImageIcon(pelicula.getRutaFoto()));
+	    ImageIcon originalIcon = new ImageIcon(pelicula.getRutaFoto());
+	    int imageWidth = originalIcon.getIconWidth();
+	    int imageHeight = originalIcon.getIconHeight();
+	    double aspectRatio = (double) imageWidth / imageHeight;
+
+	    int windowWidth = 400;
+	    int windowHeight = (int) (windowWidth / aspectRatio);
+
+	    ventanaInfoPelicula = new JFrame("Información de la Película");
+	    ventanaInfoPelicula.setSize(windowWidth, windowHeight);
+	    ventanaInfoPelicula.setLayout(new BorderLayout());
+
+	    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	    int x = screenSize.width - windowWidth - 50;
+	    int y = (screenSize.height - windowHeight) / 2;
+	    ventanaInfoPelicula.setLocation(x, y);
+
+	    Image image = originalIcon.getImage().getScaledInstance(windowWidth, windowHeight, Image.SCALE_SMOOTH);
+	    JLabel background = new JLabel(new ImageIcon(image));
 	    background.setLayout(new BorderLayout());
-	    ventanaInfo.setContentPane(background);
+	    ventanaInfoPelicula.setContentPane(background);
 
-	    // Configuración del título
+	    // Panel oscuro para el texto
+	    JPanel textPanel = new JPanel();
+	    textPanel.setLayout(new BorderLayout());
+	    textPanel.setBackground(new Color(0, 0, 0, 150)); // Fondo negro semi-transparente
+	    textPanel.setOpaque(true);
+
 	    JLabel labelTitulo = new JLabel(pelicula.getTitulo(), SwingConstants.CENTER);
 	    labelTitulo.setFont(new Font("Arial", Font.BOLD, 24));
-	    labelTitulo.setForeground(Color.WHITE); // Texto en blanco para visibilidad en la imagen
+	    labelTitulo.setForeground(Color.WHITE);
 	    labelTitulo.setBorder(new EmptyBorder(10, 10, 10, 10));
 
-	    // Edad recomendada
 	    JLabel labelEdadRecomendada = new JLabel("Edad recomendada: " + pelicula.getEdadRecomendada() + " años", SwingConstants.CENTER);
 	    labelEdadRecomendada.setFont(new Font("Arial", Font.PLAIN, 18));
 	    labelEdadRecomendada.setForeground(Color.WHITE);
 
-	    // Panel de detalles adicionales de la película
 	    JPanel panelDetalles = new JPanel();
-	    panelDetalles.setOpaque(false); // Hacer el panel transparente
+	    panelDetalles.setOpaque(false);
 	    panelDetalles.setLayout(new GridLayout(3, 1, 5, 5));
 	    JLabel labelAnio = new JLabel("Año: " + pelicula.getAnio());
 	    JLabel labelGenero = new JLabel("Género: " + pelicula.getGenero());
@@ -662,39 +708,60 @@ public class Trailex_Principal extends JFrame{
 	    panelDetalles.add(labelGenero);
 	    panelDetalles.add(labelProtagonista);
 
-	    // Colocación de componentes en la ventana
-	    ventanaInfo.add(labelTitulo, BorderLayout.NORTH);
-	    ventanaInfo.add(labelEdadRecomendada, BorderLayout.CENTER);
-	    ventanaInfo.add(panelDetalles, BorderLayout.SOUTH);
+	    // Añadir los componentes al panel oscuro
+	    textPanel.add(labelTitulo, BorderLayout.NORTH);
+	    textPanel.add(labelEdadRecomendada, BorderLayout.CENTER);
+	    textPanel.add(panelDetalles, BorderLayout.SOUTH);
 
-	    ventanaInfo.setVisible(true);
+	    // Añadir el panel oscuro a la ventana
+	    ventanaInfoPelicula.add(textPanel, BorderLayout.SOUTH);
+	    ventanaInfoPelicula.setVisible(true);
 	}
 
 	public void mostrarInfoSerie(Serie serie) {
-	    JFrame ventanaInfo = new JFrame("Información de la Serie");
-	    ventanaInfo.setSize(400, 500);
-	    ventanaInfo.setLayout(new BorderLayout());
-	    ventanaInfo.setLocationRelativeTo(null);
+	    if (ventanaInfoSerie != null) {
+	        ventanaInfoSerie.dispose();
+	    }
 
-	    // Configuración de fondo de imagen para la serie
-	    JLabel background = new JLabel(new ImageIcon(serie.getRutaFoto()));
+	    ImageIcon originalIcon = new ImageIcon(serie.getRutaFoto());
+	    int imageWidth = originalIcon.getIconWidth();
+	    int imageHeight = originalIcon.getIconHeight();
+	    double aspectRatio = (double) imageWidth / imageHeight;
+
+	    int windowWidth = 400;
+	    int windowHeight = (int) (windowWidth / aspectRatio);
+
+	    ventanaInfoSerie = new JFrame("Información de la Serie");
+	    ventanaInfoSerie.setSize(windowWidth, windowHeight);
+	    ventanaInfoSerie.setLayout(new BorderLayout());
+
+	    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	    int x = screenSize.width - windowWidth - 50;
+	    int y = (screenSize.height - windowHeight) / 2;
+	    ventanaInfoSerie.setLocation(x, y);
+
+	    Image image = originalIcon.getImage().getScaledInstance(windowWidth, windowHeight, Image.SCALE_SMOOTH);
+	    JLabel background = new JLabel(new ImageIcon(image));
 	    background.setLayout(new BorderLayout());
-	    ventanaInfo.setContentPane(background);
+	    ventanaInfoSerie.setContentPane(background);
 
-	    // Configuración del título
+	    // Panel oscuro para el texto
+	    JPanel textPanel = new JPanel();
+	    textPanel.setLayout(new BorderLayout());
+	    textPanel.setBackground(new Color(0, 0, 0, 150)); // Fondo negro semi-transparente
+	    textPanel.setOpaque(true);
+
 	    JLabel labelTitulo = new JLabel(serie.getTitulo(), SwingConstants.CENTER);
 	    labelTitulo.setFont(new Font("Arial", Font.BOLD, 24));
-	    labelTitulo.setForeground(Color.WHITE); // Texto en blanco para visibilidad en la imagen
+	    labelTitulo.setForeground(Color.WHITE);
 	    labelTitulo.setBorder(new EmptyBorder(10, 10, 10, 10));
 
-	    // Edad recomendada
 	    JLabel labelEdadRecomendada = new JLabel("Edad recomendada: " + serie.getEdadRecomendada() + " años", SwingConstants.CENTER);
 	    labelEdadRecomendada.setFont(new Font("Arial", Font.PLAIN, 18));
 	    labelEdadRecomendada.setForeground(Color.WHITE);
 
-	    // Panel de detalles adicionales de la serie
 	    JPanel panelDetalles = new JPanel();
-	    panelDetalles.setOpaque(false); // Hacer el panel transparente
+	    panelDetalles.setOpaque(false);
 	    panelDetalles.setLayout(new GridLayout(4, 1, 5, 5));
 	    JLabel labelAnio = new JLabel("Año: " + serie.getAnio());
 	    JLabel labelGenero = new JLabel("Género: " + serie.getGenero());
@@ -713,13 +780,16 @@ public class Trailex_Principal extends JFrame{
 	    panelDetalles.add(labelProtagonista);
 	    panelDetalles.add(labelTemporadas);
 
-	    // Colocación de componentes en la ventana
-	    ventanaInfo.add(labelTitulo, BorderLayout.NORTH);
-	    ventanaInfo.add(labelEdadRecomendada, BorderLayout.CENTER);
-	    ventanaInfo.add(panelDetalles, BorderLayout.SOUTH);
+	    // Añadir los componentes al panel oscuro
+	    textPanel.add(labelTitulo, BorderLayout.NORTH);
+	    textPanel.add(labelEdadRecomendada, BorderLayout.CENTER);
+	    textPanel.add(panelDetalles, BorderLayout.SOUTH);
 
-	    ventanaInfo.setVisible(true);
+	    // Añadir el panel oscuro a la ventana
+	    ventanaInfoSerie.add(textPanel, BorderLayout.SOUTH);
+	    ventanaInfoSerie.setVisible(true);
 	}
+
 
 
 }
