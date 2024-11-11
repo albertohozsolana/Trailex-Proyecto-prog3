@@ -34,6 +34,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 
 import trailex.elementos.Pelicula;
 import trailex.elementos.Serie;
@@ -177,8 +178,11 @@ public class Trailex_Principal extends JFrame{
 
 				
 				// Añadimos a la pantalla principal la parte central (CON UN BOTÓN) y le decimos que queremos que esté en el centro
-				panel_central= new JPanel(new GridLayout(6,1));
+				panel_central= new JPanel(new GridLayout(7,1));
 				panel_central.setBackground(Color.black);
+				
+				agregarPanelUltimosEstrenos();
+				panel_central.add(panelUltimosEstrenos);
 
 				
 
@@ -409,7 +413,6 @@ public class Trailex_Principal extends JFrame{
 	        public void actionPerformed(ActionEvent e) {
 	            String selectedGenre = (String) genreSelector.getSelectedItem();
 	            panel_central.removeAll();
-	            
 
 	                if (selectedGenre.equals("Todos") ) {
 	                	int contador = 0;
@@ -527,6 +530,8 @@ public class Trailex_Principal extends JFrame{
 	            panel_central.repaint();
 	        }
 	    });
+	    
+        
 
 	    // Agregar la barra de géneros al panel superior
 	    panel_arriba.add(genreSelector, BorderLayout.NORTH);
@@ -534,6 +539,88 @@ public class Trailex_Principal extends JFrame{
 	    panel_central.revalidate();
 	    panel_central.repaint();
 	}
+	
+	
+	private JPanel panelUltimosEstrenos;
+	
+	
+	// Método para obtener las series cuyo año es 2020 o posterior
+    private ArrayList<Serie> obtenerSeriesUltimosEstrenos() {
+        ArrayList<Serie> seriesUltimosEstrenos = new ArrayList<>();
+        for (Serie serie : Videoclub.getAlSeries()) {
+            if (serie.getAnio() >= 2020) {
+                seriesUltimosEstrenos.add(serie);
+            }
+        }
+        return seriesUltimosEstrenos;
+    }
+	private void agregarPanelUltimosEstrenos() {
+        // Crear el panel de "Últimos Estrenos" con configuración visual llamativa
+        panelUltimosEstrenos = new JPanel();
+        panelUltimosEstrenos.setLayout(new BorderLayout());
+        panelUltimosEstrenos.setBackground(Color.black);
+        panelUltimosEstrenos.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createEmptyBorder(10, 0, 0, 0), // Espacio exterior al borde
+                BorderFactory.createTitledBorder(
+                        BorderFactory.createLineBorder(Color.RED, 1),
+                        "ÚLTIMOS ESTRENOS    ",  // Espacios adicionales en el texto del título
+                        TitledBorder.DEFAULT_JUSTIFICATION,
+                        TitledBorder.DEFAULT_POSITION,
+                        new Font("Arial", Font.BOLD, 12),
+                        Color.RED
+                )
+        ));
+
+        // Panel interno para las portadas
+        JPanel panelPortadas = new JPanel();
+        panelPortadas.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+        panelPortadas.setBackground(Color.black);
+
+        // Obtener y filtrar las series de "Últimos Estrenos"
+        ArrayList<Serie> seriesUltimosEstrenos = obtenerSeriesUltimosEstrenos();
+
+        for (Serie serie : seriesUltimosEstrenos) {
+
+            // Etiqueta de portada de la serie
+            ImageIcon im = new ImageIcon(serie.getRutaFoto());
+			Image im_tamaño= im.getImage().getScaledInstance(100, 140, Image.SCALE_SMOOTH);
+			ImageIcon imageicon_tamano= new ImageIcon(im_tamaño);
+			imageicon_tamano.setDescription(serie.getRutaFoto());
+			
+			JLabel lblFoto = new JLabel(imageicon_tamano);
+			
+			lblFoto.setToolTipText(serie.getTitulo());
+			
+			
+			Border border=BorderFactory.createLineBorder(Color.red,2);
+			lblFoto.setBorder(border);
+			
+			array_series.add(lblFoto);
+			
+			lblFoto.addMouseListener(new MouseAdapter() {
+			    @Override
+			    public void mouseEntered(MouseEvent e) {
+			        mostrarInfoSerie(serie); // Llamar a esta función para mostrar la información de la serie
+			    }
+
+			    @Override
+			    public void mouseExited(MouseEvent e) {
+			        cerrarInfoSerie(); // Llamar a esta función para cerrar la información cuando el ratón salga
+			    }
+			});
+
+            // Agregar el panel de cada serie al panel de portadas
+            panelPortadas.add(lblFoto);
+        }
+
+        // Agregar el panel de portadas al panel principal de "Últimos Estrenos"
+        panelUltimosEstrenos.add(panelPortadas, BorderLayout.CENTER);
+        
+        
+    }
+
+	
+	
 	
 	public void iniciarFiltroPorNombre() {
 		// Inicializar la barra de búsqueda
