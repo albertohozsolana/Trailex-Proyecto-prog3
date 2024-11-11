@@ -1,24 +1,26 @@
-package trailex.elementos;
+package trailex.domain;
 
-public class Pelicula {
+public class Serie {
 	private String codigo;
 	private String titulo;
 	private String protagonista;
 	private int anio;
 	private int edadRecomendada;
+	private int numeroTemporadas;
 	private String genero;
 	private String rutaFoto;
 	
-	public Pelicula() {
+	public Serie() {
 		super();
 	}
-	public Pelicula(String codigo, String titulo, int anio, String protagonista, int edadRecomendada, String genero, String rutaFoto) {
+	public Serie(String codigo, String titulo, int anio, String protagonista, int edadRecomendada, int numeroTemporadas, String genero, String rutaFoto) {
 		super();
 		this.codigo = codigo;
 		this.titulo = titulo;
 		this.protagonista = protagonista;
 		this.anio = anio;
 		this.edadRecomendada = edadRecomendada;
+		this.numeroTemporadas= numeroTemporadas;
 		this.genero=genero;
 		this.rutaFoto = rutaFoto;
 	}
@@ -56,6 +58,12 @@ public class Pelicula {
 	}
 	
 	
+	public int getNumeroTemporadas() {
+		return numeroTemporadas;
+	}
+	public void setNumeroTemporadas(int numeroTemporadas) {
+		this.numeroTemporadas = numeroTemporadas;
+	}
 	public String getGenero() {
 		return genero;
 	}
@@ -65,14 +73,17 @@ public class Pelicula {
 	public int getEdadRecomendada() {
 		return edadRecomendada;
 	}
+	
 	public void setEdadRecomendada(int edadRecomendada) {
 		this.edadRecomendada = edadRecomendada;
 	}
-	
 	@Override
 	public String toString() {
-		return "Pelicula [codigo=" + codigo + ", titulo=" + titulo + ", protagonista=" + protagonista + ", anio=" + anio
-				+ ", edadRecomendada=" + edadRecomendada + ", genero=" + genero + ", rutaFoto=" + rutaFoto + "]";
+		return "Serie [codigo=" + codigo + ", titulo=" + titulo + ", protagonista=" + protagonista + ", anio=" + anio
+				+ ", edadRecomendada=" + edadRecomendada + ", numeroTemporadas=" + numeroTemporadas + ", genero="
+				+ genero + ", rutaFoto=" + rutaFoto + "]";
 	}
+	
 
+	
 }

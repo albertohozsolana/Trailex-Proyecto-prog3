@@ -1,4 +1,4 @@
-package trailex.elementos;
+package trailex.domain;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,7 +18,7 @@ public class Videoclub {
 		//CARGAR SERIES
 		try {
 	
-			File f= new File("src/series.csv");
+			File f= new File("resources/data/series.csv");
 			Scanner sc = new Scanner(f);
 			
 			if (sc.hasNextLine()) {

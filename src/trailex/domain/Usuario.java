@@ -1,4 +1,4 @@
-package trailex.elementos;
+package trailex.domain;
 
 public class Usuario {
 

@@ -1,4 +1,5 @@
-import trailex.elementos.Videoclub;
+package trailex.main;
+import trailex.domain.Videoclub;
 import trailex.gui.Trailex_Principal;
 
 public class Main {

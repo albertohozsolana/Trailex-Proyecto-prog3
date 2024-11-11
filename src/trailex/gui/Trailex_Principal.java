@@ -40,9 +40,9 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
-import trailex.elementos.Pelicula;
-import trailex.elementos.Serie;
-import trailex.elementos.Videoclub;
+import trailex.domain.Pelicula;
+import trailex.domain.Serie;
+import trailex.domain.Videoclub;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -156,7 +156,7 @@ public class Trailex_Principal extends JFrame{
 				boton_menu = new JButton();
 				boton_menu.setPreferredSize(new Dimension(30,30));
 				
-				ImageIcon icon_menu= new ImageIcon("img/menu.png");
+				ImageIcon icon_menu= new ImageIcon("resources/images/menu.png");
 				Image img_menu=icon_menu.getImage().getScaledInstance(17, 17, Image.SCALE_SMOOTH);
 				boton_menu.setIcon(new ImageIcon(img_menu));
 				boton_menu.setBackground(turquesa);
@@ -233,7 +233,7 @@ public class Trailex_Principal extends JFrame{
 				this.setTitle("Trailex");
 				this.setExtendedState(MAXIMIZED_BOTH); //para que ocupe toda la pantalla
 				this.setLocationRelativeTo(null);
-				ImageIcon img= new ImageIcon("img/icono.png");
+				ImageIcon img= new ImageIcon("resources/images/icono.png");
 				Image img_icono= img.getImage();
 				this.setIconImage(img_icono);
 				
@@ -249,7 +249,7 @@ public class Trailex_Principal extends JFrame{
 	}
 	
 			
-	private ImageIcon iconoPerfilActual = new ImageIcon("img/perfil.jpg"); // Imagen de perfil predeterminada
+	private ImageIcon iconoPerfilActual = new ImageIcon("resources/images/perfil.jpg"); // Imagen de perfil predeterminada
 	
 	private JPanel crearMenu_lat() {
 		JPanel menu = new JPanel();
@@ -299,7 +299,7 @@ public class Trailex_Principal extends JFrame{
 	    selectorDialog.setLayout(new FlowLayout());
 
 	    // Cargar las 5 imágenes de perfil
-	    String[] rutas = { "img/perfil.jpg", "img/supergirl.jpg", "img/outerbanks.jpg", "img/lucifer.jpg"};
+	    String[] rutas = { "resources/images/perfil.jpg", "resources/images/supergirl.jpg", "resources/images/outerbanks.jpg", "resources/images/lucifer.jpg"};
 	    for (String ruta : rutas) {
 	        // Crear icono y botón para cada imagen de perfil
 	        ImageIcon iconoPerfil = new ImageIcon(ruta);
