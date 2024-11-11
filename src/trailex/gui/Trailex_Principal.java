@@ -26,6 +26,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -248,7 +249,7 @@ public class Trailex_Principal extends JFrame{
 	}
 	
 			
-		
+	private ImageIcon iconoPerfilActual = new ImageIcon("img/perfil.jpg"); // Imagen de perfil predeterminada
 	
 	private JPanel crearMenu_lat() {
 		JPanel menu = new JPanel();
@@ -269,9 +270,10 @@ public class Trailex_Principal extends JFrame{
 		});
 		
 		JButton f_perfil = new JButton();
-		ImageIcon icon_perfil= new ImageIcon("img/perfil.jpg");
-		Image img_menu=icon_perfil.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH);
+		// Usa el icono de perfil actual para que conserve la selección previa
+		Image img_menu = iconoPerfilActual.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH);
 		f_perfil.setIcon(new ImageIcon(img_menu));
+
 		
 		f_perfil.setOpaque(false); // Eliminar el fondo opaco del botón
 		f_perfil.setContentAreaFilled(false); // No rellenar el área del botón
@@ -281,10 +283,69 @@ public class Trailex_Principal extends JFrame{
 		f_perfil.setVerticalAlignment(SwingConstants.CENTER);
 		f_perfil.setBorder(new EmptyBorder(0, 0, 40, 0));
 		
+		// Acción para cambiar foto de perfil al hacer clic en f_perfil
+	    f_perfil.addActionListener(e -> mostrarSelectorFotoPerfil(f_perfil));
+
+	    
 		menu.add(f_perfil, BorderLayout.SOUTH);
 		
 		return menu;
 	}
+	
+	private void mostrarSelectorFotoPerfil(JButton f_perfil) {
+	    // Crear ventana emergente de selección
+	    JDialog selectorDialog = new JDialog((Frame) null, "Seleccionar Foto de Perfil", true);
+	    selectorDialog.setSize(400, 150);
+	    selectorDialog.setLayout(new FlowLayout());
+
+	    // Cargar las 5 imágenes de perfil
+	    String[] rutas = { "img/perfil.jpg", "img/supergirl.jpg", "img/outerbanks.jpg", "img/lucifer.jpg"};
+	    for (String ruta : rutas) {
+	        // Crear icono y botón para cada imagen de perfil
+	        ImageIcon iconoPerfil = new ImageIcon(ruta);
+	        
+	        // Verificar si la imagen se carga correctamente
+	        if (iconoPerfil.getIconWidth() == -1) {
+	            System.err.println("Error al cargar la imagen: " + ruta); // Mensaje de error en consola
+	            continue; // Saltar esta imagen si no se carga
+	        }
+
+	        // Escalar la imagen
+	        Image imgPerfil = iconoPerfil.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH);
+	        ImageIcon iconoEscalado = new ImageIcon(imgPerfil);
+	        JButton botonPerfil = new JButton(iconoEscalado);
+
+	        // Ajustar el tamaño del botón al de la imagen
+	        botonPerfil.setPreferredSize(new Dimension(iconoEscalado.getIconWidth(), iconoEscalado.getIconHeight()));
+	        botonPerfil.setMinimumSize(new Dimension(iconoEscalado.getIconWidth(), iconoEscalado.getIconHeight()));
+	        botonPerfil.setMaximumSize(new Dimension(iconoEscalado.getIconWidth(), iconoEscalado.getIconHeight()));
+	        
+	        // Eliminar bordes y relleno del botón
+	        botonPerfil.setOpaque(false);
+	        botonPerfil.setContentAreaFilled(false);
+	        botonPerfil.setBorderPainted(false);
+
+	        // Agregar acción para seleccionar la imagen como perfil
+	        botonPerfil.addActionListener(e -> {
+	        	iconoPerfilActual = iconoEscalado; // Actualizar el icono de perfil actual
+	            f_perfil.setIcon(iconoPerfilActual); // Cambiar el icono del botón principal
+	            selectorDialog.dispose(); // Cerrar el selector de imagen
+	        });
+
+	        // Añadir cada botón de imagen al diálogo
+	        selectorDialog.add(botonPerfil);
+	    }
+
+	    // Si no hay imágenes cargadas, muestra un mensaje en el diálogo
+	    if (selectorDialog.getComponentCount() == 0) {
+	        JLabel errorLabel = new JLabel("No se pudieron cargar las imágenes de perfil.");
+	        selectorDialog.add(errorLabel);
+	    }
+
+	    selectorDialog.setLocationRelativeTo(null); // Centrar la ventana de selección
+	    selectorDialog.setVisible(true);
+	}
+
 	
 	private void Menu_Trailex(JPanel total) {
 		
