@@ -17,6 +17,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -29,6 +31,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -573,7 +576,7 @@ public class Trailex_Principal extends JFrame{
 
         // Panel interno para las portadas
         JPanel panelPortadas = new JPanel();
-        panelPortadas.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+        panelPortadas.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 0));
         panelPortadas.setBackground(Color.black);
 
         // Obtener y filtrar las series de "Últimos Estrenos"
@@ -735,7 +738,8 @@ public class Trailex_Principal extends JFrame{
 	}
 
 	
-
+	private Map<String, Integer> progresoPeliculas = new HashMap<>();
+	private Map<String, Integer> progresoSeries = new HashMap<>();
 
 	public void mostrarInfoPelicula(Pelicula pelicula) {
 	    if (ventanaInfoPelicula != null) {
@@ -803,6 +807,31 @@ public class Trailex_Principal extends JFrame{
 	    // Añadir el panel oscuro a la ventana
 	    ventanaInfoPelicula.add(textPanel, BorderLayout.SOUTH);
 	    ventanaInfoPelicula.setVisible(true);
+	    
+	 // Obtener o generar progreso para la serie
+	    int progresoAleatorio;
+	    if (progresoPeliculas.containsKey(pelicula.getTitulo())) {
+	        // Recuperar progreso guardado
+	        progresoAleatorio = progresoPeliculas.get(pelicula.getTitulo());
+	    } else {
+	        // Generar y guardar un progreso aleatorio
+	        progresoAleatorio = (int) (Math.random() * 101);
+	        progresoPeliculas.put(pelicula.getTitulo(), progresoAleatorio);
+	    }
+
+	    // Crear la barra de progreso
+	    JProgressBar progressBar = new JProgressBar(0, 100);
+	    progressBar.setValue(progresoAleatorio); // Configurar el valor de progreso
+	    progressBar.setStringPainted(true);
+	    progressBar.setForeground(new Color(0, 204, 0));
+	    progressBar.setBackground(new Color(50, 50, 50));
+	    progressBar.setFont(new Font("Arial", Font.BOLD, 14));
+	    progressBar.setString(progresoAleatorio + "% visto");
+
+	    // Añadir la barra de progreso al panel de detalles
+	    panelDetalles.add(progressBar, BorderLayout.CENTER);
+
+
 	}
 
 	public void mostrarInfoSerie(Serie serie) {
@@ -849,7 +878,7 @@ public class Trailex_Principal extends JFrame{
 
 	    JPanel panelDetalles = new JPanel();
 	    panelDetalles.setOpaque(false);
-	    panelDetalles.setLayout(new GridLayout(4, 1, 5, 5));
+	    panelDetalles.setLayout(new GridLayout(5, 1, 5, 5));
 	    JLabel labelAnio = new JLabel("Año: " + serie.getAnio());
 	    JLabel labelGenero = new JLabel("Género: " + serie.getGenero());
 	    JLabel labelProtagonista = new JLabel("Protagonista: " + serie.getProtagonista());
@@ -875,6 +904,31 @@ public class Trailex_Principal extends JFrame{
 	    // Añadir el panel oscuro a la ventana
 	    ventanaInfoSerie.add(textPanel, BorderLayout.SOUTH);
 	    ventanaInfoSerie.setVisible(true);
+	    
+	 // Obtener o generar progreso para la serie
+	    int progresoAleatorio;
+	    if (progresoSeries.containsKey(serie.getTitulo())) {
+	        // Recuperar progreso guardado
+	        progresoAleatorio = progresoSeries.get(serie.getTitulo());
+	    } else {
+	        // Generar y guardar un progreso aleatorio
+	        progresoAleatorio = (int) (Math.random() * 101);
+	        progresoSeries.put(serie.getTitulo(), progresoAleatorio);
+	    }
+
+	    // Crear la barra de progreso
+	    JProgressBar progressBar = new JProgressBar(0, 100);
+	    progressBar.setValue(progresoAleatorio); // Configurar el valor de progreso
+	    progressBar.setStringPainted(true);
+	    progressBar.setForeground(new Color(0, 204, 0));
+	    progressBar.setBackground(new Color(50, 50, 50));
+	    progressBar.setFont(new Font("Arial", Font.BOLD, 14));
+	    progressBar.setString(progresoAleatorio + "% visto");
+
+	    // Añadir la barra de progreso al panel de detalles
+	    panelDetalles.add(progressBar, BorderLayout.CENTER);
+
+
 	}
 
 
