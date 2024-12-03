@@ -40,6 +40,7 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
+import trailex.persistence.GestorBD;
 import trailex.domain.Pelicula;
 import trailex.domain.Serie;
 import trailex.domain.Videoclub;
@@ -142,6 +143,16 @@ public class Trailex_Principal extends JFrame{
 	
 	
 	private void Iniciar_Trailex() {
+		
+		GestorBD gestorBD = new GestorBD();
+		
+		//Se crea la BBDD
+		gestorBD.crearBBDD();
+		
+		//Se cargan los datos y se inicializa la BBDD
+		gestorBD.initilizeFromCSV();
+		
+		
 		// Creamos el panel con su disposición (BorderLayout) donde se mostrará la app
 				panel_principal = new JPanel(new BorderLayout());
 				panel_principal.setBackground(Color.black);
