@@ -241,11 +241,6 @@ public class Trailex_Principal extends JFrame{
 				panel_principal.add(scroll, BorderLayout.CENTER);
 				this.setVisible(true);
 				
-				
-				
-				
-			    
-			    
 	}
 	
 			
