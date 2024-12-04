@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -56,11 +57,18 @@ public class Trailex_Principal extends JFrame{
 	private JPanel panel_principal;
 	private JPanel panel_arriba;
 	
+	private JFrame vNext_perfil; //la ventana que se me va a abrir cuando quiera cambiar la foto de perfil
+	private JFrame vPrincipal;
+	
 	private JButton boton_menu;
-	private Color turquesa=new Color(0x5FA6AD);
+	static Color turquesa=new Color(0x5FA6AD);
 	private JPanel  p_grid_comedia, p_grid_romance, p_grid_aventura, p_grid_drama, p_grid_cf, p_grid_terror;
 	private JTextField searchBar;
     private JComboBox<String> genreSelector;
+    
+    //Atributos para acceder desde otra clase
+    static JButton f_perfil;
+    static JDialog selectorDialog;
     
     private ArrayList<String> array_generos = new ArrayList<>(Arrays.asList("Comedia", "Romance", "Aventura", "Drama", "Ciencia Ficción", "Terror"));
     private ArrayList<JPanel> array_paneles = new ArrayList<>();
@@ -116,7 +124,40 @@ public class Trailex_Principal extends JFrame{
                 }
             }
         };
+        
+        KeyListener keylistener_enter = new KeyListener() {
 
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					//HAY QUE METER ESTE CODIGO EN UN METODO Y LLAMARLO DESDE3 ACTIONLISTENER Y DESDE EL KEYLISTENER
+					String user = tField.getText();
+	                String pass = new String(contrafield.getPassword());
+
+	                if (user.equals("usuario") && pass.equals("contraseña")) {
+	                	inicio.dispose();
+	                	Iniciar_Trailex();
+	                } else {
+	                	JOptionPane.showMessageDialog(inicio, "Credenciales incorrectas", "Error", JOptionPane.ERROR_MESSAGE);
+	                }
+				}
+			}
+        };
+
+        contrafield.addKeyListener(keylistener_enter);
+        
         // Asignar el ActionListener al botón y al campo de usuario
         bote.addActionListener(comprobacion);
         tField.addActionListener(comprobacion);
@@ -153,6 +194,7 @@ public class Trailex_Principal extends JFrame{
 		gestorBD.initilizeFromCSV();
 		
 		
+		vPrincipal = this;
 		// Creamos el panel con su disposición (BorderLayout) donde se mostrará la app
 				panel_principal = new JPanel(new BorderLayout());
 				panel_principal.setBackground(Color.black);
@@ -254,8 +296,19 @@ public class Trailex_Principal extends JFrame{
 				
 	}
 	
-			
-	private ImageIcon iconoPerfilActual = new ImageIcon("resources/images/perfil.jpg"); // Imagen de perfil predeterminada
+	//Getters para acceder desde otra clase
+	
+	static JButton getF_perfil() {
+		return f_perfil;
+	}
+
+	static JDialog getSelectorDialog() {
+		return selectorDialog;
+	}
+
+
+
+	static ImageIcon iconoPerfilActual = new ImageIcon("resources/images/perfil.jpg"); // Imagen de perfil predeterminada
 	
 	private JPanel crearMenu_lat() {
 		JPanel menu = new JPanel();
@@ -275,7 +328,7 @@ public class Trailex_Principal extends JFrame{
 			}
 		});
 		
-		JButton f_perfil = new JButton();
+		f_perfil = new JButton();
 		// Usa el icono de perfil actual para que conserve la selección previa
 		Image img_menu = iconoPerfilActual.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH);
 		f_perfil.setIcon(new ImageIcon(img_menu));
@@ -298,14 +351,15 @@ public class Trailex_Principal extends JFrame{
 		return menu;
 	}
 	
-	private void mostrarSelectorFotoPerfil(JButton f_perfil) {
+	public void mostrarSelectorFotoPerfil(JButton f_perfil) {
 	    // Crear ventana emergente de selección
-	    JDialog selectorDialog = new JDialog((Frame) null, "Seleccionar Foto de Perfil", true);
-	    selectorDialog.setSize(400, 150);
+	    selectorDialog = new JDialog((Frame) null, "Seleccionar Foto de Perfil", true);
+	    selectorDialog.setSize(450, 150);
 	    selectorDialog.setLayout(new FlowLayout());
+	    selectorDialog.getContentPane().setBackground(Color.black);
 
 	    // Cargar las 5 imágenes de perfil
-	    String[] rutas = { "resources/images/perfil.jpg", "resources/images/supergirl.jpg", "resources/images/outerbanks.jpg", "resources/images/lucifer.jpg"};
+	    String[] rutas = { "resources/images/perfil.jpg", "resources/images/perfil2.jpg", "resources/images/perfil3.jpg", "resources/images/perfil4.jpg"};
 	    for (String ruta : rutas) {
 	        // Crear icono y botón para cada imagen de perfil
 	        ImageIcon iconoPerfil = new ImageIcon(ruta);
@@ -333,9 +387,9 @@ public class Trailex_Principal extends JFrame{
 
 	        // Agregar acción para seleccionar la imagen como perfil
 	        botonPerfil.addActionListener(e -> {
-	        	iconoPerfilActual = iconoEscalado; // Actualizar el icono de perfil actual
-	            f_perfil.setIcon(iconoPerfilActual); // Cambiar el icono del botón principal
-	            selectorDialog.dispose(); // Cerrar el selector de imagen
+	        	selectorDialog.dispose();
+	        	Ventana_cambiar_perfil ventana_perfil = new Ventana_cambiar_perfil(this, iconoEscalado); //iniciar
+	        	vNext_perfil = ventana_perfil;
 	        });
 
 	        // Añadir cada botón de imagen al diálogo
@@ -345,9 +399,10 @@ public class Trailex_Principal extends JFrame{
 	    // Si no hay imágenes cargadas, muestra un mensaje en el diálogo
 	    if (selectorDialog.getComponentCount() == 0) {
 	        JLabel errorLabel = new JLabel("No se pudieron cargar las imágenes de perfil.");
+	        errorLabel.setForeground(turquesa);
+	        errorLabel.setBackground(Color.black);
 	        selectorDialog.add(errorLabel);
 	    }
-
 	    selectorDialog.setLocationRelativeTo(null); // Centrar la ventana de selección
 	    selectorDialog.setVisible(true);
 	}
