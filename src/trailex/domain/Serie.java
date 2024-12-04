@@ -84,6 +84,15 @@ public class Serie {
 				+ genero + ", rutaFoto=" + rutaFoto + "]";
 	}
 	
+	public static String toCSV(Serie serie) {
+		StringBuffer result = new StringBuffer();
+		
+		if (serie != null) {
+			result.append(String.format("%s;%s;%d;%s;%d;%d;%s;%s", serie.getCodigo(), serie.getTitulo(), serie.getAnio(), serie.getProtagonista(), serie.getEdadRecomendada(), serie.getNumeroTemporadas(), serie.getGenero(), serie.getRutaFoto()));				
+		}
+		
+		return result.toString();
+	}
 
 	
 }

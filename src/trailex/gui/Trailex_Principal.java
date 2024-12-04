@@ -77,6 +77,8 @@ public class Trailex_Principal extends JFrame{
     private ArrayList<JPanel> array_paneles = new ArrayList<>();
     private ArrayList<JLabel> array_series = new ArrayList<>();
 	
+    private GestorBD gestorBD = new GestorBD();
+    
 	private static final long serialVersionUID = 1L;
 
 
@@ -189,13 +191,11 @@ public class Trailex_Principal extends JFrame{
 	
 	private void Iniciar_Trailex() {
 		
-		GestorBD gestorBD = new GestorBD();
-		
-		//Se crea la BBDD
 		gestorBD.crearBBDD();
 		
 		//Se cargan los datos y se inicializa la BBDD
 		gestorBD.initilizeFromCSV();
+
 		
 		
 		vPrincipal = this;
@@ -288,6 +288,7 @@ public class Trailex_Principal extends JFrame{
 				// Configuramos el panel principal
 				this.add(panel_principal);
 				this.setTitle("Trailex");
+				this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 				this.setExtendedState(MAXIMIZED_BOTH); //para que ocupe toda la pantalla
 				this.setLocationRelativeTo(null);
 				ImageIcon img= new ImageIcon("resources/images/icono.png");
@@ -340,7 +341,9 @@ public class Trailex_Principal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				//gestorBD.guardarSeriesCSV(array_series);
+				gestorBD.borrarDatos();
+				gestorBD.borrarBBDD();
 				System.exit(0);
 			}
 		});

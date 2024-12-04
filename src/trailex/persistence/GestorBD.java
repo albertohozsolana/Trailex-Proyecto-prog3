@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Connection;
@@ -15,6 +16,8 @@ import java.util.List;
 import java.util.Properties;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
+
+import javax.swing.JLabel;
 
 import trailex.domain.Serie;
 
@@ -219,4 +222,63 @@ public class GestorBD {
 				
 		}
 	}
+	
+	public Serie getSerieporTitulo(String nombre) {
+		Serie serie = null;
+		String sql = "SELECT * FROM Serie WHERE titulo = ? LIMIT 1";
+		
+		//Se abre la conexión y se crea el PreparedStatement con la sentencia SQL
+		try (Connection con = DriverManager.getConnection(connectionString);
+		     PreparedStatement pStmt = con.prepareStatement(sql)) {			
+			
+			//Se definen los parámetros de la sentencia SQL
+			pStmt.setString(1, nombre);
+			
+			//Se ejecuta la sentencia y se obtiene el ResultSet con los resutlados
+			ResultSet rs = pStmt.executeQuery();			
+
+			//Se procesa el único resultado
+			if (rs.next()) {
+				serie = new Serie(rs.getString("codigo"), 
+						rs.getString("titulo"), 
+						rs.getInt("anio"),
+						rs.getString("protagonista"),
+						rs.getInt("edadRecomendada"),
+						rs.getInt("numeroTemporadas"),
+						rs.getString("genero"),
+						rs.getString("rutaFoto")
+						);
+			}
+			
+			//Se cierra el ResultSet
+			rs.close();
+			
+			logger.info(String.format("Se ha recuperado la serie %s", serie));			
+		} catch (Exception ex) {
+			logger.warning(String.format("Error recuperar la serie con nombre %s: %s", nombre, ex.getMessage()));						
+		}		
+		
+		return serie;
+	}
+	
+	public void guardarSeriesCSV(List<JLabel> array_series) {
+		if (array_series != null) {
+			ArrayList<Serie> series = new ArrayList();
+			for (JLabel l : array_series) {
+				String nom_s = l.getToolTipText();
+				Serie sers = this.getSerieporTitulo(nom_s);
+				series.add(sers);
+			}
+			
+			try (PrintWriter out = new PrintWriter(new File(CSV_SERIES))) {
+				out.println("codigo;titulo;anio;protagonista;edadRecomendada;numeroTemporadas;genero;rutaFoto");
+				series.forEach(s -> out.println(Serie.toCSV(s)));			
+				logger.info("Se han guardado los comics en un CSV.");
+			} catch (Exception ex) {
+				logger.warning(String.format("Error guardando comics en el CSV: %s", ex.getMessage()));
+			}
+		}
+	}
+	
+	
 }
