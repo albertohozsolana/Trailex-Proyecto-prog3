@@ -44,6 +44,7 @@ import javax.swing.border.TitledBorder;
 import trailex.persistence.GestorBD;
 import trailex.domain.Pelicula;
 import trailex.domain.Serie;
+import trailex.domain.Usuario;
 import trailex.domain.Videoclub;
 
 import java.awt.Dimension;
@@ -56,6 +57,8 @@ public class Trailex_Principal extends JFrame{
 	private JPanel panel_central;
 	private JPanel panel_principal;
 	private JPanel panel_arriba;
+	private Usuario usuarioActual;
+
 	
 	private JFrame vNext_perfil; //la ventana que se me va a abrir cuando quiera cambiar la foto de perfil
 	private JFrame vPrincipal;
@@ -84,6 +87,7 @@ public class Trailex_Principal extends JFrame{
 	}
 	
 	private void IniciarSesion() {
+		usuarioActual = new Usuario("usuario", "usuario@trailex.com", "contraseña");
 		JFrame inicio = new JFrame("Login Panel");
 		inicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		inicio.setSize(300, 200);
@@ -311,8 +315,21 @@ public class Trailex_Principal extends JFrame{
 	static ImageIcon iconoPerfilActual = new ImageIcon("resources/images/perfil.jpg"); // Imagen de perfil predeterminada
 	
 	private JPanel crearMenu_lat() {
-		JPanel menu = new JPanel();
-		menu.setLayout(new BorderLayout());
+		 JPanel menu = new JPanel();
+		 menu.setLayout(new BorderLayout());
+
+		 // Panel para contener el botón y limitar su tamaño
+		 JPanel panelFavoritos = new JPanel();
+	     panelFavoritos.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0)); // Centrar el botón
+   	     panelFavoritos.setBackground(Color.black);
+
+	    JButton btnFavoritos = new JButton("FAVORITOS");
+	    btnFavoritos.setBackground(Trailex_Principal.turquesa);
+	    btnFavoritos.setPreferredSize(new Dimension(150, 30)); // Ajustar tamaño fijo del botón
+	    btnFavoritos.addActionListener(e -> mostrarFavoritos());
+
+	    panelFavoritos.add(btnFavoritos); // Añadir el botón al panel
+	    menu.add(panelFavoritos, BorderLayout.CENTER); // Añadir el panel al menú
 		
 		JButton b_cerrar = new JButton("CERRAR SESIÓN");
 		b_cerrar.setBackground(turquesa);
@@ -483,10 +500,7 @@ public class Trailex_Principal extends JFrame{
 			        mostrarInfoSerie(serie); // Llamar a esta función para mostrar la información de la serie
 			    }
 
-			    @Override
-			    public void mouseExited(MouseEvent e) {
-			        cerrarInfoSerie(); // Llamar a esta función para cerrar la información cuando el ratón salga
-			    }
+		
 			});
 
 
@@ -960,6 +974,35 @@ public class Trailex_Principal extends JFrame{
 	    if (ventanaInfoSerie != null) {
 	        ventanaInfoSerie.dispose();
 	    }
+	    
+	    JButton btnFavoritos = new JButton("Añadir a Favoritos");
+	    btnFavoritos.setBackground(Trailex_Principal.turquesa);
+
+	    if (usuarioActual.esFavorita(serie)) {
+	        btnFavoritos.setText("Eliminar de Favoritos");
+	    }
+
+	    btnFavoritos.addActionListener(e -> {
+	        if (usuarioActual.esFavorita(serie)) {
+	            usuarioActual.eliminarDeFavoritos(serie);
+	            btnFavoritos.setText("Añadir a Favoritos");
+
+	            // Si estamos en la vista de Favoritos, refrescamos la lista
+	            if (panel_central.getComponentCount() > 0) {
+	                Component firstComponent = panel_central.getComponent(0);
+	                if (firstComponent instanceof JLabel && 
+	                    ((JLabel) firstComponent).getText().equals("Favoritos")) {
+	                    mostrarFavoritos();
+	                }
+	            }
+	        } else {
+	            usuarioActual.agregarAFavoritos(serie);
+	            btnFavoritos.setText("Eliminar de Favoritos");
+	        }
+	    });
+
+
+
 
 	    ImageIcon originalIcon = new ImageIcon(serie.getRutaFoto());
 	    int imageWidth = originalIcon.getIconWidth();
@@ -1017,14 +1060,17 @@ public class Trailex_Principal extends JFrame{
 	    panelDetalles.add(labelGenero);
 	    panelDetalles.add(labelProtagonista);
 	    panelDetalles.add(labelTemporadas);
+	    
 
 	    // Añadir los componentes al panel oscuro
 	    textPanel.add(labelTitulo, BorderLayout.NORTH);
 	    textPanel.add(labelEdadRecomendada, BorderLayout.CENTER);
 	    textPanel.add(panelDetalles, BorderLayout.SOUTH);
+	
 
 	    // Añadir el panel oscuro a la ventana
 	    ventanaInfoSerie.add(textPanel, BorderLayout.SOUTH);
+	    ventanaInfoSerie.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	    ventanaInfoSerie.setVisible(true);
 	    
 	 // Obtener o generar progreso para la serie
@@ -1048,10 +1094,57 @@ public class Trailex_Principal extends JFrame{
 	    progressBar.setString(progresoAleatorio + "% visto");
 
 	    // Añadir la barra de progreso al panel de detalles
+	    panelDetalles.add(btnFavoritos);
 	    panelDetalles.add(progressBar, BorderLayout.CENTER);
 
 
 	}
+
+	
+	public void mostrarFavoritos() {
+	    panel_central.removeAll();
+
+	    // Título para la sección de Favoritos
+	    JLabel tituloFavoritos = new JLabel("Favoritos");
+	    tituloFavoritos.setForeground(Trailex_Principal.turquesa);
+	    tituloFavoritos.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+	    tituloFavoritos.setHorizontalAlignment(SwingConstants.CENTER);
+	    panel_central.add(tituloFavoritos);
+
+	    // Panel para las series de favoritos
+	    JPanel panelFavoritos = new JPanel();
+	    panelFavoritos.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
+	    panelFavoritos.setBackground(Color.black);
+
+	    for (Serie serie : usuarioActual.getFavoritos()) {
+	        ImageIcon icon = new ImageIcon(serie.getRutaFoto());
+	        Image img = icon.getImage().getScaledInstance(100, 140, Image.SCALE_SMOOTH);
+	        JLabel lblSerie = new JLabel(new ImageIcon(img));
+	        lblSerie.setToolTipText(serie.getTitulo());
+
+	        // Añadir un borde visual
+	        lblSerie.setBorder(BorderFactory.createLineBorder(turquesa, 2));
+
+	        // Añadir evento de clic para mostrar información de la serie
+	        lblSerie.addMouseListener(new MouseAdapter() {
+	            @Override
+	            public void mouseClicked(MouseEvent e) {
+	                mostrarInfoSerie(serie); // Muestra la información de la serie
+	            }
+	        });
+
+	        // Añadir la etiqueta al panel de favoritos
+	        panelFavoritos.add(lblSerie);
+	    }
+
+	    // Agregar el panel de favoritos al panel central
+	    panel_central.add(panelFavoritos);
+
+	    // Refrescar la interfaz
+	    panel_central.revalidate();
+	    panel_central.repaint();
+	}
+
 
 
 
