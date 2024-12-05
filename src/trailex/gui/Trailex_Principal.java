@@ -81,7 +81,6 @@ public class Trailex_Principal extends JFrame{
     private ArrayList<JPanel> array_paneles = new ArrayList<>();
     private ArrayList<JLabel> array_series = new ArrayList<>();
     private ArrayList<Serie> listaCompletaSeries = new ArrayList<>();
-
 	
     private GestorBD gestorBD = new GestorBD();
     
@@ -393,6 +392,15 @@ public class Trailex_Principal extends JFrame{
 	    panelFavoritos.add(btnFavoritos); // Añadir el botón al panel
 	    menu.add(panelFavoritos, BorderLayout.CENTER); // Añadir el panel al menú
 		
+	    // AÑADIR SERIE	
+	    JButton boton_añadir = new JButton("CREAR SERIE");
+	    boton_añadir.setBackground(Color.GREEN);
+	    menu.add(boton_añadir);
+	    boton_añadir.addActionListener(e -> {
+	    	crearSerie();
+	    });
+	    
+	    
 		JButton b_cerrar = new JButton("CERRAR SESIÓN");
 		b_cerrar.setBackground(turquesa);
 		menu.add(b_cerrar, BorderLayout.NORTH);
@@ -1129,9 +1137,7 @@ public class Trailex_Principal extends JFrame{
 	            btnFavoritos.setText("Eliminar de Favoritos");
 	        }
 	    });
-
-
-
+	    
 
 	    ImageIcon originalIcon = new ImageIcon(serie.getRutaFoto());
 	    int imageWidth = originalIcon.getIconWidth();
@@ -1156,6 +1162,9 @@ public class Trailex_Principal extends JFrame{
 	    ventanaInfoSerie.setContentPane(background);
 
 	    // Panel oscuro para el texto
+	    
+	    JPanel panelDetalles = new JPanel();
+	    
 	    JPanel textPanel = new JPanel();
 	    textPanel.setLayout(new BorderLayout());
 	    textPanel.setBackground(new Color(0, 0, 0, 150)); // Fondo negro semi-transparente
@@ -1169,8 +1178,6 @@ public class Trailex_Principal extends JFrame{
 	    JLabel labelEdadRecomendada = new JLabel("Edad recomendada: " + serie.getEdadRecomendada() + " años", SwingConstants.CENTER);
 	    labelEdadRecomendada.setFont(new Font("Arial", Font.PLAIN, 18));
 	    labelEdadRecomendada.setForeground(Color.WHITE);
-
-	    JPanel panelDetalles = new JPanel();
 	    panelDetalles.setOpaque(false);
 	    panelDetalles.setLayout(new GridLayout(5, 1, 5, 5));
 	    JLabel labelAnio = new JLabel("Año: " + serie.getAnio());
@@ -1222,8 +1229,30 @@ public class Trailex_Principal extends JFrame{
 	    progressBar.setFont(new Font("Arial", Font.BOLD, 14));
 	    progressBar.setString(progresoAleatorio + "% visto");
 
+	    
+	    // MODIFICAR SERIE
+	    JButton btnmod = new JButton("Modificar");
+	    btnmod.setBackground(Trailex_Principal.turquesa);
+	    btnmod.addActionListener(e -> {
+	    	modificar(serie);
+	    	ventanaInfoSerie.revalidate();
+	    	ventanaInfoSerie.repaint();
+	    	
+	    	});
+	    
+	    // BORRAR SERIE
+	    JButton btn_borrar = new JButton("BORRAR");
+	    btn_borrar.setBackground(Color.RED);
+	    btn_borrar.setForeground(Color.BLACK);
+	    btn_borrar.addActionListener(e -> {
+	    	borrarSerie(serie);
+	    	
+	    	});
+	    
 	    // Añadir la barra de progreso al panel de detalles
 	    panelDetalles.add(btnFavoritos);
+	    panelDetalles.add(btnmod);
+	    panelDetalles.add(btn_borrar);
 	    panelDetalles.add(progressBar, BorderLayout.CENTER);
 
 
@@ -1275,7 +1304,137 @@ public class Trailex_Principal extends JFrame{
 	}
 
 
+	public void modificar(Serie serie) {
+		 JPanel panel = new JPanel(new GridLayout(6, 2));
+
+	        // Etiquetas y campos de texto para cada atributo de Serie
+
+	        JTextField tituloField = new JTextField(serie.getTitulo());
+	        JTextField anioField = new JTextField(String.valueOf(serie.getAnio()));
+	        JTextField protagonistaField = new JTextField(serie.getProtagonista());
+	        JTextField edadField = new JTextField(String.valueOf(serie.getEdadRecomendada()));
+	        JTextField temporadasField = new JTextField(String.valueOf(serie.getNumeroTemporadas()));
+	        JComboBox<String> generoComboBox = new JComboBox<>(array_generos.toArray(new String[0]));
+	        generoComboBox.setSelectedItem(serie.getGenero());
 
 
+	        // Agregar componentes al panel
+
+	        panel.add(new JLabel("Título:"));
+	        panel.add(tituloField);
+	        panel.add(new JLabel("Año:"));
+	        panel.add(anioField);
+	        panel.add(new JLabel("Protagonista:"));
+	        panel.add(protagonistaField);
+	        panel.add(new JLabel("Edad Recomendada:"));
+	        panel.add(edadField);
+	        panel.add(new JLabel("Número de Temporadas:"));
+	        panel.add(temporadasField);
+	        panel.add(new JLabel("Género:"));
+	        panel.add(generoComboBox);
+
+
+	        // Mostrar el cuadro de diálogo
+	        int result = JOptionPane.showConfirmDialog(
+	                null,
+	                panel,
+	                "Editar Serie",
+	                JOptionPane.OK_CANCEL_OPTION,
+	                JOptionPane.PLAIN_MESSAGE
+	        );
+	        
+	        if (result == JOptionPane.OK_OPTION) {
+	            try {
+
+	                serie.setTitulo(tituloField.getText().trim());
+	                serie.setAnio(Integer.parseInt(anioField.getText().trim()));
+	                serie.setProtagonista(protagonistaField.getText().trim());
+	                serie.setEdadRecomendada(Integer.parseInt(edadField.getText().trim()));
+	                serie.setNumeroTemporadas(Integer.parseInt(temporadasField.getText().trim()));;
+	                serie.setGenero((String) generoComboBox.getSelectedItem());
+	                
+	                gestorBD.modificarSerieBD(serie);
+	                panel_principal.repaint();
+
+	            } catch (Exception ex) {
+	                JOptionPane.showMessageDialog(null, "Error al procesar los valores: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+	            }
+	        }  
+	}
+	
+	public void borrarSerie(Serie serie) {
+		int respuesta = JOptionPane.showConfirmDialog(
+                null, 
+                "¿Estás seguro que quieres borrar esta serie?", 
+                "Confirmación", 
+                JOptionPane.YES_NO_OPTION, 
+                JOptionPane.QUESTION_MESSAGE
+        );
+		if (respuesta == JOptionPane.YES_OPTION) {
+			gestorBD.borrarSerie(serie);
+			listaCompletaSeries.remove(listaCompletaSeries.indexOf(serie));
+			panel_principal.repaint();
+		}
+	}
+
+	public void crearSerie() {
+		JPanel panel = new JPanel(new GridLayout(6, 2));
+
+	    // Campos de texto para los atributos
+	    JTextField tituloField = new JTextField();
+	    JTextField anioField = new JTextField();
+	    JTextField protagonistaField = new JTextField();
+	    JTextField edadRecomendadaField = new JTextField();
+	    JTextField numeroTemporadasField = new JTextField();
+	    JComboBox<String> generoBox = new JComboBox<>(new String[] {
+	        "Comedia", "Romance", "Aventura", "Drama", "Ciencia Ficción", "Terror"
+	    });
+
+	    // Agregar componentes al panel
+	    panel.add(new JLabel("Título:"));
+	    panel.add(tituloField);
+	    panel.add(new JLabel("Año:"));
+	    panel.add(anioField);
+	    panel.add(new JLabel("Protagonista:"));
+	    panel.add(protagonistaField);
+	    panel.add(new JLabel("Edad Recomendada:"));
+	    panel.add(edadRecomendadaField);
+	    panel.add(new JLabel("Número de Temporadas:"));
+	    panel.add(numeroTemporadasField);
+	    panel.add(new JLabel("Género:"));
+	    panel.add(generoBox);
+
+	    // Mostrar el cuadro de diálogo
+	    int result = JOptionPane.showConfirmDialog(
+	        null,
+	        panel,
+	        "Crear Nueva Serie",
+	        JOptionPane.OK_CANCEL_OPTION,
+	        JOptionPane.PLAIN_MESSAGE
+	    );
+
+	    if (result == JOptionPane.OK_OPTION) {
+	        try {
+	            // Crear una nueva instancia de Serie con los datos proporcionados
+	            String codigo = gestorBD.conseguirCODIGOmasalto();
+	            String titulo = tituloField.getText().trim();
+	            int anio = Integer.parseInt(anioField.getText().trim());
+	            String protagonista = protagonistaField.getText().trim();
+	            int edadRecomendada = Integer.parseInt(edadRecomendadaField.getText().trim());
+	            int numeroTemporadas = Integer.parseInt(numeroTemporadasField.getText().trim());
+	            String genero = generoBox.getSelectedItem().toString();
+	            String rutaFoto = "resources/images/incognita.jpg";
+
+	            Serie serie = new Serie(codigo, titulo, anio, protagonista, edadRecomendada, numeroTemporadas, genero, rutaFoto);
+	            gestorBD.añadirSerie(serie);
+	            listaCompletaSeries.add(serie);
+	            
+	        } catch (NumberFormatException ex) {
+	            JOptionPane.showMessageDialog(null, "Error: Asegúrate de que los campos numéricos son válidos.", "Error", JOptionPane.ERROR_MESSAGE);
+	        }
+	    }
+	}
+	
+	
 }
 

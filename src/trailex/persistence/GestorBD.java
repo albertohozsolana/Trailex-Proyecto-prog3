@@ -274,5 +274,113 @@ public class GestorBD {
 		}
 	}
 	
+	public void modificarSerieBD(Serie serie) {
+		String sql = "UPDATE Serie SET titulo = ?, anio = ?, protagonista = ?, edadRecomendada = ?, numeroTemporadas = ?, genero = ?, rutaFoto = ? WHERE codigo = ?;";
+
+     //Se abre la conexión y se crea un PreparedStatement
+		try (Connection con = DriverManager.getConnection(connectionString);
+		     PreparedStatement pStmt = con.prepareStatement(sql)) {
+				pStmt.setString(1, serie.getTitulo());
+				pStmt.setInt(2, serie.getAnio());
+				pStmt.setString(3, serie.getProtagonista());
+				pStmt.setInt(4, serie.getEdadRecomendada());
+				pStmt.setInt(5, serie.getNumeroTemporadas());
+				pStmt.setString(6, serie.getGenero());
+				pStmt.setString(7, serie.getRutaFoto());
+				pStmt.setString(8, serie.getCodigo());
+				
+				int rowsAffected = pStmt.executeUpdate();
+				
+				// Comprobamos si la actualización fue exitosa
+		        if (rowsAffected > 0) {
+		            logger.info(String.format("La serie con código %s ha sido actualizada correctamente.", serie.getCodigo()));
+		        } else {
+		            logger.warning(String.format("No se encontró la serie con el código %s para actualizar.", serie.getCodigo()));
+		        }
+			
+		} catch (Exception ex) {
+			logger.warning(String.format("Error modificar la serie: %s", ex.getMessage()));
+		}
+	}
 	
+	public void borrarSerie(Serie serie) {
+	    String sql = "DELETE FROM Serie WHERE codigo = ?";
+
+	     //Se abre la conexión y se crea un PreparedStatement
+			try (Connection con = DriverManager.getConnection(connectionString);
+			     PreparedStatement pStmt = con.prepareStatement(sql)) {
+					
+				pStmt.setString(1, serie.getCodigo());
+
+		        // Ejecutamos la sentencia de eliminación
+		        int rowsAffected = pStmt.executeUpdate();
+
+		        // Comprobamos si la eliminación fue exitosa
+		        if (rowsAffected > 0) {
+		            logger.info(String.format("La serie con código %s ha sido borrada correctamente.", serie.getCodigo()));
+		        } else {
+		            logger.warning(String.format("No se encontró la serie con el código %s para borrar.", serie.getCodigo()));
+		        }
+					
+				
+			} catch (Exception ex) {
+				logger.warning(String.format("Error al borrar la serie: %s", ex.getMessage()));
+			}
+	}
+	
+	public void añadirSerie(Serie serie) {
+	    String sql = "INSERT INTO Serie (codigo, titulo, anio, protagonista, edadRecomendada, numeroTemporadas, genero, rutaFoto) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+	     //Se abre la conexión y se crea un PreparedStatement
+			try (Connection con = DriverManager.getConnection(connectionString);
+			     PreparedStatement pStmt = con.prepareStatement(sql)) {
+					
+				pStmt.setString(1, serie.getCodigo());
+
+				// Asignar valores a los parámetros
+		        pStmt.setString(1, serie.getCodigo());
+		        pStmt.setString(2, serie.getTitulo());
+		        pStmt.setInt(3, serie.getAnio());
+		        pStmt.setString(4, serie.getProtagonista());
+		        pStmt.setInt(5, serie.getEdadRecomendada());
+		        pStmt.setInt(6, serie.getNumeroTemporadas());
+		        pStmt.setString(7, serie.getGenero());
+		        pStmt.setString(8, serie.getRutaFoto());
+
+		     // Ejecutar la sentencia
+		        int rowsAffected = pStmt.executeUpdate();
+
+		        // Comprobar si la inserción fue exitosa
+		        if (rowsAffected > 0) {
+		            logger.info(String.format("La serie con código %s ha sido añadida correctamente.", serie.getCodigo()));
+		        } else {
+		            logger.warning(String.format("No se pudo añadir la serie con el código %s.", serie.getCodigo()));
+		        }
+					
+				
+			} catch (Exception ex) {
+				logger.warning(String.format("Error al borrar la serie: %s", ex.getMessage()));
+			}
+	}
+	
+	public String conseguirCODIGOmasalto() {
+		String sql = "SELECT MAX(codigo) AS maxCodigo FROM Serie";
+	    String maxCodigo = null;
+
+	    // Se abre la conexión y se crea un PreparedStatement
+	    try (Connection con = DriverManager.getConnection(connectionString);
+	         PreparedStatement pStmt = con.prepareStatement(sql);
+	         ResultSet rs = pStmt.executeQuery()) {
+
+	        // Si hay un resultado, obtenemos el valor del código más alto
+	        if (rs.next()) {
+	            maxCodigo = rs.getString("maxCodigo");
+	        }
+
+	    } catch (Exception ex) {
+	        logger.warning(String.format("Error al obtener el código más alto: %s", ex.getMessage()));
+	    }
+	    
+	    String resultado = String.valueOf(1 + Integer.parseInt(maxCodigo));
+	    return resultado; // Devuelve el código más alto o null si no se encontró
+	}
 }
