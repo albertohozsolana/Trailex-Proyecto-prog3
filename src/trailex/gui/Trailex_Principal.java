@@ -829,8 +829,6 @@ public class Trailex_Principal extends JFrame{
     }
 	
 
-
-	
 	
 	
 	public void iniciarFiltroPorNombre() {
@@ -851,6 +849,11 @@ public class Trailex_Principal extends JFrame{
 	            if (searchText.isEmpty()) {
 	                mostrarTodasLasSeries(); // Restaurar todas las series si no hay texto
 	            } else {
+	            	
+	            	JPanel panelResultados = new JPanel();
+	                panelResultados.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
+	                panelResultados.setBackground(Color.black);
+	                
 	                for (Serie serie : listaCompletaSeries) {
 	                    if (serie.getTitulo().toLowerCase().contains(searchText)) {
 	                        ImageIcon im = new ImageIcon(serie.getRutaFoto());
@@ -870,12 +873,15 @@ public class Trailex_Principal extends JFrame{
 	                            }
 	                        });
 
-	                        panel_central.add(lblFoto);
+	                        panelResultados.add(lblFoto); // Añadir al panel de resultados
 	                    }
 	                }
+
+	                // Añadir el panel de resultados al panel central
+	                panel_central.add(panelResultados);
 	            }
 
-	            panel_central.revalidate();
+	            panel_central.revalidate(); // Refrescar el panel
 	            panel_central.repaint();
 	        }
 	    });
