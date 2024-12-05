@@ -132,6 +132,7 @@ public class Trailex_Principal extends JFrame{
                 if (user.equals("usuario") && pass.equals("contraseña")) {
                 	inicio.dispose();
                 	hilo_carga = new BarraDeCarga();
+                	
                 	Iniciar_Trailex();
                 } else {
                 	JOptionPane.showMessageDialog(inicio, "Credenciales incorrectas", "Error", JOptionPane.ERROR_MESSAGE);
@@ -163,6 +164,7 @@ public class Trailex_Principal extends JFrame{
 	                if (user.equals("usuario") && pass.equals("contraseña")) {
 	                	inicio.dispose();
 	                	hilo_carga = new BarraDeCarga();
+	                	
 	                	Iniciar_Trailex();
 	                } else {
 	                	JOptionPane.showMessageDialog(inicio, "Credenciales incorrectas", "Error", JOptionPane.ERROR_MESSAGE);
