@@ -208,11 +208,11 @@ public class Trailex_Principal extends JFrame{
 				panel_arriba = new JPanel(new FlowLayout(50, 50, 50));
 				panel_arriba.setBackground(Color.black);
 				
-				JButton startButton = new JButton("Iniciar Juego");
+				JButton startButton = new JButton("Iniciar Juego Cajas");
 		        startButton.setFont(new Font("Arial", Font.BOLD, 12));
-		        startButton.setPreferredSize(new Dimension(120,20));
+		        startButton.setPreferredSize(new Dimension(200,20));
 		        startButton.setBackground(turquesa);
-				startButton.setToolTipText("Iniciar Juego");
+				startButton.setToolTipText("Iniciar Juego Cajas");
 		        startButton.addActionListener(new ActionListener() {
 		            @Override
 		            public void actionPerformed(ActionEvent e) {
@@ -220,6 +220,22 @@ public class Trailex_Principal extends JFrame{
 		                SwingUtilities.invokeLater(() -> {
 		                    ChooseYourSeriesGame game = new ChooseYourSeriesGame();
 		                    game.setVisible(true);
+		                });
+		            }
+		        });
+		        
+		        JButton startButton2 = new JButton("Iniciar Juego Slots");
+		        startButton2.setFont(new Font("Arial", Font.BOLD, 12));
+		        startButton2.setPreferredSize(new Dimension(200,20));
+		        startButton2.setBackground(turquesa);
+				startButton2.setToolTipText("Iniciar Juego Slots");
+		        startButton2.addActionListener(new ActionListener() {
+		            @Override
+		            public void actionPerformed(ActionEvent e) {
+		                // Abrir la ventana del juego
+		                SwingUtilities.invokeLater(() -> {
+		                    SlotMachineSeriesGame game2 = new SlotMachineSeriesGame();
+		                    game2.setVisible(true);
 		                });
 		            }
 		        });
@@ -301,6 +317,7 @@ public class Trailex_Principal extends JFrame{
 			    // Agregar la barra de búsqueda al panel superior
 			    panel_arriba.add(searchBar, BorderLayout.NORTH);
 			    panel_arriba.add(startButton);
+			    panel_arriba.add(startButton2);
 				
 				
 				// Configuramos el panel principal
