@@ -402,9 +402,9 @@ public class Trailex_Principal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//gestorBD.guardarSeriesCSV(array_series);
+				gestorBD.guardarSeriesCSV(listaCompletaSeries);
 				gestorBD.borrarDatos();
-				gestorBD.borrarBBDD();
+				//gestorBD.borrarBBDD();
 				System.exit(0);
 			}
 		});
@@ -541,11 +541,18 @@ public class Trailex_Principal extends JFrame{
 	    }
 
 	    listaCompletaSeries.clear(); // Limpiar la lista original
-	    
+	    /*
+	     * CARGAR LAS SERIES MEDIANTE EL CSV
 	    // Clasificar y agregar las series a los paneles correspondientes
 	    for (Serie serie : Videoclub.getAlSeries()) {
 	    	listaCompletaSeries.add(serie); // Guardar todas las series en la lista completa
-	    	
+	    */
+	    
+	    
+	    // USAMOS LA BASE DE DATOS
+	    listaCompletaSeries = (ArrayList<Serie>) gestorBD.loadCSVSeries();
+	    
+	    for (Serie serie : listaCompletaSeries) {
 	    	ImageIcon im = new ImageIcon(serie.getRutaFoto());
 			Image im_tamaño= im.getImage().getScaledInstance(100, 140, Image.SCALE_SMOOTH);
 			ImageIcon imageicon_tamano= new ImageIcon(im_tamaño);

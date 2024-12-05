@@ -129,7 +129,8 @@ public class GestorBD {
 	public void borrarDatos() {
 		//Sólo se borran los datos si la propiedad cleanBBDD es true
 		if (properties.get("cleanBBDD").equals("true")) {	
-			String sql = "DELETE FROM Personaje;";
+			String sql = "DELETE FROM Serie; VACUUM;";
+
 			
 	        //Se abre la conexión y se crea un PreparedStatement para borrar los datos de cada tabla
 			try (Connection con = DriverManager.getConnection(connectionString);
@@ -145,7 +146,7 @@ public class GestorBD {
 		}
 	}
 	
-	private List<Serie> loadCSVSeries() {
+	public List<Serie> loadCSVSeries() {
 		List<Serie> series = new ArrayList<>();
 		
 		try (BufferedReader in = new BufferedReader(new FileReader(CSV_SERIES))) {
@@ -261,15 +262,8 @@ public class GestorBD {
 		return serie;
 	}
 	
-	public void guardarSeriesCSV(List<JLabel> array_series) {
-		if (array_series != null) {
-			ArrayList<Serie> series = new ArrayList();
-			for (JLabel l : array_series) {
-				String nom_s = l.getToolTipText();
-				Serie sers = this.getSerieporTitulo(nom_s);
-				series.add(sers);
-			}
-			
+	public void guardarSeriesCSV(List<Serie> series) {
+		if (series != null) {			
 			try (PrintWriter out = new PrintWriter(new File(CSV_SERIES))) {
 				out.println("codigo;titulo;anio;protagonista;edadRecomendada;numeroTemporadas;genero;rutaFoto");
 				series.forEach(s -> out.println(Serie.toCSV(s)));			
