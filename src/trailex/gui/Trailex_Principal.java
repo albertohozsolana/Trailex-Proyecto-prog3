@@ -37,6 +37,7 @@ import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
@@ -206,6 +207,22 @@ public class Trailex_Principal extends JFrame{
 				// Creamos el panel que se encontrará en la parte superior del programa
 				panel_arriba = new JPanel(new FlowLayout(50, 50, 50));
 				panel_arriba.setBackground(Color.black);
+				
+				JButton startButton = new JButton("Iniciar Juego");
+		        startButton.setFont(new Font("Arial", Font.BOLD, 12));
+		        startButton.setPreferredSize(new Dimension(120,20));
+		        startButton.setBackground(turquesa);
+				startButton.setToolTipText("Iniciar Juego");
+		        startButton.addActionListener(new ActionListener() {
+		            @Override
+		            public void actionPerformed(ActionEvent e) {
+		                // Abrir la ventana del juego
+		                SwingUtilities.invokeLater(() -> {
+		                    ChooseYourSeriesGame game = new ChooseYourSeriesGame();
+		                    game.setVisible(true);
+		                });
+		            }
+		        });
 
 				
 				
@@ -283,6 +300,7 @@ public class Trailex_Principal extends JFrame{
 				   
 			    // Agregar la barra de búsqueda al panel superior
 			    panel_arriba.add(searchBar, BorderLayout.NORTH);
+			    panel_arriba.add(startButton);
 				
 				
 				// Configuramos el panel principal
@@ -760,6 +778,8 @@ public class Trailex_Principal extends JFrame{
         
         
     }
+	
+
 
 	
 	
