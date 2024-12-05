@@ -133,7 +133,7 @@ public class Trailex_Principal extends JFrame{
                 	inicio.dispose();
                 	hilo_carga = new BarraDeCarga();
                 	
-                	Iniciar_Trailex();
+                	
                 } else {
                 	JOptionPane.showMessageDialog(inicio, "Credenciales incorrectas", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -166,6 +166,8 @@ public class Trailex_Principal extends JFrame{
 	                	hilo_carga = new BarraDeCarga();
 	                	
 	                	Iniciar_Trailex();
+	                	
+	                	
 	                } else {
 	                	JOptionPane.showMessageDialog(inicio, "Credenciales incorrectas", "Error", JOptionPane.ERROR_MESSAGE);
 	                }
@@ -204,6 +206,8 @@ public class Trailex_Principal extends JFrame{
 
 	
 	private void Iniciar_Trailex() {
+		
+		
 		
 		gestorBD.crearBBDD();
 		
@@ -345,8 +349,17 @@ public class Trailex_Principal extends JFrame{
 				
 				JScrollPane scroll= new JScrollPane(panel_central, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); //cambiar a never 
 				panel_principal.add(scroll, BorderLayout.CENTER);
-				this.setVisible(true);
 				
+				
+				//LO HE AÑADIDO PERO NO SE ABRE SINO
+				/*
+				if (hilo_carga.isHilo_inicio_terminado()) {
+					hilo_carga.dispose();
+					this.setVisible(true);
+				}
+				*/
+				
+				this.setVisible(true);
 	}
 	
 	//Getters para acceder desde otra clase

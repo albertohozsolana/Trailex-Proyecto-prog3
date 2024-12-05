@@ -14,7 +14,10 @@ public class BarraDeCarga extends JFrame {
 	    private static final long serialVersionUID = 1L;
 	    
 	    // Valor máximo a contar
-	    private static final long MAX_VALUE = 10_00;
+	    private static final long MAX_VALUE = 1_00;
+	    
+	    //Booleano que me indica si ha terminado el thread
+	    public static boolean hilo_inicio_terminado = false;
 	    
 	    // Progress Bar
 	    private JProgressBar progressBar = new JProgressBar(0, 100);
@@ -23,13 +26,13 @@ public class BarraDeCarga extends JFrame {
 	    private Contador contador;
 	    
 	    public BarraDeCarga() {        
-	    	
-	    	
+	
 	    	// Visualización del % en la Progress Bar
 	    	progressBar.setStringPainted(true);  
 	    	progressBar.setForeground(Color.GREEN);
 	    	
 	        this.setLayout(new BorderLayout());
+	        
 	        
 	        this.add(progressBar, BorderLayout.CENTER);
 	        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,30 +46,37 @@ public class BarraDeCarga extends JFrame {
 	        setVisible(true);
 	    }
 	    
-	    private class Contador extends Thread {
+	    public boolean isHilo_inicio_terminado() {
+			return hilo_inicio_terminado;
+		}
+
+
+		private class Contador extends Thread {
 	    	@Override
 	    	public void run() {
 	    		int progreso;
-	    		
+
 	    		for (int i=0; i <= MAX_VALUE; i++) {
 	    			// Comprobar si hay que parar el hilo
 					if (Thread.currentThread().isInterrupted()) {
 						updateProgressBar(100);
 						break;
 					}
-					
-					//
-	    			
+
 	    			// Valor de progreso
-	    			progreso = (int) ((i * 100) / MAX_VALUE);
+	    			progreso = i;
+	    			
+	    			if (progreso == 100) {
+	    				hilo_inicio_terminado=true;
+	    			}
 	    			// Imprimir en consola
-	    			System.out.println(String.format("- Hilo '%s' -> %d (%d%%)", Thread.currentThread().getName(), i, progreso));    			
+	    			//System.out.println(String.format("- Hilo '%s' -> %d (%d%%)", Thread.currentThread().getName(), i, progreso));    			
 	    			// Actualizar la Progress Bar
 	    			updateProgressBar(progreso);
 	    			
 	    			try {
 	                    // Simular trabajo
-	                    Thread.sleep(1); // Ajusta el tiempo si quieres que avance más lento o rápido
+	                    Thread.sleep(50); // Ajusta el tiempo si quieres que avance más lento o rápido
 	                } catch (InterruptedException e) {
 	                    Thread.currentThread().interrupt(); // Restaurar el estado de interrupción
 	                    break;
@@ -76,14 +86,20 @@ public class BarraDeCarga extends JFrame {
 	    }
 
 	    // Actualización de la Progress Bar usando SwingUtilities
-	    private void updateProgressBar(final int value) {
-	        SwingUtilities.invokeLater(() -> progressBar.setValue(value));
-	    }
+		public void updateProgressBar(final int value) { //pq esta en un invoke later
+			SwingUtilities.invokeLater(()->{
+				progressBar.setValue(value);
+				progressBar.setString(String.valueOf(value)+"%");
+				
+				
+			});
+		}
 	    
+	    /*
 	    public static void main(String[] args) {
 	        SwingUtilities.invokeLater(() -> new BarraDeCarga()); 
 	    }
-	    
+	    */
 	    
 	
 }
