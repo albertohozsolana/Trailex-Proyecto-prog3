@@ -38,6 +38,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
@@ -55,11 +56,13 @@ import java.awt.*;
 
 
 public class Trailex_Principal extends JFrame{
+	private JProgressBar progressBar;
+    private JDialog progressDialog;
 	private JPanel panel_central;
 	private JPanel panel_principal;
 	private JPanel panel_arriba;
 	private Usuario usuarioActual;
-
+	private BarraDeCarga hilo_carga;
 	
 	private JFrame vNext_perfil; //la ventana que se me va a abrir cuando quiera cambiar la foto de perfil
 	private JFrame vPrincipal;
@@ -91,6 +94,7 @@ public class Trailex_Principal extends JFrame{
 		
 	}
 	
+    
 	private void IniciarSesion() {
 		usuarioActual = new Usuario("usuario", "usuario@trailex.com", "contraseña");
 		JFrame inicio = new JFrame("Login Panel");
@@ -127,6 +131,7 @@ public class Trailex_Principal extends JFrame{
 
                 if (user.equals("usuario") && pass.equals("contraseña")) {
                 	inicio.dispose();
+                	hilo_carga = new BarraDeCarga();
                 	Iniciar_Trailex();
                 } else {
                 	JOptionPane.showMessageDialog(inicio, "Credenciales incorrectas", "Error", JOptionPane.ERROR_MESSAGE);
@@ -157,6 +162,7 @@ public class Trailex_Principal extends JFrame{
 
 	                if (user.equals("usuario") && pass.equals("contraseña")) {
 	                	inicio.dispose();
+	                	hilo_carga = new BarraDeCarga();
 	                	Iniciar_Trailex();
 	                } else {
 	                	JOptionPane.showMessageDialog(inicio, "Credenciales incorrectas", "Error", JOptionPane.ERROR_MESSAGE);
@@ -186,11 +192,14 @@ public class Trailex_Principal extends JFrame{
         inicio.add(panel_login, BorderLayout.CENTER);
         inicio.add(panel_boton, BorderLayout.SOUTH);
 
-        inicio.setVisible(true);
+        inicio.setVisible(true);	
         inicio.setLocationRelativeTo(null);
 	}
 	
-	
+
+
+
+
 	
 	private void Iniciar_Trailex() {
 		
