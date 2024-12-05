@@ -77,6 +77,8 @@ public class Trailex_Principal extends JFrame{
     private ArrayList<String> array_generos = new ArrayList<>(Arrays.asList("Comedia", "Romance", "Aventura", "Drama", "Ciencia Ficción", "Terror"));
     private ArrayList<JPanel> array_paneles = new ArrayList<>();
     private ArrayList<JLabel> array_series = new ArrayList<>();
+    private ArrayList<Serie> listaCompletaSeries = new ArrayList<>();
+
 	
     private GestorBD gestorBD = new GestorBD();
     
@@ -514,8 +516,11 @@ public class Trailex_Principal extends JFrame{
 	        return;
 	    }
 
+	    listaCompletaSeries.clear(); // Limpiar la lista original
+	    
 	    // Clasificar y agregar las series a los paneles correspondientes
 	    for (Serie serie : Videoclub.getAlSeries()) {
+	    	listaCompletaSeries.add(serie); // Guardar todas las series en la lista completa
 	    	
 	    	ImageIcon im = new ImageIcon(serie.getRutaFoto());
 			Image im_tamaño= im.getImage().getScaledInstance(100, 140, Image.SCALE_SMOOTH);
@@ -578,6 +583,33 @@ public class Trailex_Principal extends JFrame{
 	    panel_central.revalidate();
 	    panel_central.repaint();
 	}
+	
+	
+	private void mostrarTodasLasSeries() {
+	    panel_central.removeAll();
+
+	    for (int i = 0; i < array_generos.size(); i++) {
+	        JPanel panel_genero = new JPanel(new BorderLayout());
+	        panel_genero.setBackground(Color.black);
+
+	        JLabel texto_genero = new JLabel(array_generos.get(i));
+	        texto_genero.setForeground(turquesa);
+
+	        JPanel panel_texto = new JPanel(new FlowLayout(FlowLayout.LEFT));
+	        panel_texto.setBackground(Color.black);
+	        panel_texto.add(texto_genero);
+
+	        panel_genero.add(panel_texto, BorderLayout.NORTH);
+	        panel_genero.add(array_paneles.get(i), BorderLayout.SOUTH);
+
+	        panel_central.add(panel_genero);
+	    }
+
+	    panel_central.revalidate();
+	    panel_central.repaint();
+	}
+
+	
 	
 	private void inicializarFiltroPorGenero() {
 	    // Inicializar la barra de géneros
@@ -816,11 +848,31 @@ public class Trailex_Principal extends JFrame{
 	            
 	            panel_central.removeAll();
 	            
-	            for (JLabel serie : array_series) {
-	            	String nombre_serie = serie.getToolTipText();
-	            	if (nombre_serie != null && nombre_serie.toLowerCase().contains(searchText)) {
-	            		panel_central.add(serie);
-	            	}
+	            if (searchText.isEmpty()) {
+	                mostrarTodasLasSeries(); // Restaurar todas las series si no hay texto
+	            } else {
+	                for (Serie serie : listaCompletaSeries) {
+	                    if (serie.getTitulo().toLowerCase().contains(searchText)) {
+	                        ImageIcon im = new ImageIcon(serie.getRutaFoto());
+	                        Image im_tamaño = im.getImage().getScaledInstance(100, 140, Image.SCALE_SMOOTH);
+	                        ImageIcon imageicon_tamano = new ImageIcon(im_tamaño);
+
+	                        JLabel lblFoto = new JLabel(imageicon_tamano);
+	                        lblFoto.setToolTipText(serie.getTitulo());
+
+	                        Border border = BorderFactory.createLineBorder(turquesa, 2);
+	                        lblFoto.setBorder(border);
+
+	                        lblFoto.addMouseListener(new MouseAdapter() {
+	                            @Override
+	                            public void mouseEntered(MouseEvent e) {
+	                                mostrarInfoSerie(serie);
+	                            }
+	                        });
+
+	                        panel_central.add(lblFoto);
+	                    }
+	                }
 	            }
 
 	            panel_central.revalidate();
