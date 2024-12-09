@@ -387,7 +387,7 @@ public class Trailex_Principal extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gestorBD.guardarSeriesCSV(listaCompletaSeries);
-				//gestorBD.borrarBBDD();
+				gestorBD.borrarBBDD();
 				System.exit(0);
 			}
 		});

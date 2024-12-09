@@ -433,7 +433,7 @@ public class GestorBD {
 	        while ((linea = in.readLine()) != null) {
 	            String[] campos = linea.split(",", 4); // Dividir la línea en un máximo de 4 partes
 	            if (campos.length == 4) {
-	                String nickname = campos[0].trim();
+	                String nickname = campos[0].replace("\"", "").trim();
 	                String password = campos[1].trim();
 	                String email = campos[2].trim();
 	                String favoritosString = campos[3].trim();
