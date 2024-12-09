@@ -3,7 +3,9 @@ package trailex.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
@@ -20,10 +22,10 @@ public class BarraDeCarga extends JFrame {
 	    public static boolean hilo_inicio_terminado = false;
 	    
 	    // Progress Bar
-	    private JProgressBar progressBar = new JProgressBar(0, 100);
+	    public JProgressBar progressBar = new JProgressBar(0, 100);
 	    
 	    // Clase que implementa el hilo contador
-	    private Contador contador;
+	    public Contador contador;
 	    
 	    public BarraDeCarga() {        
 	
@@ -40,6 +42,12 @@ public class BarraDeCarga extends JFrame {
 	        this.setTitle("Cargando...");
 	        this.setLocationRelativeTo(null);
 	        
+	        JLabel imagenCarga = new JLabel();
+	        ImageIcon icon = new ImageIcon("fotocarga.jpg");
+	        imagenCarga.setIcon(icon);
+	        imagenCarga.setHorizontalAlignment(JLabel.CENTER);
+	        this.add(imagenCarga, BorderLayout.NORTH);
+	        
 	        contador = new Contador();
 	        contador.start();
 	        
@@ -51,7 +59,7 @@ public class BarraDeCarga extends JFrame {
 		}
 
 
-		private class Contador extends Thread {
+		public class Contador extends Thread {
 	    	@Override
 	    	public void run() {
 	    		int progreso;
@@ -76,14 +84,18 @@ public class BarraDeCarga extends JFrame {
 	    			
 	    			try {
 	                    // Simular trabajo
-	                    Thread.sleep(50); // Ajusta el tiempo si quieres que avance más lento o rápido
+	                    Thread.sleep(5); // Ajusta el tiempo si quieres que avance más lento o rápido
 	                } catch (InterruptedException e) {
 	                    Thread.currentThread().interrupt(); // Restaurar el estado de interrupción
 	                    break;
 	                }
+	    			
 	            }
+	    		
 	        }
+	    	
 	    }
+		
 
 	    // Actualización de la Progress Bar usando SwingUtilities
 		public void updateProgressBar(final int value) { //pq esta en un invoke later
@@ -95,6 +107,7 @@ public class BarraDeCarga extends JFrame {
 			});
 		}
 	    
+		
 	    /*
 	    public static void main(String[] args) {
 	        SwingUtilities.invokeLater(() -> new BarraDeCarga()); 

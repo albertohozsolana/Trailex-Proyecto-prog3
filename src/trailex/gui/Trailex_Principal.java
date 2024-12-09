@@ -131,6 +131,8 @@ public class Trailex_Principal extends JFrame{
                 if (user.equals("usuario") && pass.equals("contraseña")) {
                 	inicio.dispose();
                 	hilo_carga = new BarraDeCarga();
+                	hilo_carga.setVisible(true);
+                	Iniciar_Trailex();
                 	
                 	
                 } else {
@@ -163,7 +165,7 @@ public class Trailex_Principal extends JFrame{
 	                if (user.equals("usuario") && pass.equals("contraseña")) {
 	                	inicio.dispose();
 	                	hilo_carga = new BarraDeCarga();
-	                	
+	                	hilo_carga.setVisible(true);
 	                	Iniciar_Trailex();
 	                	
 	                	
