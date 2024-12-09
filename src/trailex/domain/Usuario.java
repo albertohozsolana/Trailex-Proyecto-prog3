@@ -3,24 +3,31 @@ package trailex.domain;
 import java.util.ArrayList;
 
 public class Usuario {
-	private String nombre;
+	private String nickname;
     private String email;
     private String contraseña;
-    private ArrayList<Serie> favoritos;
+    private ArrayList<String> favoritos;
 
-    public Usuario(String nombre, String email, String contraseña) {
-        this.nombre = nombre;
+    public Usuario(String nickname, String email, String contraseña) {
+        this.nickname = nickname;
         this.email = email;
         this.contraseña = contraseña;
         this.favoritos = new ArrayList<>();
     }
-
-    public String getNombre() {
-        return nombre;
+    
+    public Usuario(String nickname, String email, String contraseña, ArrayList<String> favoritos) {
+        this.nickname = nickname;
+        this.email = email;
+        this.contraseña = contraseña;
+        this.favoritos = favoritos;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNombre(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getEmail() {
@@ -39,13 +46,17 @@ public class Usuario {
         this.contraseña = contraseña;
     }
 
-    public ArrayList<Serie> getFavoritos() {
+    public ArrayList<String> getFavoritos() {
         return favoritos;
+    }
+    
+    public void setFavoritos(ArrayList<String> favoritos) {
+    	this.favoritos = favoritos;
     }
 
     public void agregarAFavoritos(Serie serie) {
-        if (!favoritos.contains(serie)) {
-            favoritos.add(serie);
+        if (!favoritos.contains(serie.getCodigo())) {
+            favoritos.add(serie.getCodigo());
             System.out.println("Serie añadida a favoritos: " + serie.getTitulo());
         } else {
             System.out.println("La serie ya está en favoritos.");
@@ -53,7 +64,7 @@ public class Usuario {
     }
 
     public void eliminarDeFavoritos(Serie serie) {
-        if (favoritos.remove(serie)) {
+        if (favoritos.remove(serie.getCodigo())) {
             System.out.println("Serie eliminada de favoritos: " + serie.getTitulo());
         } else {
             System.out.println("La serie no estaba en favoritos.");
@@ -61,6 +72,6 @@ public class Usuario {
     }
 
     public boolean esFavorita(Serie serie) {
-        return favoritos.contains(serie);
+        return favoritos.contains(serie.getCodigo());
     }
 }

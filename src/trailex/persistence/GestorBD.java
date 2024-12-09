@@ -12,6 +12,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.LogManager;
@@ -20,11 +21,13 @@ import java.util.logging.Logger;
 import javax.swing.JLabel;
 
 import trailex.domain.Serie;
+import trailex.domain.Usuario;
 
 public class GestorBD {
 	
 	private final String PROPERTIES_FILE = "resources/config/app.properties";
 	private final String CSV_SERIES = "resources/data/series.csv";
+	private final String CSV_USUARIOS = "resources/data/Users.csv";
 	private final String LOG_FOLDER = "resources/log";
 	
 	private Properties properties;
@@ -100,31 +103,40 @@ public class GestorBD {
 	}
 	
 	public void borrarBBDD() {
-		//Sólo se borra la BBDD si la propiedad deleteBBDD es true
-		if (properties.get("deleteBBDD").equals("true")) {	
-			String sql = "DROP TABLE IF EXISTS Serie;";
-			
-	        //Se abre la conexión y se crea un PreparedStatement para borrar la tabla
-			try (Connection con = DriverManager.getConnection(connectionString);
-			     PreparedStatement pStmt1 = con.prepareStatement(sql)) {
-				
-				//Se ejecutan la sentencia de borrado
-		        if (!pStmt1.execute()) {
-		        	logger.info("Se ha borrado la tabla");
-		        }
-			} catch (Exception ex) {
-				logger.warning(String.format("Error al borrar la tabla: %s", ex.getMessage()));
-			}
-			
-			try {
-				//Se borra físicamente el fichero de la BBDD
-				Files.delete(Paths.get(databaseFile));
-				logger.info("Se ha borrado el fichero de la BBDD");
-			} catch (Exception ex) {
-				logger.warning(String.format("Error al borrar el fichero de la BBDD: %s", ex.getMessage()));
-			}
-		}
+	    // Sólo se borra la BBDD si la propiedad deleteBBDD es true
+	    if (properties.get("deleteBBDD").equals("true")) {
+	        // SQL para borrar las tablas Serie y Usuario
+	        String sqlBorrarSerie = "DROP TABLE IF EXISTS Serie;";
+	        String sqlBorrarUsuario = "DROP TABLE IF EXISTS Usuario;";
+
+	        try (Connection con = DriverManager.getConnection(connectionString)) {
+	            // Borrar la tabla Serie
+	            try (PreparedStatement pStmtSerie = con.prepareStatement(sqlBorrarSerie)) {
+	                if (!pStmtSerie.execute()) {
+	                    logger.info("Se ha borrado la tabla Serie.");
+	                }
+	            }
+
+	            // Borrar la tabla Usuario
+	            try (PreparedStatement pStmtUsuario = con.prepareStatement(sqlBorrarUsuario)) {
+	                if (!pStmtUsuario.execute()) {
+	                    logger.info("Se ha borrado la tabla Usuario.");
+	                }
+	            }
+	        } catch (Exception ex) {
+	            logger.warning(String.format("Error al borrar las tablas: %s", ex.getMessage()));
+	        }
+
+	        try {
+	            // Se borra físicamente el fichero de la BBDD
+	            Files.delete(Paths.get(databaseFile));
+	            logger.info("Se ha borrado el fichero de la BBDD.");
+	        } catch (Exception ex) {
+	            logger.warning(String.format("Error al borrar el fichero de la BBDD: %s", ex.getMessage()));
+	        }
+	    }
 	}
+
 	
 	public void borrarDatos() {
 		//Sólo se borran los datos si la propiedad cleanBBDD es true
@@ -383,4 +395,213 @@ public class GestorBD {
 	    String resultado = String.valueOf(1 + Integer.parseInt(maxCodigo));
 	    return resultado; // Devuelve el código más alto o null si no se encontró
 	}
+	
+	public void crearTablaUsuario() {
+		//Sólo se crea la BBDD si la propiedad initBBDD es true.
+		if (properties.get("createBBDD").equals("true")) {
+			//La base de datos tiene 1 tabla: Serie
+			String sql = "CREATE TABLE IF NOT EXISTS Usuario (\n"
+	                   + " nickname TEXT NOT NULL UNIQUE,\n"
+	                   + " email TEXT NOT NULL,\n"
+	                   + " password TEXT NOT NULL,\n"
+	                   + " favoritos TEXT NOT NULL,\n" // Almacena favoritos como un string (JSON o separado por comas)
+	                   + " PRIMARY KEY (nickname)\n"
+	                   + ");";
+
+	        //Se abre la conexión y se crea un PreparedStatement para crer cada tabla
+			//Al abrir la conexión, si no existía el fichero por defecto, se crea.
+			try (Connection con = DriverManager.getConnection(connectionString);
+			     PreparedStatement pStmt2 = con.prepareStatement(sql)) {
+				
+				//Se ejecutan las sentencias de creación de las tablas
+		        if (!pStmt2.execute()) {
+		        	logger.info("Se ha creado la tabla");
+		        }
+			} catch (Exception ex) {
+				logger.warning(String.format("Error al crear la tabla: %s", ex.getMessage()));
+			}
+		}
+	}
+	
+	public List<Usuario> cargarUsuariosDesdeCSV() {
+	    List<Usuario> usuarios = new ArrayList<>();
+
+	    try (BufferedReader in = new BufferedReader(new FileReader(CSV_USUARIOS))) {
+	        String linea;
+	        in.readLine(); // Omitir la cabecera
+
+	        while ((linea = in.readLine()) != null) {
+	            String[] campos = linea.split(",", 4); // Dividir la línea en un máximo de 4 partes
+	            if (campos.length == 4) {
+	                String nickname = campos[0].trim();
+	                String password = campos[1].trim();
+	                String email = campos[2].trim();
+	                String favoritosString = campos[3].trim();
+
+	             // Eliminar las comillas dobles externas y los corchetes
+	             favoritosString = favoritosString.replace("\"", "").replace("[", "").replace("]", "").replace("'", "").trim();
+
+	             // Dividir por comas y procesar cada título
+	             String[] favoritosArray = favoritosString.split(",\\s*"); // Divide por comas con espacios opcionales
+
+	             ArrayList<String> favoritos = new ArrayList<>();
+	             for (String codigo : favoritosArray) {
+	                 codigo = codigo.trim(); // Eliminar espacios adicionales
+	                 Serie serie = this.getSeriePorCodigo(codigo);
+	                 if (serie != null) {
+	                     favoritos.add(serie.getCodigo());
+	                 } else {
+	                     System.err.println("No se encontró la serie con código: " + codigo);
+	                 }
+	             }
+
+	                // Crear el objeto Usuario y añadirlo a la lista
+	                Usuario usuario = new Usuario(nickname, email, password, favoritos);
+	                usuarios.add(usuario);
+	            }
+	        }
+	    } catch (Exception ex) {
+	        System.err.println("Error leyendo usuarios desde el CSV: " + ex.getMessage());
+	    }
+
+	    return usuarios;
+	}
+	
+	public void insertarUsuarios(List<Usuario> usuarios) {
+        String sql = "INSERT INTO Usuario (nickname, email, password, favoritos) VALUES (?, ?, ?, ?)";
+
+        try (Connection con = DriverManager.getConnection(connectionString);
+             PreparedStatement pStmt = con.prepareStatement(sql)) {
+
+            for (Usuario usuario : usuarios) {
+                pStmt.setString(1, usuario.getNickname());
+                pStmt.setString(2, usuario.getEmail());
+                pStmt.setString(3, usuario.getContraseña());
+                String favoritosString = String.join(", ", usuario.getFavoritos());
+                pStmt.setString(4, favoritosString);
+
+                try {
+                    if (pStmt.executeUpdate() == 1) {
+                        logger.info(String.format("Usuario %s insertado correctamente.", usuario.getNickname()));
+                    } else {
+                        logger.warning(String.format("No se pudo insertar el usuario %s.", usuario.getNickname()));
+                    }
+                } catch (Exception ex) {
+                    logger.warning(String.format("Error al insertar usuario %s: %s", usuario.getNickname(), ex.getMessage()));
+                }
+            }
+
+        } catch (Exception ex) {
+            logger.warning(String.format("Error al insertar usuarios: %s", ex.getMessage()));
+        }
+    }
+	
+	public boolean esUsuarioValido(String nickname, String password) {
+	    String sql = "SELECT COUNT(*) FROM Usuario WHERE nickname = ? AND password = ?";
+
+	    try (Connection con = DriverManager.getConnection(connectionString);
+	         PreparedStatement pStmt = con.prepareStatement(sql)) {
+
+	        // Configurar los parámetros de la consulta
+	    	pStmt.setString(1, nickname.trim());
+	    	pStmt.setString(2, password.trim());
+	    	System.out.println("Comparando usuario: '" + nickname + "' y contraseña: '" + password + "'");
+
+	        // Ejecutar la consulta y obtener el resultado
+	        ResultSet rs = pStmt.executeQuery();
+	        if (rs.next()) {
+	            return rs.getInt(1) > 0; // Devuelve true si hay al menos un resultado
+	        }
+	    } catch (Exception ex) {
+	        System.err.println("Error al validar usuario: " + ex.getMessage());
+	    }
+
+	    return false; // Devuelve false si algo falla o no hay coincidencias
+	}
+	
+	public Serie getSeriePorCodigo(String codigo) {
+	    Serie serie = null;
+	    String sql = "SELECT * FROM Serie WHERE codigo = ? LIMIT 1";
+
+	    try (Connection con = DriverManager.getConnection(connectionString);
+	         PreparedStatement pStmt = con.prepareStatement(sql)) {
+
+	        // Ajustar el código al formato de tres dígitos
+	        String codigoFormateado = String.format("%03d", Integer.parseInt(codigo));
+
+	        // Configurar el parámetro del código
+	        pStmt.setString(1, codigoFormateado);
+
+	        // Ejecutar la consulta
+	        ResultSet rs = pStmt.executeQuery();
+
+	        // Procesar el resultado
+	        if (rs.next()) {
+	            serie = new Serie(
+	                rs.getString("codigo"),
+	                rs.getString("titulo"),
+	                rs.getInt("anio"),
+	                rs.getString("protagonista"),
+	                rs.getInt("edadRecomendada"),
+	                rs.getInt("numeroTemporadas"),
+	                rs.getString("genero"),
+	                rs.getString("rutaFoto")
+	            );
+	        }
+
+	        // Cerrar el ResultSet
+	        rs.close();
+
+	    } catch (NumberFormatException ex) {
+	        logger.warning(String.format("El código %s no es un número válido: %s", codigo, ex.getMessage()));
+	    } catch (Exception ex) {
+	        logger.warning(String.format("Error al recuperar la serie con código %s: %s", codigo, ex.getMessage()));
+	    }
+
+	    return serie;
+	}
+
+	
+	public Usuario getUsuarioPorNickname(String nickname) {
+	    Usuario usuario = null;
+	    String sql = "SELECT * FROM Usuario WHERE nickname = ? LIMIT 1";
+
+	    try (Connection con = DriverManager.getConnection(connectionString);
+	         PreparedStatement pStmt = con.prepareStatement(sql)) {
+
+	        // Configurar el parámetro del nickname
+	        pStmt.setString(1, nickname);
+
+	        // Ejecutar la consulta
+	        ResultSet rs = pStmt.executeQuery();
+
+	        // Procesar el resultado
+	        if (rs.next()) {
+	            // Recuperar la lista de códigos de favoritos como un string y dividirlo en un ArrayList<String>
+	            String favoritosString = rs.getString("favoritos");
+	            ArrayList<String> favoritos = new ArrayList<>(Arrays.asList(favoritosString.split(",\\s*"))); // Dividir por comas y espacios
+
+	            // Crear el objeto Usuario con el ArrayList<String> de códigos
+	            usuario = new Usuario(
+	                rs.getString("nickname"),
+	                rs.getString("email"),
+	                rs.getString("password"),
+	                favoritos
+	            );
+	        }
+
+	        // Cerrar el ResultSet
+	        rs.close();
+
+	    } catch (Exception ex) {
+	        logger.warning(String.format("Error al recuperar el usuario con nickname %s: %s", nickname, ex.getMessage()));
+	    }
+
+	    return usuario;
+	}
+
+
+
+
+
 }

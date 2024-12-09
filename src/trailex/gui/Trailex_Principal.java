@@ -88,6 +88,14 @@ public class Trailex_Principal extends JFrame{
 
 
 	public Trailex_Principal() {
+		gestorBD.crearBBDD();
+
+		gestorBD.crearTablaUsuario();
+		//Se cargan los datos y se inicializa la BBDD
+		gestorBD.initilizeFromCSV();
+		gestorBD.insertarUsuarios(gestorBD.cargarUsuariosDesdeCSV());
+		
+		
 		IniciarSesion();	// Usuario: usuario
 							// Contraseña: contraseña
 		
@@ -95,111 +103,78 @@ public class Trailex_Principal extends JFrame{
 	
     
 	private void IniciarSesion() {
-		usuarioActual = new Usuario("usuario", "usuario@trailex.com", "contraseña");
-		JFrame inicio = new JFrame("Login Panel");
-		inicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		inicio.setSize(300, 200);
+	    JFrame inicio = new JFrame("Login Panel");
+	    inicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    inicio.setSize(300, 200);
 
-        // Crear el panel de login
-        JPanel panel_login = new JPanel();
-        panel_login.setBackground(Color.black);
-        panel_login.setLayout(new GridLayout(3, 2, 5, 5)); // 3 filas, 2 columnas
+	    JPanel panel_login = new JPanel();
+	    panel_login.setBackground(Color.black);
+	    panel_login.setLayout(new GridLayout(3, 2, 5, 5));
 
-        // Etiqueta y campo de texto para el usuario
-        JLabel usuario = new JLabel("Usuario:");
-        usuario.setForeground(turquesa);
-        JTextField tField = new JTextField(15);
-        tField.setBackground(turquesa);
+	    JLabel usuario = new JLabel("Usuario:");
+	    usuario.setForeground(turquesa);
+	    JTextField tField = new JTextField(15);
+	    tField.setBackground(turquesa);
 
-        // Etiqueta y campo de contraseña
-        JLabel contraseña = new JLabel("Contraseña:");
-        contraseña.setForeground(turquesa);
-        JPasswordField contrafield = new JPasswordField(15);
-        contrafield.setBackground(turquesa);
+	    JLabel contraseña = new JLabel("Contraseña:");
+	    contraseña.setForeground(turquesa);
+	    JPasswordField contrafield = new JPasswordField(15);
+	    contrafield.setBackground(turquesa);
 
-        // Botón Enter
-        JButton bote = new JButton("Enter");
-        bote.setBackground(turquesa);
+	    JButton bote = new JButton("Enter");
+	    bote.setBackground(turquesa);
 
-        // Acción para el botón y el campo de usuario
-        ActionListener comprobacion = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String user = tField.getText();
-                String pass = new String(contrafield.getPassword());
+	    ActionListener comprobacion = e -> {
+	        String user = tField.getText().trim();
+	        String pass = new String(contrafield.getPassword()).trim();
 
-                if (user.equals("usuario") && pass.equals("contraseña")) {
-                	inicio.dispose();
-                	hilo_carga = new BarraDeCarga();
-                	hilo_carga.setVisible(true);
-                	Iniciar_Trailex();
-                	
-                	
-                } else {
-                	JOptionPane.showMessageDialog(inicio, "Credenciales incorrectas", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        };
-        
-        KeyListener keylistener_enter = new KeyListener() {
+	        if (gestorBD.esUsuarioValido(user, pass)) {
+	            inicio.dispose();
+	            usuarioActual= gestorBD.getUsuarioPorNickname(user);
+	            hilo_carga = new BarraDeCarga();
+	            hilo_carga.setVisible(true);
+	            Iniciar_Trailex();
+	        } else {
+	            JOptionPane.showMessageDialog(inicio, "Credenciales incorrectas", "Error", JOptionPane.ERROR_MESSAGE);
+	        }
+	    };
 
-			@Override
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+	    KeyListener keylistener_enter = new KeyListener() {
+	        @Override
+	        public void keyTyped(KeyEvent e) {}
 
-			@Override
-			public void keyPressed(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+	        @Override
+	        public void keyPressed(KeyEvent e) {}
 
-			@Override
-			public void keyReleased(KeyEvent e) {
-				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-					//HAY QUE METER ESTE CODIGO EN UN METODO Y LLAMARLO DESDE3 ACTIONLISTENER Y DESDE EL KEYLISTENER
-					String user = tField.getText();
-	                String pass = new String(contrafield.getPassword());
+	        @Override
+	        public void keyReleased(KeyEvent e) {
+	            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+	                comprobacion.actionPerformed(null);
+	            }
+	        }
+	    };
 
-	                if (user.equals("usuario") && pass.equals("contraseña")) {
-	                	inicio.dispose();
-	                	hilo_carga = new BarraDeCarga();
-	                	hilo_carga.setVisible(true);
-	                	Iniciar_Trailex();
-	                	
-	                	
-	                } else {
-	                	JOptionPane.showMessageDialog(inicio, "Credenciales incorrectas", "Error", JOptionPane.ERROR_MESSAGE);
-	                }
-				}
-			}
-        };
+	    contrafield.addKeyListener(keylistener_enter);
 
-        contrafield.addKeyListener(keylistener_enter);
-        
-        // Asignar el ActionListener al botón y al campo de usuario
-        bote.addActionListener(comprobacion);
-        tField.addActionListener(comprobacion);
+	    bote.addActionListener(comprobacion);
+	    tField.addActionListener(comprobacion);
 
-        // Agregar componentes al panel de login
-        panel_login.add(usuario);
-        panel_login.add(tField);
-        panel_login.add(contraseña);
-        panel_login.add(contrafield);
+	    panel_login.add(usuario);
+	    panel_login.add(tField);
+	    panel_login.add(contraseña);
+	    panel_login.add(contrafield);
 
-        // Crear un panel para el botón y agregarlo en BorderLayout.South
-        JPanel panel_boton = new JPanel();
-        panel_boton.setBackground(Color.black);
-        panel_boton.add(bote);
-        
-        // Agregar los paneles al frame
-        inicio.add(panel_login, BorderLayout.CENTER);
-        inicio.add(panel_boton, BorderLayout.SOUTH);
+	    JPanel panel_boton = new JPanel();
+	    panel_boton.setBackground(Color.black);
+	    panel_boton.add(bote);
 
-        inicio.setVisible(true);	
-        inicio.setLocationRelativeTo(null);
+	    inicio.add(panel_login, BorderLayout.CENTER);
+	    inicio.add(panel_boton, BorderLayout.SOUTH);
+
+	    inicio.setVisible(true);
+	    inicio.setLocationRelativeTo(null);
 	}
+
 	
 
 
@@ -210,10 +185,9 @@ public class Trailex_Principal extends JFrame{
 		
 		
 		
-		gestorBD.crearBBDD();
 		
-		//Se cargan los datos y se inicializa la BBDD
-		gestorBD.initilizeFromCSV();
+		
+		
 
 		
 		
@@ -413,7 +387,6 @@ public class Trailex_Principal extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gestorBD.guardarSeriesCSV(listaCompletaSeries);
-				gestorBD.borrarDatos();
 				//gestorBD.borrarBBDD();
 				System.exit(0);
 			}
@@ -1276,7 +1249,8 @@ public class Trailex_Principal extends JFrame{
 	    panelFavoritos.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
 	    panelFavoritos.setBackground(Color.black);
 
-	    for (Serie serie : usuarioActual.getFavoritos()) {
+	    for (String seriefav : usuarioActual.getFavoritos()) {
+	    	Serie serie = gestorBD.getSeriePorCodigo(seriefav);
 	        ImageIcon icon = new ImageIcon(serie.getRutaFoto());
 	        Image img = icon.getImage().getScaledInstance(100, 140, Image.SCALE_SMOOTH);
 	        JLabel lblSerie = new JLabel(new ImageIcon(img));
