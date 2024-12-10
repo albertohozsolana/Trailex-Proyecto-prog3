@@ -1,6 +1,11 @@
 package trailex.gui;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
+import trailex.domain.Serie;
+import trailex.persistence.GestorBD;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,13 +15,20 @@ import java.util.Random;
 public class ChooseYourSeriesGame extends JDialog {
     private static final long serialVersionUID = 1L;
 
-    private List<String> series = List.of("Breaking Bad", "Game of Thrones", "Stranger Things",
-            "The Crown", "The Office", "Friends");
+    private List<String> series;
     private JButton[] buttons = new JButton[3];
     private JLabel resultLabel = new JLabel("Elige una caja para descubrir tu próxima serie", JLabel.CENTER);
     private JButton restartButton = new JButton("Reiniciar");
 
     public ChooseYourSeriesGame() {
+    	GestorBD gestorBD = new GestorBD(); // Crear instancia de GestorBD
+        series = gestorBD.cargarTitulosSeries(); // Cargar rutas de fotos desde la base de datos
+
+        if (series.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No se encontraron series en la base de datos.", "Error", JOptionPane.ERROR_MESSAGE);
+            dispose(); // Cierra la ventana si no hay datos
+            return;
+        }
         this.setTitle("Escoge tu próxima serie");
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.setSize(600, 250); // Ventana apaisada
@@ -51,6 +63,84 @@ public class ChooseYourSeriesGame extends JDialog {
         restartPanel.add(restartButton);
         this.add(restartPanel, BorderLayout.SOUTH);
     }
+    
+    public void mostrarInfoSerie(Serie serie) {
+    	JButton btnFavoritos = new JButton("Añadir a Favoritos");
+	    btnFavoritos.setBackground(Trailex_Principal.turquesa);
+	    
+
+	    ImageIcon originalIcon = new ImageIcon(serie.getRutaFoto());
+	    int imageWidth = originalIcon.getIconWidth();
+	    int imageHeight = originalIcon.getIconHeight();
+	    double aspectRatio = (double) imageWidth / imageHeight;
+
+	    int windowWidth = 400;
+	    int windowHeight = (int) (windowWidth / aspectRatio);
+
+	    JFrame ventanaInfoSerie = new JFrame("Información de la Serie");
+	    ventanaInfoSerie.setSize(windowWidth, windowHeight);
+	    ventanaInfoSerie.setLayout(new BorderLayout());
+
+	    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	    int x = screenSize.width - windowWidth - 50;
+	    int y = (screenSize.height - windowHeight) / 2;
+	    ventanaInfoSerie.setLocation(x, y);
+
+	    Image image = originalIcon.getImage().getScaledInstance(windowWidth, windowHeight, Image.SCALE_SMOOTH);
+	    JLabel background = new JLabel(new ImageIcon(image));
+	    background.setLayout(new BorderLayout());
+	    ventanaInfoSerie.setContentPane(background);
+
+	    // Panel oscuro para el texto
+	    
+	    JPanel panelDetalles = new JPanel();
+	    
+	    JPanel textPanel = new JPanel();
+	    textPanel.setLayout(new BorderLayout());
+	    textPanel.setBackground(new Color(0, 0, 0, 150)); // Fondo negro semi-transparente
+	    textPanel.setOpaque(true);
+
+	    JLabel labelTitulo = new JLabel(serie.getTitulo(), SwingConstants.CENTER);
+	    labelTitulo.setFont(new Font("Arial", Font.BOLD, 24));
+	    labelTitulo.setForeground(Color.WHITE);
+	    labelTitulo.setBorder(new EmptyBorder(10, 10, 10, 10));
+
+	    JLabel labelEdadRecomendada = new JLabel("Edad recomendada: " + serie.getEdadRecomendada() + " años", SwingConstants.CENTER);
+	    labelEdadRecomendada.setFont(new Font("Arial", Font.PLAIN, 18));
+	    labelEdadRecomendada.setForeground(Color.WHITE);
+	    panelDetalles.setOpaque(false);
+	    panelDetalles.setLayout(new GridLayout(5, 1, 5, 5));
+	    JLabel labelAnio = new JLabel("Año: " + serie.getAnio());
+	    JLabel labelGenero = new JLabel("Género: " + serie.getGenero());
+	    JLabel labelProtagonista = new JLabel("Protagonista: " + serie.getProtagonista());
+	    JLabel labelTemporadas = new JLabel("Temporadas: " + serie.getNumeroTemporadas());
+	    labelAnio.setFont(new Font("Arial", Font.PLAIN, 16));
+	    labelGenero.setFont(new Font("Arial", Font.PLAIN, 16));
+	    labelProtagonista.setFont(new Font("Arial", Font.PLAIN, 16));
+	    labelTemporadas.setFont(new Font("Arial", Font.PLAIN, 16));
+	    labelAnio.setForeground(Color.WHITE);
+	    labelGenero.setForeground(Color.WHITE);
+	    labelProtagonista.setForeground(Color.WHITE);
+	    labelTemporadas.setForeground(Color.WHITE);
+	    panelDetalles.add(labelAnio);
+	    panelDetalles.add(labelGenero);
+	    panelDetalles.add(labelProtagonista);
+	    panelDetalles.add(labelTemporadas);
+	    
+
+	    // Añadir los componentes al panel oscuro
+	    textPanel.add(labelTitulo, BorderLayout.NORTH);
+	    textPanel.add(labelEdadRecomendada, BorderLayout.CENTER);
+	    textPanel.add(panelDetalles, BorderLayout.SOUTH);
+	
+
+	    // Añadir el panel oscuro a la ventana
+	    ventanaInfoSerie.add(textPanel, BorderLayout.SOUTH);
+	    ventanaInfoSerie.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	    ventanaInfoSerie.setVisible(true);
+    	
+    	
+    }
 
     // Clase para manejar el clic en los botones
     private class ButtonClickListener implements ActionListener {
@@ -64,6 +154,9 @@ public class ChooseYourSeriesGame extends JDialog {
 
             // Mostrar el nombre de la serie
             resultLabel.setText("¡Te toca ver: " + chosenSeries + "!");
+            GestorBD gestorBD = new GestorBD();
+            Serie chosenSerie = gestorBD.getSeriePorTitulo(chosenSeries);
+            mostrarInfoSerie(chosenSerie);
 
             // Deshabilitar los botones después de la elección
             for (JButton button : buttons) {

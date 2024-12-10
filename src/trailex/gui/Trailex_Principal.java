@@ -16,6 +16,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -153,6 +155,27 @@ public class Trailex_Principal extends JFrame{
 	            }
 	        }
 	    };
+	    
+	    inicio.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int respuesta = JOptionPane.showConfirmDialog(
+                    inicio,
+                    "¿Estás seguro de que deseas salir?",
+                    "Confirmar salida",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE
+                );
+
+                if (respuesta == JOptionPane.YES_OPTION) {
+                    System.out.println("Ventana cerrada por el usuario.");
+                    inicio.dispose(); // Cierra la ventana
+                    gestorBD.borrarBBDD();
+                } else {
+                    System.out.println("Cierre cancelado por el usuario.");
+                }
+            }
+        });
 
 	    contrafield.addKeyListener(keylistener_enter);
 
@@ -357,28 +380,37 @@ public class Trailex_Principal extends JFrame{
 
 		 // Panel para contener el botón y limitar su tamaño
 		 JPanel panelFavoritos = new JPanel();
-	     panelFavoritos.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0)); // Centrar el botón
+	     panelFavoritos.setLayout(new BoxLayout(panelFavoritos,BoxLayout.Y_AXIS)); 
    	     panelFavoritos.setBackground(Color.black);
+   	     menu.add(panelFavoritos, BorderLayout.CENTER);
+   	     
+   	     Dimension buttonSize = new Dimension(210, 50); // Ancho 150, Alto 50
 
 	    JButton btnFavoritos = new JButton("FAVORITOS");
 	    btnFavoritos.setBackground(Trailex_Principal.turquesa);
-	    btnFavoritos.setPreferredSize(new Dimension(150, 30)); // Ajustar tamaño fijo del botón
 	    btnFavoritos.addActionListener(e -> mostrarFavoritos());
 
 	    panelFavoritos.add(btnFavoritos); // Añadir el botón al panel
-	    menu.add(panelFavoritos, BorderLayout.CENTER); // Añadir el panel al menú
 		
 	    // AÑADIR SERIE	
 	    JButton boton_añadir = new JButton("CREAR SERIE");
 	    boton_añadir.setBackground(Color.GREEN);
-	    menu.add(boton_añadir);
+	    panelFavoritos.add(boton_añadir);
 	    boton_añadir.addActionListener(e -> {
 	    	crearSerie();
 	    });
 	    
+	    boton_añadir.setPreferredSize(buttonSize);
+	    boton_añadir.setMaximumSize(buttonSize);
+	    boton_añadir.setMinimumSize(buttonSize);
+	    
+	    btnFavoritos.setPreferredSize(buttonSize);
+	    btnFavoritos.setMaximumSize(buttonSize);
+	    btnFavoritos.setMinimumSize(buttonSize);
+	    
 	    
 		JButton b_cerrar = new JButton("CERRAR SESIÓN");
-		b_cerrar.setBackground(turquesa);
+		b_cerrar.setBackground(new Color(0xfd7153));
 		menu.add(b_cerrar, BorderLayout.NORTH);
 		
 		// CERRAR APP:
@@ -638,6 +670,8 @@ public class Trailex_Principal extends JFrame{
 	            panel_central.removeAll();
 
 	                if (selectedGenre.equals("Todos") ) {
+	                	agregarPanelUltimosEstrenos();
+	    				panel_central.add(panelUltimosEstrenos);
 	                	int contador = 0;
 	                	for (JPanel panel : array_paneles) {
 	                		JPanel panel_genero = new JPanel();

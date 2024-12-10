@@ -599,9 +599,87 @@ public class GestorBD {
 
 	    return usuario;
 	}
+	
+	public ArrayList<String> cargarRutasFotos() {
+	    ArrayList<String> rutasFotos = new ArrayList<>();
+	    String sql = "SELECT rutaFoto FROM Serie";
+
+	    try (Connection con = DriverManager.getConnection(connectionString);
+	         PreparedStatement pStmt = con.prepareStatement(sql);
+	         ResultSet rs = pStmt.executeQuery()) {
+
+	        // Iterar sobre los resultados y añadir las rutas a la lista
+	        while (rs.next()) {
+	            rutasFotos.add(rs.getString("rutaFoto"));
+	        }
+	        logger.info("Se han cargado las rutas de fotos desde la base de datos.");
+
+	    } catch (Exception ex) {
+	        logger.warning(String.format("Error al cargar las rutas de fotos: %s", ex.getMessage()));
+	    }
+
+	    return rutasFotos;
+	}
+	
+	public ArrayList<String> cargarTitulosSeries() {
+	    ArrayList<String> titulos = new ArrayList<>();
+	    String sql = "SELECT titulo FROM Serie";
+
+	    try (Connection con = DriverManager.getConnection(connectionString);
+	         PreparedStatement pStmt = con.prepareStatement(sql);
+	         ResultSet rs = pStmt.executeQuery()) {
+
+	        // Iterar sobre los resultados y añadir las rutas a la lista
+	        while (rs.next()) {
+	            titulos.add(rs.getString("titulo"));
+	        }
+	        logger.info("Se han cargado los titulos desde la base de datos.");
+
+	    } catch (Exception ex) {
+	        logger.warning(String.format("Error al cargar los titulos: %s", ex.getMessage()));
+	    }
+
+	    return titulos;
+	}
+	
+	public Serie getSeriePorTitulo(String titulo) {
+	    Serie serie = null;
+	    String sql = "SELECT * FROM Serie WHERE titulo = ? LIMIT 1";
+
+	    try (Connection con = DriverManager.getConnection(connectionString);
+	         PreparedStatement pStmt = con.prepareStatement(sql)) {
 
 
+	        // Configurar el parámetro del código
+	        pStmt.setString(1, titulo);
 
+	        // Ejecutar la consulta
+	        ResultSet rs = pStmt.executeQuery();
 
+	        // Procesar el resultado
+	        if (rs.next()) {
+	            serie = new Serie(
+	                rs.getString("codigo"),
+	                rs.getString("titulo"),
+	                rs.getInt("anio"),
+	                rs.getString("protagonista"),
+	                rs.getInt("edadRecomendada"),
+	                rs.getInt("numeroTemporadas"),
+	                rs.getString("genero"),
+	                rs.getString("rutaFoto")
+	            );
+	        }
+
+	        // Cerrar el ResultSet
+	        rs.close();
+
+	    } catch (NumberFormatException ex) {
+	        logger.warning(String.format("El código %s no es un número válido: %s", titulo, ex.getMessage()));
+	    } catch (Exception ex) {
+	        logger.warning(String.format("Error al recuperar la serie con código %s: %s", titulo, ex.getMessage()));
+	    }
+
+	    return serie;
+	}
 
 }
