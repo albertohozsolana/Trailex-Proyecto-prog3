@@ -1,130 +1,130 @@
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha creado la tabla 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha creado la tabla 
-[12/10/24 00:16:11] [INFORMACIÓN] Se han borrado los datos 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=001, titulo=Arrow, protagonista=Oliver Queen, anio=2012, edadRecomendada=16, numeroTemporadas=8, genero=Aventura, rutaFoto=resources/images/arrow.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=002, titulo=The Sex Lives of College Girls, protagonista=Kimberly, anio=2021, edadRecomendada=18, numeroTemporadas=2, genero=Comedia, rutaFoto=resources/images/thesexlivesofcollegegirls.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=003, titulo=Teen Wolf, protagonista=Scott McCall, anio=2011, edadRecomendada=14, numeroTemporadas=6, genero=Ciencia Ficción, rutaFoto=resources/images/teenwolf.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=004, titulo=Shadowhunters, protagonista=Clary Fray, anio=2016, edadRecomendada=14, numeroTemporadas=3, genero=Ciencia Ficción, rutaFoto=resources/images/shadowhunters.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=005, titulo=Lucifer, protagonista=Lucifer Morningstar, anio=2016, edadRecomendada=16, numeroTemporadas=6, genero=Ciencia Ficción, rutaFoto=resources/images/lucifer.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=006, titulo=DC's Legends of Tomorrow, protagonista=Ray Palmer, anio=2016, edadRecomendada=16, numeroTemporadas=7, genero=Ciencia Ficción, rutaFoto=resources/images/dcslegendsoftomorrow.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=007, titulo=Flash, protagonista=Barry Allen, anio=2014, edadRecomendada=14, numeroTemporadas=9, genero=Ciencia Ficción, rutaFoto=resources/images/flash.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=008, titulo=Supergirl, protagonista=Kara Zor-El, anio=2015, edadRecomendada=12, numeroTemporadas=6, genero=Ciencia Ficción, rutaFoto=resources/images/supergirl.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=009, titulo=Greenhouse Academy, protagonista=Hayley Shumway, anio=2017, edadRecomendada=10, numeroTemporadas=4, genero=Drama, rutaFoto=resources/images/greenhouseacademy.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=010, titulo=The Vampire Diaries, protagonista=Elena Gilbert, anio=2009, edadRecomendada=14, numeroTemporadas=8, genero=Ciencia Ficción, rutaFoto=resources/images/thevampirediaries.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=011, titulo=The Originals, protagonista=Elijah Mikaelson, anio=2013, edadRecomendada=16, numeroTemporadas=5, genero=Ciencia Ficción, rutaFoto=resources/images/theoriginals.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=012, titulo=Legacies, protagonista=Hope Mikaelson, anio=2018, edadRecomendada=14, numeroTemporadas=4, genero=Ciencia Ficción, rutaFoto=resources/images/legacies.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=013, titulo=Outer Banks, protagonista=John B, anio=2020, edadRecomendada=16, numeroTemporadas=3, genero=Aventura, rutaFoto=resources/images/outerbanks.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=014, titulo=Bienvenidos a Eden, protagonista=Amaia, anio=2022, edadRecomendada=16, numeroTemporadas=2, genero=Terror, rutaFoto=resources/images/bienvenidosaeden.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=015, titulo=Sombra y Hueso, protagonista=Alina Starkov, anio=2021, edadRecomendada=14, numeroTemporadas=2, genero=Ciencia Ficción, rutaFoto=resources/images/sombrayhueso.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=016, titulo=Alguien Está Mintiendo, protagonista=Bronwyn Rojas, anio=2021, edadRecomendada=14, numeroTemporadas=2, genero=Drama, rutaFoto=resources/images/alguienestamintiendo.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=017, titulo=The Society, protagonista=Allie Pressman, anio=2019, edadRecomendada=16, numeroTemporadas=1, genero=Ciencia Ficción, rutaFoto=resources/images/thesociety.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=018, titulo=Riverdale, protagonista=Archie Andrews, anio=2017, edadRecomendada=16, numeroTemporadas=7, genero=Drama, rutaFoto=resources/images/riverdale.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=019, titulo=The A List, protagonista=Mia, anio=2018, edadRecomendada=12, numeroTemporadas=2, genero=Terror, rutaFoto=resources/images/thealist.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=020, titulo=Daybreak, protagonista=Josh Wheeler, anio=2019, edadRecomendada=16, numeroTemporadas=1, genero=Aventura, rutaFoto=resources/images/daybreak.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=021, titulo=The Warrior Nun, protagonista=Ava Silva, anio=2020, edadRecomendada=16, numeroTemporadas=2, genero=Aventura, rutaFoto=resources/images/thewarriornun.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=022, titulo=Pretty Little Liars, protagonista=Aria Montgomery, anio=2010, edadRecomendada=14, numeroTemporadas=7, genero=Drama, rutaFoto=resources/images/prettylittleliars.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=023, titulo=Prison Break, protagonista=Michael Scofield, anio=2005, edadRecomendada=16, numeroTemporadas=5, genero=Drama, rutaFoto=resources/images/prisonbreak.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=024, titulo=Por 13 Razones, protagonista=Clay Jensen, anio=2017, edadRecomendada=16, numeroTemporadas=4, genero=Drama, rutaFoto=resources/images/por13razones.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=025, titulo=The 100, protagonista=Clarke Griffin, anio=2014, edadRecomendada=14, numeroTemporadas=7, genero=Ciencia Ficción, rutaFoto=resources/images/the100.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=026, titulo=The Rain, protagonista=Simone Andersen, anio=2018, edadRecomendada=16, numeroTemporadas=3, genero=Ciencia Ficción, rutaFoto=resources/images/therain.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=027, titulo=Stranger Things, protagonista=Eleven, anio=2016, edadRecomendada=16, numeroTemporadas=4, genero=Ciencia Ficción, rutaFoto=resources/images/strangerthings.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=028, titulo=Manifest, protagonista=Michaela Stone, anio=2018, edadRecomendada=14, numeroTemporadas=4, genero=Ciencia Ficción, rutaFoto=resources/images/manifest.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=029, titulo=How I Met Your Mother, protagonista=Ted Mosby, anio=2005, edadRecomendada=16, numeroTemporadas=9, genero=Comedia, rutaFoto=resources/images/howimetyourmother.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=030, titulo=Emily in Paris, protagonista=Emily Cooper, anio=2020, edadRecomendada=12, numeroTemporadas=3, genero=Romance, rutaFoto=resources/images/emilyinparis.jpg] 
-[12/10/24 00:16:11] [INFORMACIÓN] 30 Series insertadas en la BBDD 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario LunarLion insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario StarSurfer insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario CometChameleon insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario GalaxyGuard insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario DarkRaven insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario SteelSamurai insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario NeonTurtle insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario EclipseElephant insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario WildCat insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario SilverHawk insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario EclipseEagle insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario SolarSloth insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario AsteroidAce insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario RocketRam insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario AstroAlligator insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario SuperNovita insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario SkySwan insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario PolarPenguin insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario PlasmaParrot insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario SpaceSnail insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario GadgetGuru insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario GalaxyGator insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario OceanBreeze insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario ZenZebra insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario VenusViper insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario Skywalker77 insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario MysticQueen insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario GreenGoblin insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario CodeKnight insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario NovaNinja insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario MeteorMongoose insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario GlitchGuru insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario MarsMaverick insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario OrbitOtter insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario SolarFlare insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario StormShark insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario MagicMantis insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario CometCougar insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario StellarStork insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario ShadowHunter insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario SpaceSquirrel insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario RogueRaven insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario JungleJaguar insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario QuantumQueen insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario PhantomFox insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario ElectricEagle insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario MeteorMoose insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario SpaceSeahorse insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario CosmicCrab insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario VortexCulture insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario SkySphinx insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario VortexVulture insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario TurboTiger insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario PixelPanda insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario FireDragon insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario NebulaNerd insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario AstroArmadillo insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario GoldenTiger insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario CosmosCrane insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario RocketRhinoceros insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario AstroApe insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario FlamingoFlyer insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario OrbitOcelot insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario LunarLeopard insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario SuperNova insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario AstroAnt insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario SpaceSquid insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario ThunderKing insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario PlasmaPenguin insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario IronIguana insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario OrbitOrca insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario HorizonHawk insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario SolarSeal insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario GalaxyGiraffe insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario CrimsonWolf insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario StellarSnake insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario AsteroidAxolotl insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario GalaxyGecko insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario CometRider insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario BluePhoenix insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario Starlight insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario FrostWizard insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario BlazeFalcon insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario NebulaNarwhal insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario RocketRaccoon insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario CyberNinja insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario PlutoPanther insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario MightyBear insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario Whirlwind insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario LunarLemur insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario AuroraWolf insertado correctamente. 
-[12/10/24 00:16:11] [INFORMACIÓN] Usuario luiscoro insertado correctamente. 
-[12/10/24 00:16:24] [INFORMACIÓN] Se han guardado los comics en un CSV. 
-[12/10/24 00:16:24] [INFORMACIÓN] Se ha borrado la tabla Serie. 
-[12/10/24 00:16:24] [INFORMACIÓN] Se ha borrado la tabla Usuario. 
-[12/10/24 00:16:24] [INFORMACIÓN] Se ha borrado el fichero de la BBDD. 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha creado la tabla 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha creado la tabla 
+[12/10/24 08:49:23] [INFORMACIÓN] Se han borrado los datos 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=001, titulo=Arrow, protagonista=Oliver Queen, anio=2012, edadRecomendada=16, numeroTemporadas=8, genero=Aventura, rutaFoto=resources/images/arrow.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=002, titulo=The Sex Lives of College Girls, protagonista=Kimberly, anio=2021, edadRecomendada=18, numeroTemporadas=2, genero=Comedia, rutaFoto=resources/images/thesexlivesofcollegegirls.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=003, titulo=Teen Wolf, protagonista=Scott McCall, anio=2011, edadRecomendada=14, numeroTemporadas=6, genero=Ciencia Ficción, rutaFoto=resources/images/teenwolf.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=004, titulo=Shadowhunters, protagonista=Clary Fray, anio=2016, edadRecomendada=14, numeroTemporadas=3, genero=Ciencia Ficción, rutaFoto=resources/images/shadowhunters.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=005, titulo=Lucifer, protagonista=Lucifer Morningstar, anio=2016, edadRecomendada=16, numeroTemporadas=6, genero=Ciencia Ficción, rutaFoto=resources/images/lucifer.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=006, titulo=DC's Legends of Tomorrow, protagonista=Ray Palmer, anio=2016, edadRecomendada=16, numeroTemporadas=7, genero=Ciencia Ficción, rutaFoto=resources/images/dcslegendsoftomorrow.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=007, titulo=Flash, protagonista=Barry Allen, anio=2014, edadRecomendada=14, numeroTemporadas=9, genero=Ciencia Ficción, rutaFoto=resources/images/flash.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=008, titulo=Supergirl, protagonista=Kara Zor-El, anio=2015, edadRecomendada=12, numeroTemporadas=6, genero=Ciencia Ficción, rutaFoto=resources/images/supergirl.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=009, titulo=Greenhouse Academy, protagonista=Hayley Shumway, anio=2017, edadRecomendada=10, numeroTemporadas=4, genero=Drama, rutaFoto=resources/images/greenhouseacademy.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=010, titulo=The Vampire Diaries, protagonista=Elena Gilbert, anio=2009, edadRecomendada=14, numeroTemporadas=8, genero=Ciencia Ficción, rutaFoto=resources/images/thevampirediaries.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=011, titulo=The Originals, protagonista=Elijah Mikaelson, anio=2013, edadRecomendada=16, numeroTemporadas=5, genero=Ciencia Ficción, rutaFoto=resources/images/theoriginals.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=012, titulo=Legacies, protagonista=Hope Mikaelson, anio=2018, edadRecomendada=14, numeroTemporadas=4, genero=Ciencia Ficción, rutaFoto=resources/images/legacies.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=013, titulo=Outer Banks, protagonista=John B, anio=2020, edadRecomendada=16, numeroTemporadas=3, genero=Aventura, rutaFoto=resources/images/outerbanks.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=014, titulo=Bienvenidos a Eden, protagonista=Amaia, anio=2022, edadRecomendada=16, numeroTemporadas=2, genero=Terror, rutaFoto=resources/images/bienvenidosaeden.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=015, titulo=Sombra y Hueso, protagonista=Alina Starkov, anio=2021, edadRecomendada=14, numeroTemporadas=2, genero=Ciencia Ficción, rutaFoto=resources/images/sombrayhueso.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=016, titulo=Alguien Está Mintiendo, protagonista=Bronwyn Rojas, anio=2021, edadRecomendada=14, numeroTemporadas=2, genero=Drama, rutaFoto=resources/images/alguienestamintiendo.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=017, titulo=The Society, protagonista=Allie Pressman, anio=2019, edadRecomendada=16, numeroTemporadas=1, genero=Ciencia Ficción, rutaFoto=resources/images/thesociety.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=018, titulo=Riverdale, protagonista=Archie Andrews, anio=2017, edadRecomendada=16, numeroTemporadas=7, genero=Drama, rutaFoto=resources/images/riverdale.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=019, titulo=The A List, protagonista=Mia, anio=2018, edadRecomendada=12, numeroTemporadas=2, genero=Terror, rutaFoto=resources/images/thealist.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=020, titulo=Daybreak, protagonista=Josh Wheeler, anio=2019, edadRecomendada=16, numeroTemporadas=1, genero=Aventura, rutaFoto=resources/images/daybreak.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=021, titulo=The Warrior Nun, protagonista=Ava Silva, anio=2020, edadRecomendada=16, numeroTemporadas=2, genero=Aventura, rutaFoto=resources/images/thewarriornun.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=022, titulo=Pretty Little Liars, protagonista=Aria Montgomery, anio=2010, edadRecomendada=14, numeroTemporadas=7, genero=Drama, rutaFoto=resources/images/prettylittleliars.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=023, titulo=Prison Break, protagonista=Michael Scofield, anio=2005, edadRecomendada=16, numeroTemporadas=5, genero=Drama, rutaFoto=resources/images/prisonbreak.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=024, titulo=Por 13 Razones, protagonista=Clay Jensen, anio=2017, edadRecomendada=16, numeroTemporadas=4, genero=Drama, rutaFoto=resources/images/por13razones.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=025, titulo=The 100, protagonista=Clarke Griffin, anio=2014, edadRecomendada=14, numeroTemporadas=7, genero=Ciencia Ficción, rutaFoto=resources/images/the100.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=026, titulo=The Rain, protagonista=Simone Andersen, anio=2018, edadRecomendada=16, numeroTemporadas=3, genero=Ciencia Ficción, rutaFoto=resources/images/therain.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=027, titulo=Stranger Things, protagonista=Eleven, anio=2016, edadRecomendada=16, numeroTemporadas=4, genero=Ciencia Ficción, rutaFoto=resources/images/strangerthings.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=028, titulo=Manifest, protagonista=Michaela Stone, anio=2018, edadRecomendada=14, numeroTemporadas=4, genero=Ciencia Ficción, rutaFoto=resources/images/manifest.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=029, titulo=How I Met Your Mother, protagonista=Ted Mosby, anio=2005, edadRecomendada=16, numeroTemporadas=9, genero=Comedia, rutaFoto=resources/images/howimetyourmother.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=030, titulo=Emily in Paris, protagonista=Emily Cooper, anio=2020, edadRecomendada=12, numeroTemporadas=3, genero=Romance, rutaFoto=resources/images/emilyinparis.jpg] 
+[12/10/24 08:49:23] [INFORMACIÓN] 30 Series insertadas en la BBDD 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario LunarLion insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario StarSurfer insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario CometChameleon insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario GalaxyGuard insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario DarkRaven insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario SteelSamurai insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario NeonTurtle insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario EclipseElephant insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario WildCat insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario SilverHawk insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario EclipseEagle insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario SolarSloth insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario AsteroidAce insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario RocketRam insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario AstroAlligator insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario SuperNovita insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario SkySwan insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario PolarPenguin insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario PlasmaParrot insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario SpaceSnail insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario GadgetGuru insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario GalaxyGator insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario OceanBreeze insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario ZenZebra insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario VenusViper insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario Skywalker77 insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario MysticQueen insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario GreenGoblin insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario CodeKnight insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario NovaNinja insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario MeteorMongoose insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario GlitchGuru insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario MarsMaverick insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario OrbitOtter insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario SolarFlare insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario StormShark insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario MagicMantis insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario CometCougar insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario StellarStork insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario ShadowHunter insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario SpaceSquirrel insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario RogueRaven insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario JungleJaguar insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario QuantumQueen insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario PhantomFox insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario ElectricEagle insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario MeteorMoose insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario SpaceSeahorse insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario CosmicCrab insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario VortexCulture insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario SkySphinx insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario VortexVulture insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario TurboTiger insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario PixelPanda insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario FireDragon insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario NebulaNerd insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario AstroArmadillo insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario GoldenTiger insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario CosmosCrane insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario RocketRhinoceros insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario AstroApe insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario FlamingoFlyer insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario OrbitOcelot insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario LunarLeopard insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario SuperNova insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario AstroAnt insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario SpaceSquid insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario ThunderKing insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario PlasmaPenguin insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario IronIguana insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario OrbitOrca insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario HorizonHawk insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario SolarSeal insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario GalaxyGiraffe insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario CrimsonWolf insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario StellarSnake insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario AsteroidAxolotl insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario GalaxyGecko insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario CometRider insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario BluePhoenix insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario Starlight insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario FrostWizard insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario BlazeFalcon insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario NebulaNarwhal insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario RocketRaccoon insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario CyberNinja insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario PlutoPanther insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario MightyBear insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario Whirlwind insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario LunarLemur insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario AuroraWolf insertado correctamente. 
+[12/10/24 08:49:24] [INFORMACIÓN] Usuario luiscoro insertado correctamente. 
+[12/10/24 08:49:41] [INFORMACIÓN] Se han guardado los comics en un CSV. 
+[12/10/24 08:49:41] [INFORMACIÓN] Se ha borrado la tabla Serie. 
+[12/10/24 08:49:41] [INFORMACIÓN] Se ha borrado la tabla Usuario. 
+[12/10/24 08:49:41] [INFORMACIÓN] Se ha borrado el fichero de la BBDD. 

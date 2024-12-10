@@ -90,6 +90,7 @@ public class Trailex_Principal extends JFrame{
 
 
 	public Trailex_Principal() {
+		
 		gestorBD.crearBBDD();
 
 		gestorBD.crearTablaUsuario();
@@ -98,8 +99,8 @@ public class Trailex_Principal extends JFrame{
 		gestorBD.insertarUsuarios(gestorBD.cargarUsuariosDesdeCSV());
 		
 		
-		IniciarSesion();	// Usuario: usuario
-							// Contraseña: contraseña
+		IniciarSesion();	// Usuario: luiscoro
+							// Contraseña: luiscoro
 		
 	}
 	
@@ -1131,6 +1132,7 @@ public class Trailex_Principal extends JFrame{
 	    btnFavoritos.addActionListener(e -> {
 	        if (usuarioActual.esFavorita(serie)) {
 	            usuarioActual.eliminarDeFavoritos(serie);
+	            gestorBD.eliminarSerieFavorita(usuarioActual.getNickname(), serie.getCodigo());
 	            btnFavoritos.setText("Añadir a Favoritos");
 
 	            // Si estamos en la vista de Favoritos, refrescamos la lista
@@ -1143,7 +1145,16 @@ public class Trailex_Principal extends JFrame{
 	            }
 	        } else {
 	            usuarioActual.agregarAFavoritos(serie);
+	            gestorBD.añadirSerieFavorita(usuarioActual.getNickname(), serie.getCodigo());
 	            btnFavoritos.setText("Eliminar de Favoritos");
+	            
+	            if (panel_central.getComponentCount() > 0) {
+	                Component firstComponent = panel_central.getComponent(0);
+	                if (firstComponent instanceof JLabel && 
+	                    ((JLabel) firstComponent).getText().equals("Favoritos")) {
+	                    mostrarFavoritos();
+	                }
+	            }
 	        }
 	    });
 	    
@@ -1244,9 +1255,7 @@ public class Trailex_Principal extends JFrame{
 	    btnmod.setBackground(Trailex_Principal.turquesa);
 	    btnmod.addActionListener(e -> {
 	    	modificar(serie);
-	    	ventanaInfoSerie.revalidate();
-	    	ventanaInfoSerie.repaint();
-	    	
+	    	ventanaInfoSerie.dispose();
 	    	});
 	    
 	    // BORRAR SERIE
@@ -1255,7 +1264,7 @@ public class Trailex_Principal extends JFrame{
 	    btn_borrar.setForeground(Color.BLACK);
 	    btn_borrar.addActionListener(e -> {
 	    	borrarSerie(serie);
-	    	
+	    	ventanaInfoSerie.dispose();
 	    	});
 	    
 	    // Añadir la barra de progreso al panel de detalles

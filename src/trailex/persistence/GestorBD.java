@@ -681,5 +681,89 @@ public class GestorBD {
 
 	    return serie;
 	}
+	
+	public void añadirSerieFavorita(String nickname, String codigoSerie) {
+	    String sqlSelect = "SELECT favoritos FROM Usuario WHERE nickname = ?";
+	    String sqlUpdate = "UPDATE Usuario SET favoritos = ? WHERE nickname = ?";
+
+	    try (Connection con = DriverManager.getConnection(connectionString);
+	         PreparedStatement selectStmt = con.prepareStatement(sqlSelect);
+	         PreparedStatement updateStmt = con.prepareStatement(sqlUpdate)) {
+
+	        // Obtener la lista actual de favoritos
+	        selectStmt.setString(1, nickname);
+	        ResultSet rs = selectStmt.executeQuery();
+
+	        if (rs.next()) {
+	            String favoritos = rs.getString("favoritos");
+	            List<String> listaFavoritos = new ArrayList<>();
+	            if (favoritos != null && !favoritos.isEmpty()) {
+	                listaFavoritos = new ArrayList<>(List.of(favoritos.split(",")));
+	            }
+
+	            // Añadir la nueva serie si no existe ya
+	            if (!listaFavoritos.contains(codigoSerie)) {
+	                listaFavoritos.add(codigoSerie);
+	                String nuevosFavoritos = String.join(",", listaFavoritos);
+
+	                // Actualizar la base de datos
+	                updateStmt.setString(1, nuevosFavoritos);
+	                updateStmt.setString(2, nickname);
+	                updateStmt.executeUpdate();
+	                logger.info(String.format("Serie con código %s añadida a favoritos del usuario %s", codigoSerie, nickname));
+	            } else {
+	                logger.warning(String.format("La serie con código %s ya está en los favoritos del usuario %s", codigoSerie, nickname));
+	            }
+	        }
+	        rs.close();
+	    } catch (Exception ex) {
+	        logger.warning(String.format("Error al añadir serie favorita para el usuario %s: %s", nickname, ex.getMessage()));
+	    }
+	}
+	
+	public void eliminarSerieFavorita(String nickname, String codigoSerie) {
+		System.out.println(nickname);
+		System.out.println(codigoSerie);
+	    String sqlSelect = "SELECT favoritos FROM Usuario WHERE nickname = ?";
+	    String sqlUpdate = "UPDATE Usuario SET favoritos = ? WHERE nickname = ?";
+
+	    try (Connection con = DriverManager.getConnection(connectionString);
+	         PreparedStatement selectStmt = con.prepareStatement(sqlSelect);
+	         PreparedStatement updateStmt = con.prepareStatement(sqlUpdate)) {
+
+	        // Obtener la lista actual de favoritos
+	        selectStmt.setString(1, nickname);
+	        System.out.println(selectStmt);
+	        ResultSet rs = selectStmt.executeQuery();
+
+	        if (rs.next()) {
+	            String favoritos = rs.getString("favoritos");
+	            List<String> listaFavoritos = new ArrayList<>();
+	            if (favoritos != null && !favoritos.isEmpty()) {
+	                listaFavoritos = new ArrayList<>(List.of(favoritos.split(",")));
+	            }
+
+	            // Eliminar la serie si existe
+	            if (listaFavoritos.contains(codigoSerie)) {
+	                listaFavoritos.remove(codigoSerie);
+	                String nuevosFavoritos = String.join(",", listaFavoritos);
+
+	                // Actualizar la base de datos
+	                updateStmt.setString(1, nuevosFavoritos);
+	                updateStmt.setString(2, nickname);
+	                System.out.println(updateStmt);
+	                updateStmt.executeUpdate();
+	                logger.info(String.format("Serie con código %s eliminada de favoritos del usuario %s", codigoSerie, nickname));
+	            } else {
+	                logger.warning(String.format("La serie con código %s no está en los favoritos del usuario %s", codigoSerie, nickname));
+	            }
+	        }
+	        rs.close();
+	    } catch (Exception ex) {
+	        logger.warning(String.format("Error al eliminar serie favorita para el usuario %s: %s", nickname, ex.getMessage()));
+	    }
+	}
+
+
 
 }
