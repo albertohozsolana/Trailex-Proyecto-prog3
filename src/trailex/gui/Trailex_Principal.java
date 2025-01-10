@@ -70,7 +70,7 @@ public class Trailex_Principal extends JFrame{
 	private JFrame vPrincipal;
 	
 	private JButton boton_menu;
-	static Color turquesa=new Color(0x5FA6AD);
+	public static Color turquesa=new Color(0x5FA6AD);
 	private JPanel  p_grid_comedia, p_grid_romance, p_grid_aventura, p_grid_drama, p_grid_cf, p_grid_terror;
 	private JTextField searchBar;
     private JComboBox<String> genreSelector;
@@ -134,9 +134,16 @@ public class Trailex_Principal extends JFrame{
 	        if (gestorBD.esUsuarioValido(user, pass)) {
 	            inicio.dispose();
 	            usuarioActual= gestorBD.getUsuarioPorNickname(user);
-	            hilo_carga = new BarraDeCarga();
-	            hilo_carga.setVisible(true);
-	            Iniciar_Trailex();
+	            
+	            hilo_carga = new BarraDeCarga(this);
+	            
+	            //hilo_carga.addLoadingCompleteListener(this::Iniciar_Trailex);
+	            hilo_carga.addLoadingCompleteListener(() -> {
+	                setVisible(true); // Mostramos la ventana principal
+	            });
+                hilo_carga.setVisible(true);
+                hilo_carga.startLoading();
+	            
 	        } else {
 	            JOptionPane.showMessageDialog(inicio, "Credenciales incorrectas", "Error", JOptionPane.ERROR_MESSAGE);
 	        }
@@ -199,23 +206,9 @@ public class Trailex_Principal extends JFrame{
 	    inicio.setLocationRelativeTo(null);
 	}
 
-	
 
+	public void Iniciar_Trailex() {
 
-
-
-	
-	private void Iniciar_Trailex() {
-		
-		
-		
-		
-		
-		
-
-		
-		
-		vPrincipal = this;
 		// Creamos el panel con su disposición (BorderLayout) donde se mostrará la app
 				panel_principal = new JPanel(new BorderLayout());
 				panel_principal.setBackground(Color.black);
@@ -350,15 +343,7 @@ public class Trailex_Principal extends JFrame{
 				panel_principal.add(scroll, BorderLayout.CENTER);
 				
 				
-				//LO HE AÑADIDO PERO NO SE ABRE SINO
-				/*
-				if (hilo_carga.isHilo_inicio_terminado()) {
-					hilo_carga.dispose();
-					this.setVisible(true);
-				}
-				*/
-				
-				this.setVisible(true);
+				//this.setVisible(true); esperamos a la barra de carga
 	}
 	
 	//Getters para acceder desde otra clase

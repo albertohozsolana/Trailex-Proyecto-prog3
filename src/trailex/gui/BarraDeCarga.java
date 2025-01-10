@@ -3,6 +3,7 @@ package trailex.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -12,107 +13,81 @@ import javax.swing.JProgressBar;
 import javax.swing.SwingUtilities;
 
 public class BarraDeCarga extends JFrame {
+    private JProgressBar progressBar;
+    private final Trailex_Principal ventanaPrincipal;
+    private Runnable onLoadingComplete;
+    private static final int MAX_VALUE = 100;
 
-	    private static final long serialVersionUID = 1L;
-	    
-	    // Valor máximo a contar
-	    private static final long MAX_VALUE = 1_00;
-	    
-	    //Booleano que me indica si ha terminado el thread
-	    public static boolean hilo_inicio_terminado = false;
-	    
-	    // Progress Bar
-	    public JProgressBar progressBar = new JProgressBar(0, 100);
-	    
-	    // Clase que implementa el hilo contador
-	    public Contador contador;
-	    
-	    public BarraDeCarga() {        
-	
-	    	// Visualización del % en la Progress Bar
-	    	progressBar.setStringPainted(true);  
-	    	progressBar.setForeground(Color.GREEN);
-	    	
-	        this.setLayout(new BorderLayout());
-	        
-	        
-	        this.add(progressBar, BorderLayout.CENTER);
-	        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        this.setSize(500, 100);
-	        this.setTitle("Cargando...");
-	        this.setLocationRelativeTo(null);
-	        
-	        JLabel imagenCarga = new JLabel();
-	        ImageIcon icon = new ImageIcon("fotocarga.jpg");
-	        imagenCarga.setIcon(icon);
-	        imagenCarga.setHorizontalAlignment(JLabel.CENTER);
-	        this.add(imagenCarga, BorderLayout.NORTH);
-	        
-	        contador = new Contador();
-	        contador.start();
-	        
-	        setVisible(true);
-	    }
-	    
-	    public boolean isHilo_inicio_terminado() {
-			return hilo_inicio_terminado;
-		}
+    public BarraDeCarga(Trailex_Principal ventanaPrincipal) {
+        this.ventanaPrincipal = ventanaPrincipal;
+        inicializarVentana();
+    }
 
+    public void addLoadingCompleteListener(Runnable listener) {
+        this.onLoadingComplete = listener;
+    }
 
-		public class Contador extends Thread {
-	    	@Override
-	    	public void run() {
-	    		int progreso;
+    public void startLoading() {
+        new Thread(() -> {
+            try {
+                for (int i = 0; i <= MAX_VALUE; i++) {
+                    final int progress = i;
+                    
+                    Thread.sleep(50);
+                  
+                    
+                    SwingUtilities.invokeLater(() -> updateProgressBar(progress));
+                    
+                    if (progress == 5) {
+                    	//cuando el progress vaya en 5 inicializaremos trailex, pero como es algo que requiere mucha carga
+                    	//necesitamos hacer un hilo separado para que no bloquee mi progressbar al querer cargar
+                    	inicializarTrailex();
+                    }
+                }
+                
+                // Una vez completada la carga, notificar y cerrar
+                SwingUtilities.invokeLater(() -> {
+                    dispose();
+                    if (onLoadingComplete != null) {
+                        onLoadingComplete.run();
+                    }
+                });
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }).start();
+    }
+    
+    private void inicializarTrailex() {
+        // Inicializar la ventana en segundo plano
+        new Thread(() -> {
+            try {
+                Thread.sleep(2000);
+                ventanaPrincipal.Iniciar_Trailex();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }).start();
+    }
 
-	    		for (int i=0; i <= MAX_VALUE; i++) {
-	    			// Comprobar si hay que parar el hilo
-					if (Thread.currentThread().isInterrupted()) {
-						updateProgressBar(100);
-						break;
-					}
+    private void updateProgressBar(final int value) {
+        progressBar.setValue(value);
+        progressBar.setString(value + "%");
+    }
 
-	    			// Valor de progreso
-	    			progreso = i;
-	    			
-	    			if (progreso == 100) {
-	    				hilo_inicio_terminado=true;
-	    			}
-	    			// Imprimir en consola
-	    			//System.out.println(String.format("- Hilo '%s' -> %d (%d%%)", Thread.currentThread().getName(), i, progreso));    			
-	    			// Actualizar la Progress Bar
-	    			updateProgressBar(progreso);
-	    			
-	    			try {
-	                    // Simular trabajo
-	                    Thread.sleep(5); // Ajusta el tiempo si quieres que avance más lento o rápido
-	                } catch (InterruptedException e) {
-	                    Thread.currentThread().interrupt(); // Restaurar el estado de interrupción
-	                    break;
-	                }
-	    			
-	            }
-	    		
-	        }
-	    	
-	    }
-		
+    private void inicializarVentana() {
+        setLayout(new BorderLayout(10, 10));
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        setSize(500, 150);
+        setTitle("Cargando...");
+        setLocationRelativeTo(null);
 
-	    // Actualización de la Progress Bar usando SwingUtilities
-		public void updateProgressBar(final int value) { //pq esta en un invoke later
-			SwingUtilities.invokeLater(()->{
-				progressBar.setValue(value);
-				progressBar.setString(String.valueOf(value)+"%");
-				
-				
-			});
-		}
-	    
-		
-	    /*
-	    public static void main(String[] args) {
-	        SwingUtilities.invokeLater(() -> new BarraDeCarga()); 
-	    }
-	    */
-	    
-	
+        progressBar = new JProgressBar(0, MAX_VALUE);
+        progressBar.setStringPainted(true);
+        progressBar.setForeground(Trailex_Principal.turquesa); // Turquesa
+        progressBar.setBackground(Color.BLACK);
+
+        add(progressBar, BorderLayout.CENTER);
+
+    }
 }
