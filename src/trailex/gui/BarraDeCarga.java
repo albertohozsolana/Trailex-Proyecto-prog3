@@ -33,13 +33,13 @@ public class BarraDeCarga extends JFrame {
                 for (int i = 0; i <= MAX_VALUE; i++) {
                     final int progress = i;
                     
-                    Thread.sleep(50);
+                    Thread.sleep(45);
                   
                     
                     SwingUtilities.invokeLater(() -> updateProgressBar(progress));
                     
-                    if (progress == 5) {
-                    	//cuando el progress vaya en 5 inicializaremos trailex, pero como es algo que requiere mucha carga
+                    if (progress == 2) {
+                    	//cuando el progress vaya en 2 inicializaremos trailex, pero como es algo que requiere mucha carga
                     	//necesitamos hacer un hilo separado para que no bloquee mi progressbar al querer cargar
                     	inicializarTrailex();
                     }
@@ -78,9 +78,12 @@ public class BarraDeCarga extends JFrame {
     private void inicializarVentana() {
         setLayout(new BorderLayout(10, 10));
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        setSize(500, 150);
-        setTitle("Cargando...");
+        setSize(400, 90);
+        setTitle("Cargando Trailex");
         setLocationRelativeTo(null);
+        setUndecorated(true);
+
+       System.out.println("Cargando...");
 
         progressBar = new JProgressBar(0, MAX_VALUE);
         progressBar.setStringPainted(true);

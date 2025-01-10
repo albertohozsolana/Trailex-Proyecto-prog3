@@ -16,6 +16,7 @@ public class Main {
         UIManager.put("Button.foreground", Color.DARK_GRAY);
         UIManager.put("ProgressBar.selectionForeground", Color.WHITE); 
         UIManager.put("ProgressBar.selectionBackground", Color.white);
+        UIManager.put("Label.foreground", Trailex_Principal.turquesa); 
         
 		Videoclub.cargarSeries();
 		Trailex_Principal t1 = new Trailex_Principal();
