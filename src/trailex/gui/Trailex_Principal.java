@@ -17,6 +17,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -64,6 +68,9 @@ public class Trailex_Principal extends JFrame {
 	private JPanel panel_principal;
 	private JPanel panel_arriba;
 	private Usuario usuarioActual;
+	
+	private Trailex_Principal trailex_Principal; //ventana trailex
+	
 	private BarraDeCarga hilo_carga;
 
 	private JFrame ventana_portada;
@@ -92,14 +99,16 @@ public class Trailex_Principal extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	public Trailex_Principal() {
-
 		gestorBD.crearBBDD();
 
 		gestorBD.crearTablaUsuario();
 		// Se cargan los datos y se inicializa la BBDD
 		gestorBD.initilizeFromCSV();
 		gestorBD.insertarUsuarios(gestorBD.cargarUsuariosDesdeCSV());
-
+		
+		trailex_Principal= this;
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		
 		IniciarSesion(); // Usuario: luiscoro
 							// Contraseña: luiscoro
 
@@ -139,11 +148,6 @@ public class Trailex_Principal extends JFrame {
 				usuarioActual = gestorBD.getUsuarioPorNickname(user);
 
 				hilo_carga = new BarraDeCarga(this);
-
-				// hilo_carga.addLoadingCompleteListener(this::Iniciar_Trailex);
-				hilo_carga.addLoadingCompleteListener(() -> {
-					setVisible(true); // Mostramos la ventana principal
-				});
 				hilo_carga.setVisible(true);
 				hilo_carga.startLoading();
 
@@ -339,6 +343,17 @@ public class Trailex_Principal extends JFrame {
 
 		// this.setVisible(true); esperamos a la barra de carga
 	}
+	
+	//AÑADIDO NUEVO
+	public void mostrarVentana() {
+	    SwingUtilities.invokeLater(() -> {
+	        this.setExtendedState(MAXIMIZED_BOTH);
+	        this.setVisible(true);
+	        this.revalidate();
+	        this.repaint();
+	    });
+	}
+	
 
 	// Getters para acceder desde otra clase
 
@@ -575,8 +590,10 @@ public class Trailex_Principal extends JFrame {
 			lblFoto.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseEntered(MouseEvent e) {
-					mostrarInfoSerie(serie); // Llamar a esta función para mostrar la información de la serie
+					mostrarPortadaSerie(serie, lblFoto, e.getComponent().getLocationOnScreen());
 				}
+				
+				
 
 			});
 
@@ -832,22 +849,82 @@ public class Trailex_Principal extends JFrame {
 
 			array_series.add(lblFoto);
 
-			lblFoto.addMouseListener(new MouseAdapter() {
+			lblFoto.addMouseListener(new MouseListener() {
+				
 				@Override
-				public void mouseEntered(MouseEvent e) {
-					mostrarInfoSerie(serie); // Llamar a esta función para mostrar la información de la serie
+				public void mouseReleased(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
 				}
-
+				
+				@Override
+				public void mousePressed(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
 				@Override
 				public void mouseExited(MouseEvent e) {
-					cerrarInfoSerie(); // Llamar a esta función para cerrar la información cuando el ratón salga
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					mostrarInfoSerie(serie);
+					if (ventana_portada != null || ventanaInfoSerie.isActive()) {
+						cerrarPortadaSerie();
+					}
+					
 				}
 			});
 
 			// Agregar el panel de cada serie al panel de portadas
 			panelPortadas.add(lblFoto);
+	
 		}
-
+		MouseListener mouselistener = new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				if (ventana_portada != null && ventana_portada.isVisible()) {
+		            cerrarPortadaSerie();
+		        }
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		};
+		
+		panelPortadas.addMouseListener(mouselistener);
+		panelUltimosEstrenos.addMouseListener(mouselistener);
 		// Agregar el panel de portadas al panel principal de "Últimos Estrenos"
 		panelUltimosEstrenos.add(panelPortadas, BorderLayout.CENTER);
 
@@ -891,8 +968,26 @@ public class Trailex_Principal extends JFrame {
 							lblFoto.addMouseListener(new MouseAdapter() {
 								@Override
 								public void mouseEntered(MouseEvent e) {
-									mostrarInfoSerie(serie);
+									mostrarPortadaSerie(serie, lblFoto, e.getComponent().getLocationOnScreen());
+
 								}
+
+								@Override
+								public void mouseExited(MouseEvent e) {
+									if (ventana_portada != null && ventana_portada.isVisible()) {
+							            cerrarPortadaSerie();
+							        }
+								}
+
+								@Override
+								public void mouseWheelMoved(MouseWheelEvent e) {
+									if (ventana_portada != null && ventana_portada.isVisible()) {
+							            cerrarPortadaSerie();
+							        }
+								}
+								
+								
+								
 							});
 
 							panelResultados.add(lblFoto); // Añadir al panel de resultados
@@ -935,6 +1030,9 @@ public class Trailex_Principal extends JFrame {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					mostrarInfoPelicula(pelicula);
+					if (ventana_portada != null || ventanaInfoSerie.isActive()) {
+						cerrarPortadaSerie();
+					}
 				}
 			});
 			;
@@ -1086,6 +1184,10 @@ public class Trailex_Principal extends JFrame {
 		panelDetalles.add(progressBar, BorderLayout.CENTER);
 
 	}
+	
+	
+	
+	
 	//el método recibe la serie sobre la que esta el ratón y su punto en la pantalla
 	public void mostrarInfoSerie(Serie serie) {
 		if (ventanaInfoSerie != null) {
@@ -1270,6 +1372,9 @@ public class Trailex_Principal extends JFrame {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					mostrarInfoSerie(serie); // Muestra la información de la serie
+					if (ventana_portada != null || ventanaInfoSerie.isActive()) {
+						cerrarPortadaSerie();
+					}
 				}
 			});
 
@@ -1287,36 +1392,57 @@ public class Trailex_Principal extends JFrame {
 	
 	
 	//metodo que muestra la ventana con solo la portada mas grande
-	/*
+	
 	public void mostrarPortadaSerie(Serie serie, Component componenteSerie, Point p) {
 		if (ventana_portada != null) {
 			ventana_portada.dispose();
-		} else {
-			ventana_portada = new JFrame();
 		}
 		
-	    if (componenteSerie.isShowing()) {
-	        p = componenteSerie.getLocationOnScreen(); // Usa la ubicación en pantalla si el componente es visible
-	    } else {
-	        p = new Point(100, 100); // Ubicación predeterminada en caso de que el componente no esté visible
-	    }
-		ventana_portada.setLocation(p);
-		
-		Dimension dimension = componenteSerie.getSize();
-		int ancho = (int) dimension.getWidth(); 
-		int alto = (int) dimension.getHeight(); 
+	
+		ImageIcon originalIcon = new ImageIcon(serie.getRutaFoto());
+		int windowWidth = (int)(componenteSerie.getWidth() * 1.5);
+	    int windowHeight = (int)(componenteSerie.getHeight() * 1.5);
+	
+		ventana_portada = new JFrame("Información de la Serie");
+		ventana_portada.setSize(windowWidth, windowHeight);
+		ventana_portada.setLayout(new BorderLayout());
+	
+		int x = p.x - (windowWidth - componenteSerie.getWidth()) / 2;
+		int y = p.y - (windowHeight - componenteSerie.getHeight()) / 2;
+		ventana_portada.setLocation(x, y);
+	
+		Image image = originalIcon.getImage().getScaledInstance(windowWidth, windowHeight, Image.SCALE_SMOOTH);
+	    JLabel lblFoto = new JLabel(new ImageIcon(image));
+	    
+	    lblFoto.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				mostrarInfoSerie(serie);
+				if (ventana_portada != null || ventanaInfoSerie.isActive()) {
+					cerrarPortadaSerie();
+				}
 
-		ventana_portada.setSize(ancho, alto);
+			}
+		});
+	    
+	    //HECHO CON IA
+	 // Agregar un MouseWheelListener para detectar el desplazamiento del ratón
+	    lblFoto.addMouseWheelListener(new MouseWheelListener() {
+	        @Override
+	        public void mouseWheelMoved(MouseWheelEvent e) {
+	            // Si el scroll es hacia abajo (positivo)
+	            if (e.getWheelRotation() > 0) {
+	                cerrarPortadaSerie(); // Cerrar la ventana si se hace scroll hacia abajo
+	            }
+	        }
+	    });
+	    
+		ventana_portada.setContentPane(lblFoto);
+		
 		ventana_portada.setUndecorated(true);
-		
-		ventana_portada.getContentPane().add(componenteSerie);
-		
 		ventana_portada.setVisible(true);
 	
 	}
-	*/
-	
-	
 
 	public void modificar(Serie serie) {
 		JPanel panel = new JPanel(new GridLayout(6, 2));

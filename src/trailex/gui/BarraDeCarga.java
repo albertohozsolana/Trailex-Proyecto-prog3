@@ -1,3 +1,4 @@
+
 package trailex.gui;
 
 import java.awt.BorderLayout;
@@ -11,12 +12,16 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.SwingUtilities;
+import javax.swing.Timer;
+
+
 
 public class BarraDeCarga extends JFrame {
     private JProgressBar progressBar;
     private final Trailex_Principal ventanaPrincipal;
     private Runnable onLoadingComplete;
     private static final int MAX_VALUE = 100;
+    private volatile boolean initializationComplete = false;
 
     public BarraDeCarga(Trailex_Principal ventanaPrincipal) {
         this.ventanaPrincipal = ventanaPrincipal;
@@ -27,52 +32,79 @@ public class BarraDeCarga extends JFrame {
         this.onLoadingComplete = listener;
     }
 
-    public void startLoading() {
-        new Thread(() -> {
-            try {
-                for (int i = 0; i <= MAX_VALUE; i++) {
-                    final int progress = i;
-                    
-                    Thread.sleep(45);
-                  
-                    
-                    SwingUtilities.invokeLater(() -> updateProgressBar(progress));
-                    
-                    if (progress == 2) {
-                    	//cuando el progress vaya en 2 inicializaremos trailex, pero como es algo que requiere mucha carga
-                    	//necesitamos hacer un hilo separado para que no bloquee mi progressbar al querer cargar
-                    	inicializarTrailex();
-                    }
-                }
-                
-                // Una vez completada la carga, notificar y cerrar
-                SwingUtilities.invokeLater(() -> {
-                    dispose();
-                    if (onLoadingComplete != null) {
-                        onLoadingComplete.run();
-                    }
-                });
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-        }).start();
-    }
-    
     private void inicializarTrailex() {
-        // Inicializar la ventana en segundo plano
         new Thread(() -> {
             try {
                 Thread.sleep(2000);
                 ventanaPrincipal.Iniciar_Trailex();
+                initializationComplete = true;
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
         }).start();
     }
 
+    public void startLoading() {
+        // Iniciar la inicialización en segundo plano
+        inicializarTrailex();
+        
+        // Hilo para la animación de la barra
+        Thread progressThread = new Thread(() -> {
+            try {
+                int progress = 0;
+                while (progress < MAX_VALUE) {
+                    Thread.sleep(45);
+                    
+                    // Si estamos entre 20 y 50, empezaremos a inicializar y a cargar los datos, aquí se trabará un poco
+                    if (progress >= 20 && progress <= 50) {
+                        if (!initializationComplete) {
+                            // avanzamos lentamente mientras se inicializa
+                            if (Math.random() < 0.3) { //Ponemos para que avance a veces y así van cargando los datos aunque se trabe un poco
+                                progress++;
+                            }
+                        } else {
+                            //cuando hayamos acabado de cargar, vamos aún más rápido
+                            progress += 2;
+                        }
+                    } else {
+                        // sino avanzamos normal de 1 en 1
+                        progress++;
+                    }
+                    
+                    final int currentProgress = Math.min(progress, MAX_VALUE);
+                    SwingUtilities.invokeLater(() -> updateProgressBar(currentProgress));
+                    
+                    // Si llegamos al 60% y la inicialización no está completa, esperar
+                    if (progress >= 60 && !initializationComplete) {
+                        while (!initializationComplete) {
+                            Thread.sleep(100);
+                        }
+                    }
+                }
+                
+                // Completar la carga
+                SwingUtilities.invokeLater(() -> {
+                    dispose();
+                    if (onLoadingComplete != null) {
+                        onLoadingComplete.run();
+                    }
+                    ventanaPrincipal.mostrarVentana();
+                });
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        progressThread.start();
+    }
+
     private void updateProgressBar(final int value) {
+        String message = value < 20 ? "Iniciando..." :
+                        value < 50 ? "Cargando datos..." :
+                        "Mostrando Trailex...";
         progressBar.setValue(value);
-        progressBar.setString(value + "%");
+        progressBar.setString(value + "% " + message);
     }
 
     private void inicializarVentana() {
@@ -83,14 +115,16 @@ public class BarraDeCarga extends JFrame {
         setLocationRelativeTo(null);
         setUndecorated(true);
 
-       System.out.println("Cargando...");
-
         progressBar = new JProgressBar(0, MAX_VALUE);
         progressBar.setStringPainted(true);
-        progressBar.setForeground(Trailex_Principal.turquesa); // Turquesa
+        progressBar.setForeground(Trailex_Principal.turquesa);
         progressBar.setBackground(Color.BLACK);
 
-        add(progressBar, BorderLayout.CENTER);
+        JPanel progressPanel = new JPanel(new BorderLayout());
+        progressPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        progressPanel.setBackground(Color.BLACK);
+        progressPanel.add(progressBar, BorderLayout.CENTER);
 
+        add(progressPanel, BorderLayout.CENTER);
     }
 }
