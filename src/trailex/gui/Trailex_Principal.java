@@ -66,8 +66,7 @@ public class Trailex_Principal extends JFrame {
 	private Usuario usuarioActual;
 	private BarraDeCarga hilo_carga;
 
-	private JFrame vNext_perfil; // la ventana que se me va a abrir cuando quiera cambiar la foto de perfil
-	private JFrame vPrincipal;
+	private JFrame ventana_portada;
 
 	private JButton boton_menu;
 
@@ -331,8 +330,12 @@ public class Trailex_Principal extends JFrame {
 		this.setIconImage(img_icono);
 
 		JScrollPane scroll = new JScrollPane(panel_central, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
-				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); // cambiar a never
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		
+		scroll.getVerticalScrollBar().setUnitIncrement(16); //cambiamos la velocidad para que suba y baje más rápido
+		
 		panel_principal.add(scroll, BorderLayout.CENTER);
+		
 
 		// this.setVisible(true); esperamos a la barra de carga
 	}
@@ -470,7 +473,6 @@ public class Trailex_Principal extends JFrame {
 			botonPerfil.addActionListener(e -> {
 				selectorDialog.dispose();
 				Ventana_cambiar_perfil ventana_perfil = new Ventana_cambiar_perfil(this, iconoEscalado); // iniciar
-				vNext_perfil = ventana_perfil;
 			});
 
 			// Añadir cada botón de imagen al diálogo
@@ -525,6 +527,14 @@ public class Trailex_Principal extends JFrame {
 		if (ventanaInfoSerie != null) {
 			ventanaInfoSerie.dispose();
 			ventanaInfoSerie = null;
+		}
+	}
+	
+	// Función para cerrar la ventana de la portada de la serie
+	public void cerrarPortadaSerie() {
+		if (ventana_portada != null) {
+			ventana_portada.dispose();
+			ventana_portada = null;
 		}
 	}
 
@@ -771,7 +781,7 @@ public class Trailex_Principal extends JFrame {
 	private ArrayList<Serie> obtenerSeriesUltimosEstrenos() {
 		ArrayList<Serie> seriesUltimosEstrenos = new ArrayList<>();
 		for (Serie serie : Videoclub.getAlSeries()) {
-			if (serie.getAnio() >= 2020) {
+			if (serie.getAnio() >= 2022) {
 				seriesUltimosEstrenos.add(serie);
 			}
 		}
@@ -1076,7 +1086,7 @@ public class Trailex_Principal extends JFrame {
 		panelDetalles.add(progressBar, BorderLayout.CENTER);
 
 	}
-
+	//el método recibe la serie sobre la que esta el ratón y su punto en la pantalla
 	public void mostrarInfoSerie(Serie serie) {
 		if (ventanaInfoSerie != null) {
 			ventanaInfoSerie.dispose();
@@ -1274,6 +1284,39 @@ public class Trailex_Principal extends JFrame {
 		panel_central.revalidate();
 		panel_central.repaint();
 	}
+	
+	
+	//metodo que muestra la ventana con solo la portada mas grande
+	/*
+	public void mostrarPortadaSerie(Serie serie, Component componenteSerie, Point p) {
+		if (ventana_portada != null) {
+			ventana_portada.dispose();
+		} else {
+			ventana_portada = new JFrame();
+		}
+		
+	    if (componenteSerie.isShowing()) {
+	        p = componenteSerie.getLocationOnScreen(); // Usa la ubicación en pantalla si el componente es visible
+	    } else {
+	        p = new Point(100, 100); // Ubicación predeterminada en caso de que el componente no esté visible
+	    }
+		ventana_portada.setLocation(p);
+		
+		Dimension dimension = componenteSerie.getSize();
+		int ancho = (int) dimension.getWidth(); 
+		int alto = (int) dimension.getHeight(); 
+
+		ventana_portada.setSize(ancho, alto);
+		ventana_portada.setUndecorated(true);
+		
+		ventana_portada.getContentPane().add(componenteSerie);
+		
+		ventana_portada.setVisible(true);
+	
+	}
+	*/
+	
+	
 
 	public void modificar(Serie serie) {
 		JPanel panel = new JPanel(new GridLayout(6, 2));
