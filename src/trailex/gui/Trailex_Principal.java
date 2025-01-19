@@ -117,15 +117,15 @@ public class Trailex_Principal extends JFrame {
 		trailex_Principal= this;
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		
-		gestorRecordatorios = new GestorRecordatorio();
-        initUI();
+		//gestorRecordatorios = new GestorRecordatorio();
+        //initUI();
 		
 		IniciarSesion(); // Usuario: luiscoro
 							// Contraseña: luiscoro
 
 	}
 	
-	
+	/*
 	private void initUI() { //IAG chatgpt adaptado, ayuda a solucionar errores que me daba initUI()
         // Suponiendo que ya tienes configurado JFrame y otros componentes básicos.
         JButton btnAddRecordatorio = new JButton("Añadir Recordatorio");
@@ -157,7 +157,7 @@ public class Trailex_Principal extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
-
+	*/
 	private void IniciarSesion() {
 		JFrame inicio = new JFrame("Login Panel");
 		inicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
