@@ -2,6 +2,8 @@ package trailex.gui;
 
 import java.awt.BorderLayout;
 
+import trailex.domain.GestorRecordatorio;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -23,6 +25,8 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -52,6 +56,7 @@ import javax.swing.border.TitledBorder;
 
 import trailex.persistence.GestorBD;
 import trailex.domain.Pelicula;
+import trailex.domain.Recordatorio;
 import trailex.domain.Serie;
 import trailex.domain.Usuario;
 import trailex.domain.Videoclub;
@@ -68,6 +73,9 @@ public class Trailex_Principal extends JFrame {
 	private JPanel panel_principal;
 	private JPanel panel_arriba;
 	private Usuario usuarioActual;
+	
+    private GestorRecordatorio gestorRecordatorios;
+
 	
 	private Trailex_Principal trailex_Principal; //ventana trailex
 	
@@ -109,10 +117,46 @@ public class Trailex_Principal extends JFrame {
 		trailex_Principal= this;
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		
+		gestorRecordatorios = new GestorRecordatorio();
+        initUI();
+		
 		IniciarSesion(); // Usuario: luiscoro
 							// Contraseña: luiscoro
 
 	}
+	
+	
+	private void initUI() { //IAG chatgpt adaptado, ayuda a solucionar errores que me daba initUI()
+        // Suponiendo que ya tienes configurado JFrame y otros componentes básicos.
+        JButton btnAddRecordatorio = new JButton("Añadir Recordatorio");
+        JButton btnShowRecordatorios = new JButton("Mostrar Recordatorios");
+
+        // Añadir acción para el botón de añadir recordatorio
+        btnAddRecordatorio.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String titulo = JOptionPane.showInputDialog("Introduce el título de la serie:");
+                String fechaHoraStr = JOptionPane.showInputDialog("Introduce la fecha y hora (yyyy-MM-dd HH:mm):");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                LocalDateTime fechaHora = LocalDateTime.parse(fechaHoraStr, formatter);
+                gestorRecordatorios.añadirRecordatorio(titulo, fechaHora, usuarioActual.getNickname());
+            }
+        });
+
+        // Añadir acción para el botón de mostrar recordatorios
+        btnShowRecordatorios.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                java.util.List<Recordatorio> recordatorios = gestorRecordatorios.obtenerRecordatoriosPorUsuario(usuarioActual.getNickname());
+                recordatorios.forEach(System.out::println);
+            }
+        });
+
+        this.setLayout(new FlowLayout());
+        this.add(btnAddRecordatorio);
+        this.add(btnShowRecordatorios);
+        this.setSize(400, 400);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
+    }
 
 	private void IniciarSesion() {
 		JFrame inicio = new JFrame("Login Panel");
@@ -315,7 +359,10 @@ public class Trailex_Principal extends JFrame {
 			array_paneles.add(panel_fotos);
 
 		}
-
+		
+		
+		
+		
 		cargarSeries();
 		inicializarFiltroPorGenero();
 		iniciarFiltroPorNombre();
@@ -345,6 +392,12 @@ public class Trailex_Principal extends JFrame {
 
 		// this.setVisible(true); lo hace la barra de carga
 	}
+	
+	
+	
+	
+	
+	
 	
 	//AÑADIDO NUEVO
 	public void mostrarVentana() {
@@ -555,7 +608,7 @@ public class Trailex_Principal extends JFrame {
 		}
 	}
 
-	public void cargarSeries() {
+	public void cargarSeries() { //IAG chatgpt adaptado, ayuda a solucionar errores
 
 		// Verificar que la lista de series no sea nula
 		if (Videoclub.getAlSeries() == null) {
@@ -669,7 +722,7 @@ public class Trailex_Principal extends JFrame {
 				String selectedGenre = (String) genreSelector.getSelectedItem();
 				panel_central.removeAll();
 
-				if (selectedGenre.equals("Todos")) {
+				if (selectedGenre.equals("Todos")) {           
 					agregarPanelUltimosEstrenos();
 					panel_central.add(panelUltimosEstrenos);
 					int contador = 0;
@@ -706,7 +759,7 @@ public class Trailex_Principal extends JFrame {
 					panel_central.add(panel_genero);
 				}
 
-				else if (selectedGenre.equals("Romance")) {
+				else if (selectedGenre.equals("Romance")) {       
 					JPanel panel_genero = new JPanel();
 					panel_genero.setLayout(new BorderLayout());
 					panel_genero.setBackground(Color.black);
@@ -932,7 +985,7 @@ public class Trailex_Principal extends JFrame {
 
 	}
 
-	public void iniciarFiltroPorNombre() {
+	public void iniciarFiltroPorNombre() { //IAG chatgpt adaptado, ayuda a solucionar errores
 		// Inicializar la barra de búsqueda
 		searchBar = new JTextField(20);
 
@@ -1007,7 +1060,7 @@ public class Trailex_Principal extends JFrame {
 
 	}
 
-	public void cargarPeliculas() {
+	public void cargarPeliculas() { //IAG chatgpt adaptado, ayuda a solucionar errores
 
 		// Verificar que la lista de peliculas no sea nula
 		if (Videoclub.getAlPeliculas() == null) {
@@ -1344,7 +1397,7 @@ public class Trailex_Principal extends JFrame {
 
 	}
 
-	public void mostrarFavoritos() {
+	public void mostrarFavoritos() { //IAG chatgpt adaptado, ayuda a solucionar errores
 		panel_central.removeAll();
 
 		// Título para la sección de Favoritos

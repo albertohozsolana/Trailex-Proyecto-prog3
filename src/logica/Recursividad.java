@@ -1,9 +1,11 @@
 package logica;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import trailex.domain.Pelicula;
 import trailex.domain.Serie;
 import trailex.domain.Videoclub;
 
@@ -56,6 +58,8 @@ public class Recursividad {
 		
 		
 	}
+	
+	
 	
 
 }
