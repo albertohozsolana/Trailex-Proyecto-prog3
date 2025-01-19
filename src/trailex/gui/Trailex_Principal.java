@@ -47,6 +47,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
@@ -67,12 +68,22 @@ import java.awt.Toolkit;
 import java.awt.*;
 
 public class Trailex_Principal extends JFrame {
+	// Definir el enum para el tema
+	public enum Tema {
+	    BLANCO,
+	    NEGRO
+	}
+
+	// Declarar las variables para el color de fondo y el tema actual
+	private static Color BackgroundColorProgram;
+	private Tema Tema_Interfaz;
+	
 	private JProgressBar progressBar;
 	private JDialog progressDialog;
-	private JPanel panel_central;
-	private JPanel panel_principal;
+	private static JPanel panel_central;
+	private static JPanel panel_principal;
 	private JPanel panel_arriba;
-	private Usuario usuarioActual;
+	private static Usuario usuarioActual;
 	
     private GestorRecordatorio gestorRecordatorios;
 
@@ -81,7 +92,7 @@ public class Trailex_Principal extends JFrame {
 	
 	private BarraDeCarga hilo_carga;
 
-	private JFrame ventana_portada;
+	private static JFrame ventana_portada;
 
 	private JButton boton_menu;
 
@@ -96,15 +107,16 @@ public class Trailex_Principal extends JFrame {
 	static JButton f_perfil;
 	static JDialog selectorDialog;
 
-	private ArrayList<String> array_generos = new ArrayList<>(
+	private static ArrayList<String> array_generos = new ArrayList<>(
 			Arrays.asList("Comedia", "Romance", "Aventura", "Drama", "Ciencia Ficción", "Terror"));
 	private ArrayList<JPanel> array_paneles = new ArrayList<>();
 	private ArrayList<JLabel> array_series = new ArrayList<>();
-	private ArrayList<Serie> listaCompletaSeries = new ArrayList<>();
+	private static ArrayList<Serie> listaCompletaSeries = new ArrayList<>();
 
-	private GestorBD gestorBD = new GestorBD();
+	private static GestorBD gestorBD = new GestorBD();
 
 	private static final long serialVersionUID = 1L;
+	
 
 	public Trailex_Principal() {
 		gestorBD.crearBBDD();
@@ -123,6 +135,11 @@ public class Trailex_Principal extends JFrame {
 		IniciarSesion(); // Usuario: luiscoro
 							// Contraseña: luiscoro
 
+	}
+	
+	public void Reiniciar() {
+		System.exit(0);
+		Trailex_Principal tp1= new Trailex_Principal();
 	}
 	
 	/*
@@ -257,14 +274,28 @@ public class Trailex_Principal extends JFrame {
 	}
 
 	public void Iniciar_Trailex() {
+		revalidate();
+		repaint();
+		
+		Tema_Interfaz = ThemeManager.cargarTema();
+		System.out.println("temaprin"+Tema_Interfaz);
+		
+		if (Tema_Interfaz.equals(Tema.NEGRO)) {
+			BackgroundColorProgram = Color.black;
+		}
+		else {
+			BackgroundColorProgram = Color.white;
+		}
+		
+		System.out.println(BackgroundColorProgram);
 
 		// Creamos el panel con su disposición (BorderLayout) donde se mostrará la app
 		panel_principal = new JPanel(new BorderLayout());
-		panel_principal.setBackground(Color.black);
+		panel_principal.setBackground(BackgroundColorProgram);
 
 		// Creamos el panel que se encontrará en la parte superior del programa
 		panel_arriba = new JPanel(new FlowLayout(50, 50, 50));
-		panel_arriba.setBackground(Color.black);
+		panel_arriba.setBackground(BackgroundColorProgram);
 
 		JButton startButton = new JButton("Iniciar Juego Cajas");
 		startButton.setFont(new Font("Arial", Font.BOLD, 12));
@@ -327,30 +358,67 @@ public class Trailex_Principal extends JFrame {
 		// Añadimos a la pantalla principal la parte central (CON UN BOTÓN) y le decimos
 		// que queremos que esté en el centro
 		panel_central = new JPanel(new GridLayout(7, 1));
-		panel_central.setBackground(Color.black);
+		panel_central.setBackground(BackgroundColorProgram);
 
 		agregarPanelUltimosEstrenos();
 		panel_central.add(panelUltimosEstrenos);
 
 		
 		// ORGANIZAMOS LAS SERIES EN FILAS POR GENERO
+		
+		MouseListener mouselistener = new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				if (ventana_portada != null && ventana_portada.isVisible()) {
+		            cerrarPortadaSerie();
+		        }
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		};
+		
 
 		for (String genero : array_generos) {
 			JPanel panel_genero = new JPanel();
 			panel_genero.setLayout(new BorderLayout());
-			panel_genero.setBackground(Color.black);
+			panel_genero.setBackground(BackgroundColorProgram);
+			panel_genero.addMouseListener(mouselistener);
 
 			JPanel panel_fotos = new JPanel();
 			panel_fotos.setLayout(new FlowLayout(FlowLayout.LEFT));
-			panel_fotos.setBackground(Color.black);
+			panel_fotos.setBackground(BackgroundColorProgram);
+			panel_fotos.addMouseListener(mouselistener);
 
 			JLabel texto_genero = new JLabel(genero);
 			texto_genero.setForeground(turquesa);
-			texto_genero.setBackground(Color.black);
+			texto_genero.setBackground(BackgroundColorProgram);
 
 			JPanel panel_texto = new JPanel(new FlowLayout(FlowLayout.LEFT));
 			panel_texto.add(texto_genero);
-			panel_texto.setBackground(Color.black);
+			panel_texto.setBackground(BackgroundColorProgram);
 
 			panel_genero.add(panel_texto, BorderLayout.NORTH);
 			panel_genero.add(panel_fotos, BorderLayout.SOUTH);
@@ -432,7 +500,7 @@ public class Trailex_Principal extends JFrame {
 		// Panel para contener el botón y limitar su tamaño
 		JPanel panelFavoritos = new JPanel();
 		panelFavoritos.setLayout(new BoxLayout(panelFavoritos, BoxLayout.Y_AXIS));
-		panelFavoritos.setBackground(Color.black);
+		panelFavoritos.setBackground(BackgroundColorProgram);
 		menu.add(panelFavoritos, BorderLayout.CENTER);
 
 		Dimension buttonSize = new Dimension(210, 50); // Ancho 150, Alto 50
@@ -478,10 +546,66 @@ public class Trailex_Principal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				gestorBD.guardarSeriesCSV(listaCompletaSeries);
 				gestorBD.borrarBBDD();
-				IniciarSesion();
-				dispose();
+				Reiniciar();
 			}
 		});
+		
+		JToggleButton toggleTema = new JToggleButton("");
+		toggleTema.setFocusable(true);
+		toggleTema.setBorder(borde_boton);
+		toggleTema.setPreferredSize(buttonSize);
+		toggleTema.setMaximumSize(buttonSize);
+		toggleTema.setMinimumSize(buttonSize);
+		toggleTema.setBackground(Color.GRAY); // Color inicial
+
+		// Estado inicial según el tema actual
+		try {
+		    if (ThemeManager.cargarTema().equals(Tema.BLANCO)) {
+		    	System.out.println(ThemeManager.cargarTema());
+		        toggleTema.setText("Modo Oscuro");
+		        toggleTema.setSelected(false);
+		    } else {
+		        toggleTema.setText("Modo Claro");
+		        toggleTema.setSelected(true);
+		    }
+		} catch (Exception ex) {
+		    System.err.println("Error al cargar el tema: " + ex.getMessage());
+		    toggleTema.setText("Modo Oscuro"); // Valor predeterminado
+		    toggleTema.setSelected(false);
+		}
+
+		// Acción del ToggleButton para cambiar el tema
+		toggleTema.addActionListener(e -> {
+		    if (toggleTema.isSelected()) {
+		        // Cambiar a modo oscuro
+		        BackgroundColorProgram = Color.BLACK;
+		        Tema_Interfaz = Tema.NEGRO;
+		        toggleTema.setText("Modo Claro");
+		    } else {
+		        // Cambiar a modo claro
+		        BackgroundColorProgram = Color.WHITE;
+		        Tema_Interfaz = Tema.BLANCO;
+		        toggleTema.setText("Modo Oscuro");
+		    }
+
+		    // Guardar el tema seleccionado
+		    try {
+		        ThemeManager.guardarTema(Tema_Interfaz);
+		    } catch (Exception ex) {
+		        JOptionPane.showMessageDialog(this, "No se pudo guardar el tema. Reintenta más tarde.",
+		                "Error", JOptionPane.ERROR_MESSAGE);
+		        ex.printStackTrace();
+		    }
+
+		    gestorBD.guardarSeriesCSV(listaCompletaSeries);
+			gestorBD.borrarBBDD();
+			Reiniciar();
+
+		    
+		});
+
+		
+		panelFavoritos.add(toggleTema);
 
 		f_perfil = new JButton();
 		// Usa el icono de perfil actual para que conserve la selección previa
@@ -509,7 +633,7 @@ public class Trailex_Principal extends JFrame {
 		selectorDialog = new JDialog((Frame) null, "Seleccionar Foto de Perfil", true);
 		selectorDialog.setSize(450, 150);
 		selectorDialog.setLayout(new FlowLayout());
-		selectorDialog.getContentPane().setBackground(Color.black);
+		selectorDialog.getContentPane().setBackground(BackgroundColorProgram);
 
 		// Cargar las 5 imágenes de perfil
 		String[] rutas = { "resources/images/perfil.jpg", "resources/images/perfil2.jpg",
@@ -553,7 +677,7 @@ public class Trailex_Principal extends JFrame {
 		if (selectorDialog.getComponentCount() == 0) {
 			JLabel errorLabel = new JLabel("No se pudieron cargar las imágenes de perfil.");
 			errorLabel.setForeground(turquesa);
-			errorLabel.setBackground(Color.black);
+			errorLabel.setBackground(BackgroundColorProgram);
 			selectorDialog.add(errorLabel);
 		}
 		selectorDialog.setLocationRelativeTo(null); // Centrar la ventana de selección
@@ -573,7 +697,7 @@ public class Trailex_Principal extends JFrame {
 
 		} else {
 			JPanel menu_lat = crearMenu_lat();
-			menu_lat.setBackground(Color.black);
+			menu_lat.setBackground(BackgroundColorProgram);
 
 			total.add(menu_lat, BorderLayout.WEST);
 			total.revalidate();
@@ -582,7 +706,7 @@ public class Trailex_Principal extends JFrame {
 	}
 
 	private JFrame ventanaInfoPelicula;
-	private JFrame ventanaInfoSerie;
+	private static JFrame ventanaInfoSerie;
 
 	// Función para cerrar la ventana de información de la película
 	public void cerrarInfoPelicula() {
@@ -601,7 +725,7 @@ public class Trailex_Principal extends JFrame {
 	}
 	
 	// Función para cerrar la ventana de la portada de la serie
-	public void cerrarPortadaSerie() {
+	public static void cerrarPortadaSerie() {
 		if (ventana_portada != null) {
 			ventana_portada.dispose();
 			ventana_portada = null;
@@ -649,6 +773,7 @@ public class Trailex_Principal extends JFrame {
 				}
 				
 				
+				
 
 			});
 
@@ -690,13 +815,13 @@ public class Trailex_Principal extends JFrame {
 
 		for (int i = 0; i < array_generos.size(); i++) {
 			JPanel panel_genero = new JPanel(new BorderLayout());
-			panel_genero.setBackground(Color.black);
+			panel_genero.setBackground(BackgroundColorProgram);
 
 			JLabel texto_genero = new JLabel(array_generos.get(i));
 			texto_genero.setForeground(turquesa);
 
 			JPanel panel_texto = new JPanel(new FlowLayout(FlowLayout.LEFT));
-			panel_texto.setBackground(Color.black);
+			panel_texto.setBackground(BackgroundColorProgram);
 			panel_texto.add(texto_genero);
 
 			panel_genero.add(panel_texto, BorderLayout.NORTH);
@@ -729,13 +854,13 @@ public class Trailex_Principal extends JFrame {
 					for (JPanel panel : array_paneles) {
 						JPanel panel_genero = new JPanel();
 						panel_genero.setLayout(new BorderLayout());
-						panel_genero.setBackground(Color.black);
+						panel_genero.setBackground(BackgroundColorProgram);
 						JLabel texto_genero = new JLabel(array_generos.get(contador));
 						texto_genero.setForeground(turquesa);
-						texto_genero.setBackground(Color.black);
+						texto_genero.setBackground(BackgroundColorProgram);
 						JPanel panel_texto = new JPanel(new FlowLayout(FlowLayout.LEFT));
 						panel_texto.add(texto_genero);
-						panel_texto.setBackground(Color.black);
+						panel_texto.setBackground(BackgroundColorProgram);
 						panel_genero.add(panel_texto, BorderLayout.NORTH);
 						panel_genero.add(panel, BorderLayout.SOUTH);
 						panel_central.add(panel_genero);
@@ -747,13 +872,13 @@ public class Trailex_Principal extends JFrame {
 
 					JPanel panel_genero = new JPanel();
 					panel_genero.setLayout(new BorderLayout());
-					panel_genero.setBackground(Color.black);
+					panel_genero.setBackground(BackgroundColorProgram);
 					JLabel texto_genero = new JLabel("Comedia");
 					texto_genero.setForeground(turquesa);
-					texto_genero.setBackground(Color.black);
+					texto_genero.setBackground(BackgroundColorProgram);
 					JPanel panel_texto = new JPanel(new FlowLayout(FlowLayout.LEFT));
 					panel_texto.add(texto_genero);
-					panel_texto.setBackground(Color.black);
+					panel_texto.setBackground(BackgroundColorProgram);
 					panel_genero.add(panel_texto, BorderLayout.NORTH);
 					panel_genero.add(array_paneles.get(0), BorderLayout.SOUTH);
 					panel_central.add(panel_genero);
@@ -762,13 +887,13 @@ public class Trailex_Principal extends JFrame {
 				else if (selectedGenre.equals("Romance")) {       
 					JPanel panel_genero = new JPanel();
 					panel_genero.setLayout(new BorderLayout());
-					panel_genero.setBackground(Color.black);
+					panel_genero.setBackground(BackgroundColorProgram);
 					JLabel texto_genero = new JLabel("Romance");
 					texto_genero.setForeground(turquesa);
-					texto_genero.setBackground(Color.black);
+					texto_genero.setBackground(BackgroundColorProgram);
 					JPanel panel_texto = new JPanel(new FlowLayout(FlowLayout.LEFT));
 					panel_texto.add(texto_genero);
-					panel_texto.setBackground(Color.black);
+					panel_texto.setBackground(BackgroundColorProgram);
 					panel_genero.add(panel_texto, BorderLayout.NORTH);
 					panel_genero.add(array_paneles.get(1), BorderLayout.SOUTH);
 					panel_central.add(panel_genero);
@@ -777,13 +902,13 @@ public class Trailex_Principal extends JFrame {
 				else if (selectedGenre.equals("Aventura")) {
 					JPanel panel_genero = new JPanel();
 					panel_genero.setLayout(new BorderLayout());
-					panel_genero.setBackground(Color.black);
+					panel_genero.setBackground(BackgroundColorProgram);
 					JLabel texto_genero = new JLabel("Aventura");
 					texto_genero.setForeground(turquesa);
-					texto_genero.setBackground(Color.black);
+					texto_genero.setBackground(BackgroundColorProgram);
 					JPanel panel_texto = new JPanel(new FlowLayout(FlowLayout.LEFT));
 					panel_texto.add(texto_genero);
-					panel_texto.setBackground(Color.black);
+					panel_texto.setBackground(BackgroundColorProgram);
 					panel_genero.add(panel_texto, BorderLayout.NORTH);
 					panel_genero.add(array_paneles.get(2), BorderLayout.SOUTH);
 					panel_central.add(panel_genero);
@@ -792,13 +917,13 @@ public class Trailex_Principal extends JFrame {
 				else if (selectedGenre.equals("Drama")) {
 					JPanel panel_genero = new JPanel();
 					panel_genero.setLayout(new BorderLayout());
-					panel_genero.setBackground(Color.black);
+					panel_genero.setBackground(BackgroundColorProgram);
 					JLabel texto_genero = new JLabel("Drama");
 					texto_genero.setForeground(turquesa);
-					texto_genero.setBackground(Color.black);
+					texto_genero.setBackground(BackgroundColorProgram);
 					JPanel panel_texto = new JPanel(new FlowLayout(FlowLayout.LEFT));
 					panel_texto.add(texto_genero);
-					panel_texto.setBackground(Color.black);
+					panel_texto.setBackground(BackgroundColorProgram);
 					panel_genero.add(panel_texto, BorderLayout.NORTH);
 					panel_genero.add(array_paneles.get(3), BorderLayout.SOUTH);
 					panel_central.add(panel_genero);
@@ -807,13 +932,13 @@ public class Trailex_Principal extends JFrame {
 				else if (selectedGenre.equals("Ciencia Ficción")) {
 					JPanel panel_genero = new JPanel();
 					panel_genero.setLayout(new BorderLayout());
-					panel_genero.setBackground(Color.black);
+					panel_genero.setBackground(BackgroundColorProgram);
 					JLabel texto_genero = new JLabel("Ciencia Ficción");
 					texto_genero.setForeground(turquesa);
-					texto_genero.setBackground(Color.black);
+					texto_genero.setBackground(BackgroundColorProgram);
 					JPanel panel_texto = new JPanel(new FlowLayout(FlowLayout.LEFT));
 					panel_texto.add(texto_genero);
-					panel_texto.setBackground(Color.black);
+					panel_texto.setBackground(BackgroundColorProgram);
 					panel_genero.add(panel_texto, BorderLayout.NORTH);
 					panel_genero.add(array_paneles.get(4), BorderLayout.SOUTH);
 					panel_central.add(panel_genero);
@@ -823,13 +948,13 @@ public class Trailex_Principal extends JFrame {
 				else if (selectedGenre.equals("Terror")) {
 					JPanel panel_genero = new JPanel();
 					panel_genero.setLayout(new BorderLayout());
-					panel_genero.setBackground(Color.black);
+					panel_genero.setBackground(BackgroundColorProgram);
 					JLabel texto_genero = new JLabel("Terror");
 					texto_genero.setForeground(turquesa);
-					texto_genero.setBackground(Color.black);
+					texto_genero.setBackground(BackgroundColorProgram);
 					JPanel panel_texto = new JPanel(new FlowLayout(FlowLayout.LEFT));
 					panel_texto.add(texto_genero);
-					panel_texto.setBackground(Color.black);
+					panel_texto.setBackground(BackgroundColorProgram);
 					panel_genero.add(panel_texto, BorderLayout.NORTH);
 					panel_genero.add(array_paneles.get(5), BorderLayout.SOUTH);
 					panel_central.add(panel_genero);
@@ -864,7 +989,7 @@ public class Trailex_Principal extends JFrame {
 		// Crear el panel de "Últimos Estrenos" con configuración visual llamativa
 		panelUltimosEstrenos = new JPanel();
 		panelUltimosEstrenos.setLayout(new BorderLayout());
-		panelUltimosEstrenos.setBackground(Color.black);
+		panelUltimosEstrenos.setBackground(BackgroundColorProgram);
 		panelUltimosEstrenos.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0), // Espacio
 																														// exterior
 																														// al
@@ -882,7 +1007,7 @@ public class Trailex_Principal extends JFrame {
 		// Panel interno para las portadas
 		JPanel panelPortadas = new JPanel();
 		panelPortadas.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 0));
-		panelPortadas.setBackground(Color.black);
+		panelPortadas.setBackground(BackgroundColorProgram);
 
 		// Obtener y filtrar las series de "Últimos Estrenos"
 		ArrayList<Serie> seriesUltimosEstrenos = obtenerSeriesUltimosEstrenos();
@@ -926,7 +1051,7 @@ public class Trailex_Principal extends JFrame {
 				
 				@Override
 				public void mouseEntered(MouseEvent e) {
-					// TODO Auto-generated method stub
+					mostrarPortadaSerie(serie, lblFoto, e.getComponent().getLocationOnScreen());
 					
 				}
 				
@@ -1006,7 +1131,7 @@ public class Trailex_Principal extends JFrame {
 
 					JPanel panelResultados = new JPanel();
 					panelResultados.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
-					panelResultados.setBackground(Color.black);
+					panelResultados.setBackground(BackgroundColorProgram);
 
 					for (Serie serie : listaCompletaSeries) {
 						if (serie.getTitulo().toLowerCase().contains(searchText)) {
@@ -1145,7 +1270,7 @@ public class Trailex_Principal extends JFrame {
 	}
 
 	private Map<String, Integer> progresoPeliculas = new HashMap<>();
-	private Map<String, Integer> progresoSeries = new HashMap<>();
+	private static Map<String, Integer> progresoSeries = new HashMap<>();
 
 	public void mostrarInfoPelicula(Pelicula pelicula) {
 		if (ventanaInfoPelicula != null) {
@@ -1244,7 +1369,7 @@ public class Trailex_Principal extends JFrame {
 	
 	
 	//el método recibe la serie sobre la que esta el ratón y su punto en la pantalla
-	public void mostrarInfoSerie(Serie serie) {
+	public static void mostrarInfoSerie(Serie serie) {
 		if (ventanaInfoSerie != null) {
 			ventanaInfoSerie.dispose();
 		}
@@ -1383,7 +1508,7 @@ public class Trailex_Principal extends JFrame {
 		// BORRAR SERIE
 		JButton btn_borrar = new JButton("BORRAR");
 		btn_borrar.setBackground(Color.RED);
-		btn_borrar.setForeground(Color.BLACK);
+		btn_borrar.setForeground(BackgroundColorProgram);
 		btn_borrar.addActionListener(e -> {
 			borrarSerie(serie);
 			ventanaInfoSerie.dispose();
@@ -1397,7 +1522,7 @@ public class Trailex_Principal extends JFrame {
 
 	}
 
-	public void mostrarFavoritos() { //IAG chatgpt adaptado, ayuda a solucionar errores
+	public static void mostrarFavoritos() { //IAG chatgpt adaptado, ayuda a solucionar errores
 		panel_central.removeAll();
 
 		// Título para la sección de Favoritos
@@ -1410,7 +1535,7 @@ public class Trailex_Principal extends JFrame {
 		// Panel para las series de favoritos
 		JPanel panelFavoritos = new JPanel();
 		panelFavoritos.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
-		panelFavoritos.setBackground(Color.black);
+		panelFavoritos.setBackground(BackgroundColorProgram);
 
 		for (String seriefav : usuarioActual.getFavoritos()) {
 			Serie serie = gestorBD.getSeriePorCodigo(seriefav);
@@ -1504,8 +1629,9 @@ public class Trailex_Principal extends JFrame {
 		ventana_portada.setVisible(true);
 	
 	}
+	
 
-	public void modificar(Serie serie) {
+	public static void modificar(Serie serie) {
 		JPanel panel = new JPanel(new GridLayout(6, 2));
 
 		// Etiquetas y campos de texto para cada atributo de Serie
@@ -1558,7 +1684,7 @@ public class Trailex_Principal extends JFrame {
 		}
 	}
 
-	public void borrarSerie(Serie serie) {
+	public static void borrarSerie(Serie serie) {
 		int respuesta = JOptionPane.showConfirmDialog(null, "¿Estás seguro que quieres borrar esta serie?",
 				"Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 		if (respuesta == JOptionPane.YES_OPTION) {

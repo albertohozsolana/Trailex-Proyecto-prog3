@@ -764,6 +764,33 @@ public class GestorBD {
 	    }
 	}
 
+	public List<Serie> cargarSeries() {
+        List<Serie> series = new ArrayList<>();
 
+        String query = "SELECT codigo, titulo, anio, protagonista, edadRecomendada, numeroTemporadas, genero, rutaFoto FROM Serie";
+
+        try (Connection con = DriverManager.getConnection(connectionString);
+             PreparedStatement pStmt = con.prepareStatement(query);
+             ResultSet rs = pStmt.executeQuery()) {
+
+            while (rs.next()) {
+                String codigo = rs.getString("codigo");
+                String titulo = rs.getString("titulo");
+                int anio = rs.getInt("anio");
+                String protagonista = rs.getString("protagonista");
+                int edadRecomendada = rs.getInt("edadRecomendada");
+                int numeroTemporadas = rs.getInt("numeroTemporadas");
+                String genero = rs.getString("genero");
+                String rutaFoto = rs.getString("rutaFoto");
+
+                series.add(new Serie(codigo, titulo, anio, protagonista, edadRecomendada, numeroTemporadas, genero, rutaFoto));
+            }
+
+        } catch (Exception ex) {
+            System.err.println("Error al cargar las series: " + ex.getMessage());
+        }
+
+        return series;
+    }
 
 }
