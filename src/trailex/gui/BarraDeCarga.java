@@ -14,7 +14,8 @@ import javax.swing.JProgressBar;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
-
+//IAG
+//ADAPTADO (hubo que hacer un montón de cambios y probar distintas cosas hasta que funcionase)
 
 public class BarraDeCarga extends JFrame {
     private JProgressBar progressBar;

@@ -146,7 +146,9 @@ public class Trailex_Principal extends JFrame {
 			if (gestorBD.esUsuarioValido(user, pass)) {
 				inicio.dispose();
 				usuarioActual = gestorBD.getUsuarioPorNickname(user);
-
+				
+				//IAG
+				//SIN CAMBIOS (sugirió chatgpt hacerlo llamarlo de esta manera para que funcionase)
 				hilo_carga = new BarraDeCarga(this);
 				hilo_carga.setVisible(true);
 				hilo_carga.startLoading();
@@ -286,8 +288,8 @@ public class Trailex_Principal extends JFrame {
 		agregarPanelUltimosEstrenos();
 		panel_central.add(panelUltimosEstrenos);
 
-		// ORGANIZAMOS LAS SERIES EN FILAS POR
-		// GENERO-----------------------------------------------------
+		
+		// ORGANIZAMOS LAS SERIES EN FILAS POR GENERO
 
 		for (String genero : array_generos) {
 			JPanel panel_genero = new JPanel();
@@ -341,7 +343,7 @@ public class Trailex_Principal extends JFrame {
 		panel_principal.add(scroll, BorderLayout.CENTER);
 		
 
-		// this.setVisible(true); esperamos a la barra de carga
+		// this.setVisible(true); lo hace la barra de carga
 	}
 	
 	//AÑADIDO NUEVO
@@ -1398,11 +1400,12 @@ public class Trailex_Principal extends JFrame {
 			ventana_portada.dispose();
 		}
 		
-	
+		//IAG
+		//SIN CAMBIOS
 		ImageIcon originalIcon = new ImageIcon(serie.getRutaFoto());
 		int windowWidth = (int)(componenteSerie.getWidth() * 1.5);
 	    int windowHeight = (int)(componenteSerie.getHeight() * 1.5);
-	
+	    
 		ventana_portada = new JFrame("Información de la Serie");
 		ventana_portada.setSize(windowWidth, windowHeight);
 		ventana_portada.setLayout(new BorderLayout());
@@ -1413,6 +1416,8 @@ public class Trailex_Principal extends JFrame {
 	
 		Image image = originalIcon.getImage().getScaledInstance(windowWidth, windowHeight, Image.SCALE_SMOOTH);
 	    JLabel lblFoto = new JLabel(new ImageIcon(image));
+	    
+	    
 	    
 	    lblFoto.addMouseListener(new MouseAdapter() {
 			@Override
@@ -1425,7 +1430,8 @@ public class Trailex_Principal extends JFrame {
 			}
 		});
 	    
-	    //HECHO CON IA
+	    //IAG
+	    //SIN CAMBIOS
 	 // Agregar un MouseWheelListener para detectar el desplazamiento del ratón
 	    lblFoto.addMouseWheelListener(new MouseWheelListener() {
 	        @Override
@@ -1437,9 +1443,11 @@ public class Trailex_Principal extends JFrame {
 	        }
 	    });
 	    
+	    
+	    
 		ventana_portada.setContentPane(lblFoto);
 		
-		ventana_portada.setUndecorated(true);
+		ventana_portada.setUndecorated(true); //para que no tenga la barra de la ventana
 		ventana_portada.setVisible(true);
 	
 	}

@@ -8,6 +8,9 @@ import trailex.gui.Trailex_Principal;
 
 public class Main {
 	public static void main(String args[]) {
+		
+		//IAG
+		//SIN CAMBIOS
 		//Para cambiar los colores de todos los joptionpane
 		UIManager.put("OptionPane.background", Color.BLACK);
         UIManager.put("Panel.background", Color.BLACK);
