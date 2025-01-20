@@ -129,11 +129,14 @@ public class Trailex_Principal extends JFrame {
 		trailex_Principal= this;
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		
-		//gestorRecordatorios = new GestorRecordatorio();
-        //initUI();
+		
+        
 		
 		IniciarSesion(); // Usuario: luiscoro
 							// Contraseña: luiscoro
+		
+		
+		gestorRecordatorios = new GestorRecordatorio();
 
 	}
 	
@@ -142,39 +145,8 @@ public class Trailex_Principal extends JFrame {
 		Trailex_Principal tp1= new Trailex_Principal();
 	}
 	
-	/*
-	private void initUI() { //IAG chatgpt adaptado, ayuda a solucionar errores que me daba initUI()
-        // Suponiendo que ya tienes configurado JFrame y otros componentes básicos.
-        JButton btnAddRecordatorio = new JButton("Añadir Recordatorio");
-        JButton btnShowRecordatorios = new JButton("Mostrar Recordatorios");
-
-        // Añadir acción para el botón de añadir recordatorio
-        btnAddRecordatorio.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String titulo = JOptionPane.showInputDialog("Introduce el título de la serie:");
-                String fechaHoraStr = JOptionPane.showInputDialog("Introduce la fecha y hora (yyyy-MM-dd HH:mm):");
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-                LocalDateTime fechaHora = LocalDateTime.parse(fechaHoraStr, formatter);
-                gestorRecordatorios.añadirRecordatorio(titulo, fechaHora, usuarioActual.getNickname());
-            }
-        });
-
-        // Añadir acción para el botón de mostrar recordatorios
-        btnShowRecordatorios.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                java.util.List<Recordatorio> recordatorios = gestorRecordatorios.obtenerRecordatoriosPorUsuario(usuarioActual.getNickname());
-                recordatorios.forEach(System.out::println);
-            }
-        });
-
-        this.setLayout(new FlowLayout());
-        this.add(btnAddRecordatorio);
-        this.add(btnShowRecordatorios);
-        this.setSize(400, 400);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setVisible(true);
-    }
-	*/
+	
+	
 	private void IniciarSesion() {
 		JFrame inicio = new JFrame("Login Panel");
 		inicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -505,6 +477,78 @@ public class Trailex_Principal extends JFrame {
 
 		Dimension buttonSize = new Dimension(210, 50); // Ancho 150, Alto 50
 
+		
+		JButton btnAddRecordatorio = new JButton("Añadir Recordatorio");
+	    btnAddRecordatorio.setBackground(Trailex_Principal.turquesa);
+	    btnAddRecordatorio.addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent e) {
+	            String titulo = JOptionPane.showInputDialog("Introduce el título de la serie:");
+	            String fechaHoraStr = JOptionPane.showInputDialog("Introduce la fecha y hora (yyyy-MM-dd HH:mm):");
+	            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+	            LocalDateTime fechaHora = LocalDateTime.parse(fechaHoraStr, formatter);
+	            gestorRecordatorios.añadirRecordatorio(titulo, fechaHora, usuarioActual.getNickname());
+	        }
+	    });
+	    btnAddRecordatorio.setPreferredSize(buttonSize);
+	    btnAddRecordatorio.setMaximumSize(buttonSize);
+	    btnAddRecordatorio.setMinimumSize(buttonSize);
+	    btnAddRecordatorio.setBorder(borde_boton);
+
+	    JButton btnShowRecordatorios = new JButton("Mostrar Recordatorios");
+	    btnShowRecordatorios.addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent e) {
+	            java.util.List<Recordatorio> recordatorios = gestorRecordatorios.obtenerRecordatoriosPorUsuario(usuarioActual.getNickname());
+	            StringBuilder sb = new StringBuilder("<html>");  // Ajuste para el texto en blanco
+	            
+	            if (recordatorios.isEmpty()) {
+	                sb.append("No hay recordatorios para mostrar.");
+	            } else {
+	                for (Recordatorio rec : recordatorios) {
+	                    sb.append("<p>Título: ").append(rec.getTitulo())
+	                      .append("<br>Fecha y Hora: ").append(rec.getFechaHora().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
+	                      .append("<br>Usuario: ").append(rec.getIdUsuario())
+	                      .append("</p>");
+	                }
+	            }
+	            sb.append("</body></html>");
+
+	            // Crear la ventana para mostrar los recordatorios
+	            JFrame frame = new JFrame("Recordatorios");
+	            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	            frame.setSize(400, 300);
+	            frame.setLocationRelativeTo(null);
+
+	            // Crear un componente JLabel para mostrar el texto con fondo negro
+	            JLabel label = new JLabel(sb.toString());
+	            label.setHorizontalAlignment(SwingConstants.LEFT);
+	            label.setVerticalAlignment(SwingConstants.TOP);
+	            label.setOpaque(true);  // Hacer opaco el label para que el fondo sea efectivo
+	            label.setBackground(Color.BLACK);  // Establecer el fondo del label a negro
+
+	            // Añadir scroll pane para visualizar si hay muchos recordatorios
+	            JScrollPane scrollPane = new JScrollPane(label);
+	            scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+	            scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+	            scrollPane.getViewport().setBackground(Color.BLACK);  // Fondo negro para el scroll pane
+
+	            frame.getContentPane().setBackground(Color.BLACK);  // Fondo negro para el frame
+	            frame.add(scrollPane);
+	            frame.setVisible(true);
+	        }
+	    });
+		
+	    btnShowRecordatorios.setPreferredSize(buttonSize);
+	    btnShowRecordatorios.setMaximumSize(buttonSize);
+	    btnShowRecordatorios.setMinimumSize(buttonSize);
+	    btnShowRecordatorios.setBorder(borde_boton);
+	    
+	    
+	    panelFavoritos.add(btnAddRecordatorio);
+	    panelFavoritos.add(btnShowRecordatorios);
+		
+		
+		
+		
 		JButton btnFavoritos = new JButton("FAVORITOS");
 		btnFavoritos.setBackground(Trailex_Principal.turquesa);
 		btnFavoritos.addActionListener(e -> mostrarFavoritos());
@@ -522,6 +566,8 @@ public class Trailex_Principal extends JFrame {
 		boton_añadir.addActionListener(e -> {
 			crearSerie();
 		});
+	    
+
 
 		boton_añadir.setPreferredSize(buttonSize);
 		boton_añadir.setMaximumSize(buttonSize);
