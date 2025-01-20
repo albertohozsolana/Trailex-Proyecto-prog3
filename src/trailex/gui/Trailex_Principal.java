@@ -150,6 +150,7 @@ public class Trailex_Principal extends JFrame {
 	    SwingUtilities.invokeLater(() -> {
 	        // Cierra la ventana actual
 	        dispose();
+	        gestorBD.borrarBBDD();
 
 	        // Crea una nueva instancia de la aplicación
 	        Trailex_Principal nuevaVentana = new Trailex_Principal();
@@ -443,6 +444,7 @@ public class Trailex_Principal extends JFrame {
 		
 
 		// this.setVisible(true); lo hace la barra de carga
+		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 	}
 	
 	

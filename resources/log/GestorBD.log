@@ -1,153 +1,316 @@
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha creado la tabla 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha creado la tabla 
-[01/20/25 02:30:40] [INFORMACIÓN] Se han borrado los datos 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=001, titulo=Arrow, protagonista=Oliver Queen, anio=2012, edadRecomendada=16, numeroTemporadas=8, genero=Aventura, rutaFoto=resources/images/arrow.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=002, titulo=The Sex Lives of College Girls, protagonista=Kimberly, anio=2021, edadRecomendada=18, numeroTemporadas=2, genero=Comedia, rutaFoto=resources/images/thesexlivesofcollegegirls.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=003, titulo=Teen Wolf, protagonista=Scott McCall, anio=2011, edadRecomendada=14, numeroTemporadas=6, genero=Ciencia Ficción, rutaFoto=resources/images/teenwolf.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=004, titulo=Shadowhunters, protagonista=Clary Fray, anio=2016, edadRecomendada=14, numeroTemporadas=3, genero=Ciencia Ficción, rutaFoto=resources/images/shadowhunters.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=005, titulo=Lucifer, protagonista=Lucifer Morningstar, anio=2016, edadRecomendada=16, numeroTemporadas=6, genero=Ciencia Ficción, rutaFoto=resources/images/lucifer.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=006, titulo=DC's Legends of Tomorrow, protagonista=Ray Palmer, anio=2016, edadRecomendada=16, numeroTemporadas=7, genero=Ciencia Ficción, rutaFoto=resources/images/dcslegendsoftomorrow.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=007, titulo=Flash, protagonista=Barry Allen, anio=2014, edadRecomendada=14, numeroTemporadas=9, genero=Ciencia Ficción, rutaFoto=resources/images/flash.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=008, titulo=Supergirl, protagonista=Kara Zor-El, anio=2015, edadRecomendada=12, numeroTemporadas=6, genero=Ciencia Ficción, rutaFoto=resources/images/supergirl.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=009, titulo=The Greenhouse Academy, protagonista=Hayley Shumway, anio=2017, edadRecomendada=10, numeroTemporadas=4, genero=Drama, rutaFoto=resources/images/thegreenhouseacademy.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=010, titulo=The Vampire Diaries, protagonista=Elena Gilbert, anio=2009, edadRecomendada=14, numeroTemporadas=8, genero=Ciencia Ficción, rutaFoto=resources/images/thevampirediaries.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=011, titulo=The Originals, protagonista=Elijah Mikaelson, anio=2013, edadRecomendada=16, numeroTemporadas=5, genero=Ciencia Ficción, rutaFoto=resources/images/theoriginals.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=012, titulo=Legacies, protagonista=Hope Mikaelson, anio=2018, edadRecomendada=14, numeroTemporadas=4, genero=Ciencia Ficción, rutaFoto=resources/images/legacies.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=013, titulo=Outer Banks, protagonista=John B, anio=2020, edadRecomendada=16, numeroTemporadas=3, genero=Aventura, rutaFoto=resources/images/outerbanks.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=014, titulo=Bienvenidos a Eden, protagonista=Amaia, anio=2022, edadRecomendada=16, numeroTemporadas=2, genero=Terror, rutaFoto=resources/images/bienvenidosaeden.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=015, titulo=Sombra y Hueso, protagonista=Alina Starkov, anio=2021, edadRecomendada=14, numeroTemporadas=2, genero=Ciencia Ficción, rutaFoto=resources/images/sombrayhueso.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=016, titulo=Alguien Está Mintiendo, protagonista=Bronwyn Rojas, anio=2021, edadRecomendada=14, numeroTemporadas=2, genero=Drama, rutaFoto=resources/images/alguienestamintiendo.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=017, titulo=The Society, protagonista=Allie Pressman, anio=2019, edadRecomendada=16, numeroTemporadas=1, genero=Ciencia Ficción, rutaFoto=resources/images/thesociety.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=018, titulo=Riverdale, protagonista=Archie Andrews, anio=2017, edadRecomendada=16, numeroTemporadas=7, genero=Drama, rutaFoto=resources/images/riverdale.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=019, titulo=The A List, protagonista=Mia, anio=2018, edadRecomendada=12, numeroTemporadas=2, genero=Terror, rutaFoto=resources/images/thealist.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=020, titulo=Daybreak, protagonista=Josh Wheeler, anio=2019, edadRecomendada=16, numeroTemporadas=1, genero=Aventura, rutaFoto=resources/images/daybreak.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=021, titulo=The Warrior Nun, protagonista=Ava Silva, anio=2020, edadRecomendada=16, numeroTemporadas=2, genero=Aventura, rutaFoto=resources/images/thewarriornun.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=022, titulo=Pretty Little Liars, protagonista=Aria Montgomery, anio=2010, edadRecomendada=14, numeroTemporadas=7, genero=Drama, rutaFoto=resources/images/prettylittleliars.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=023, titulo=Prison Break, protagonista=Michael Scofield, anio=2005, edadRecomendada=16, numeroTemporadas=5, genero=Drama, rutaFoto=resources/images/prisonbreak.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=024, titulo=Por 13 Razones, protagonista=Clay Jensen, anio=2017, edadRecomendada=16, numeroTemporadas=4, genero=Drama, rutaFoto=resources/images/por13razones.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=025, titulo=The 100, protagonista=Clarke Griffin, anio=2014, edadRecomendada=14, numeroTemporadas=7, genero=Ciencia Ficción, rutaFoto=resources/images/the100.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=026, titulo=The Rain, protagonista=Simone Andersen, anio=2018, edadRecomendada=16, numeroTemporadas=3, genero=Ciencia Ficción, rutaFoto=resources/images/therain.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=027, titulo=Stranger Things, protagonista=Eleven, anio=2016, edadRecomendada=16, numeroTemporadas=4, genero=Ciencia Ficción, rutaFoto=resources/images/strangerthings.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=028, titulo=Manifest, protagonista=Michaela Stone, anio=2018, edadRecomendada=14, numeroTemporadas=4, genero=Ciencia Ficción, rutaFoto=resources/images/manifest.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=029, titulo=How I Met Your Mother, protagonista=Ted Mosby, anio=2005, edadRecomendada=16, numeroTemporadas=9, genero=Comedia, rutaFoto=resources/images/howimetyourmother.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=030, titulo=Emily in Paris, protagonista=Emily Cooper, anio=2020, edadRecomendada=12, numeroTemporadas=3, genero=Romance, rutaFoto=resources/images/emilyinparis.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=031, titulo=Chicas buenas, protagonista=Beth Boland, anio=2018, edadRecomendada=16, numeroTemporadas=4, genero=Comedia, rutaFoto=resources/images/chicasbuenas.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=032, titulo=ClickBait, protagonista=Nick Brewer, anio=2021, edadRecomendada=16, numeroTemporadas=1, genero=Drama, rutaFoto=resources/images/clickbait.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=033, titulo=El juego del calamar, protagonista=Seong Gi-Hun, anio=2021, edadRecomendada=16, numeroTemporadas=1, genero=Terror, rutaFoto=resources/images/eljuegodelcalamar.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=034, titulo=Heartstopper, protagonista=Charlie Spring, anio=2022, edadRecomendada=12, numeroTemporadas=2, genero=Romance, rutaFoto=resources/images/heartstopper.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=035, titulo=Lost in Space, protagonista=Will Robinson, anio=2018, edadRecomendada=14, numeroTemporadas=3, genero=Ciencia Ficción, rutaFoto=resources/images/lostinspace.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=036, titulo=Spinning Out, protagonista=Kat Baker, anio=2020, edadRecomendada=16, numeroTemporadas=1, genero=Drama, rutaFoto=resources/images/spinningout.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=037, titulo=Trinkets, protagonista=Elodie Davis, anio=2019, edadRecomendada=16, numeroTemporadas=2, genero=Drama, rutaFoto=resources/images/trinkets.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=038, titulo=Wednesday, protagonista=Wednesday Addams, anio=2022, edadRecomendada=14, numeroTemporadas=1, genero=Ciencia Ficción, rutaFoto=resources/images/wednesday.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=039, titulo=The Sinner, protagonista=Harry Ambrose, anio=2017, edadRecomendada=16, numeroTemporadas=4, genero=Drama, rutaFoto=resources/images/thesinner.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=040, titulo=The Last of Us, protagonista=Joel Miller, anio=2023, edadRecomendada=16, numeroTemporadas=1, genero=Ciencia Ficción, rutaFoto=resources/images/thelastofus.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=041, titulo=The Big Bang Theory, protagonista=Sheldon Cooper, anio=2007, edadRecomendada=12, numeroTemporadas=12, genero=Comedia, rutaFoto=resources/images/thebigbangtheory.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=042, titulo=Rebelde, protagonista=Mia Colucci, anio=2004, edadRecomendada=12, numeroTemporadas=3, genero=Drama, rutaFoto=resources/images/rebelde.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=043, titulo=The Boys, protagonista=Hughie Campbell, anio=2019, edadRecomendada=18, numeroTemporadas=4, genero=Ciencia Ficción, rutaFoto=resources/images/theboys.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=044, titulo=Surviving Summer, protagonista=Summer Torres, anio=2022, edadRecomendada=12, numeroTemporadas=1, genero=Drama, rutaFoto=resources/images/survivingsummer.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=045, titulo=Supernatural, protagonista=Sam Winchester, anio=2005, edadRecomendada=16, numeroTemporadas=15, genero=Ciencia Ficción, rutaFoto=resources/images/supernatural.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=046, titulo=La que se avecina, protagonista=Amador Rivas, anio=2007, edadRecomendada=12, numeroTemporadas=13, genero=Comedia, rutaFoto=resources/images/laqueseavecina.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=047, titulo=Maxton Hall, protagonista=James Beaufort, anio=2023, edadRecomendada=16, numeroTemporadas=1, genero=Romance, rutaFoto=resources/images/maxtonhall.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=048, titulo=Modern Family, protagonista=Phil Dunphy, anio=2009, edadRecomendada=12, numeroTemporadas=11, genero=Comedia, rutaFoto=resources/images/modernfamily.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=049, titulo=Euphoria, protagonista=Rue Bennett, anio=2019, edadRecomendada=18, numeroTemporadas=2, genero=Drama, rutaFoto=resources/images/euphoria.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=050, titulo=Gossip Girl, protagonista=Serena van der Woodsen, anio=2007, edadRecomendada=16, numeroTemporadas=6, genero=Drama, rutaFoto=resources/images/gossipgirl.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=051, titulo=From, protagonista=Boyd Stevens, anio=2022, edadRecomendada=16, numeroTemporadas=2, genero=Terror, rutaFoto=resources/images/from.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=052, titulo=El verano en que me enamoré, protagonista=Belly Conklin, anio=2022, edadRecomendada=12, numeroTemporadas=2, genero=Romance, rutaFoto=resources/images/elveranoenquemeenamore.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=053, titulo=El agente nocturno, protagonista=Peter Sutherland, anio=2023, edadRecomendada=14, numeroTemporadas=1, genero=Aventura, rutaFoto=resources/images/elagentenocturno.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=054, titulo=Brooklyn Nine-Nine, protagonista=Jake Peralta, anio=2013, edadRecomendada=12, numeroTemporadas=8, genero=Comedia, rutaFoto=resources/images/brooklynninenine.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=055, titulo=The Umbrella Academy, protagonista=Vanya Hargreeves, anio=2019, edadRecomendada=14, numeroTemporadas=4, genero=Ciencia Ficción, rutaFoto=resources/images/theumbrellaacademy.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=056, titulo=Friends, protagonista=Rachel Green, anio=1994, edadRecomendada=12, numeroTemporadas=10, genero=Comedia, rutaFoto=resources/images/friends.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=057, titulo=You, protagonista=Joe Goldberg, anio=2018, edadRecomendada=16, numeroTemporadas=4, genero=Drama, rutaFoto=resources/images/you.jpg] 
-[01/20/25 02:30:40] [INFORMACIÓN] 57 Series insertadas en la BBDD 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario LunarLion: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario StarSurfer: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario CometChameleon: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario GalaxyGuard: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario DarkRaven: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario SteelSamurai: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario NeonTurtle: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario EclipseElephant: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario WildCat: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario SilverHawk: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario EclipseEagle: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario SolarSloth: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario AsteroidAce: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario RocketRam: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario AstroAlligator: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario SuperNovita: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario SkySwan: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario PolarPenguin: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario PlasmaParrot: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario SpaceSnail: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario GadgetGuru: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario GalaxyGator: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario OceanBreeze: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario ZenZebra: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario VenusViper: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario Skywalker77: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario MysticQueen: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario GreenGoblin: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario CodeKnight: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario NovaNinja: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario MeteorMongoose: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario GlitchGuru: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario MarsMaverick: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario OrbitOtter: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario SolarFlare: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario StormShark: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario MagicMantis: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario CometCougar: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario StellarStork: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario ShadowHunter: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario SpaceSquirrel: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario RogueRaven: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario JungleJaguar: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario QuantumQueen: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:40] [ADVERTENCIA] Error al insertar usuario PhantomFox: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario ElectricEagle: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario MeteorMoose: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario SpaceSeahorse: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario CosmicCrab: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario VortexCulture: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario SkySphinx: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario VortexVulture: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario TurboTiger: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario PixelPanda: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario FireDragon: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario NebulaNerd: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario AstroArmadillo: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario GoldenTiger: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario CosmosCrane: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario RocketRhinoceros: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario AstroApe: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario FlamingoFlyer: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario OrbitOcelot: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario LunarLeopard: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario SuperNova: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario AstroAnt: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario SpaceSquid: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario ThunderKing: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario PlasmaPenguin: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario IronIguana: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario OrbitOrca: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario HorizonHawk: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario SolarSeal: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario GalaxyGiraffe: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario CrimsonWolf: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario StellarSnake: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario AsteroidAxolotl: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario GalaxyGecko: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario CometRider: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario BluePhoenix: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario Starlight: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario FrostWizard: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario BlazeFalcon: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario NebulaNarwhal: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario RocketRaccoon: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario CyberNinja: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario PlutoPanther: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario MightyBear: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario Whirlwind: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario LunarLemur: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario AuroraWolf: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
-[01/20/25 02:30:41] [ADVERTENCIA] Error al insertar usuario luiscoro: [SQLITE_CONSTRAINT_PRIMARYKEY] A PRIMARY KEY constraint failed (UNIQUE constraint failed: Usuario.nickname) 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha creado la tabla 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha creado la tabla 
+[01/20/25 02:46:34] [INFORMACIÓN] Se han borrado los datos 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=001, titulo=Arrow, protagonista=Oliver Queen, anio=2012, edadRecomendada=16, numeroTemporadas=8, genero=Aventura, rutaFoto=resources/images/arrow.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=002, titulo=The Sex Lives of College Girls, protagonista=Kimberly, anio=2021, edadRecomendada=18, numeroTemporadas=2, genero=Comedia, rutaFoto=resources/images/thesexlivesofcollegegirls.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=003, titulo=Teen Wolf, protagonista=Scott McCall, anio=2011, edadRecomendada=14, numeroTemporadas=6, genero=Ciencia Ficción, rutaFoto=resources/images/teenwolf.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=004, titulo=Shadowhunters, protagonista=Clary Fray, anio=2016, edadRecomendada=14, numeroTemporadas=3, genero=Ciencia Ficción, rutaFoto=resources/images/shadowhunters.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=005, titulo=Lucifer, protagonista=Lucifer Morningstar, anio=2016, edadRecomendada=16, numeroTemporadas=6, genero=Ciencia Ficción, rutaFoto=resources/images/lucifer.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=006, titulo=DC's Legends of Tomorrow, protagonista=Ray Palmer, anio=2016, edadRecomendada=16, numeroTemporadas=7, genero=Ciencia Ficción, rutaFoto=resources/images/dcslegendsoftomorrow.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=007, titulo=Flash, protagonista=Barry Allen, anio=2014, edadRecomendada=14, numeroTemporadas=9, genero=Ciencia Ficción, rutaFoto=resources/images/flash.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=008, titulo=Supergirl, protagonista=Kara Zor-El, anio=2015, edadRecomendada=12, numeroTemporadas=6, genero=Ciencia Ficción, rutaFoto=resources/images/supergirl.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=009, titulo=The Greenhouse Academy, protagonista=Hayley Shumway, anio=2017, edadRecomendada=10, numeroTemporadas=4, genero=Drama, rutaFoto=resources/images/thegreenhouseacademy.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=010, titulo=The Vampire Diaries, protagonista=Elena Gilbert, anio=2009, edadRecomendada=14, numeroTemporadas=8, genero=Ciencia Ficción, rutaFoto=resources/images/thevampirediaries.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=011, titulo=The Originals, protagonista=Elijah Mikaelson, anio=2013, edadRecomendada=16, numeroTemporadas=5, genero=Ciencia Ficción, rutaFoto=resources/images/theoriginals.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=012, titulo=Legacies, protagonista=Hope Mikaelson, anio=2018, edadRecomendada=14, numeroTemporadas=4, genero=Ciencia Ficción, rutaFoto=resources/images/legacies.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=013, titulo=Outer Banks, protagonista=John B, anio=2020, edadRecomendada=16, numeroTemporadas=3, genero=Aventura, rutaFoto=resources/images/outerbanks.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=014, titulo=Bienvenidos a Eden, protagonista=Amaia, anio=2022, edadRecomendada=16, numeroTemporadas=2, genero=Terror, rutaFoto=resources/images/bienvenidosaeden.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=015, titulo=Sombra y Hueso, protagonista=Alina Starkov, anio=2021, edadRecomendada=14, numeroTemporadas=2, genero=Ciencia Ficción, rutaFoto=resources/images/sombrayhueso.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=016, titulo=Alguien Está Mintiendo, protagonista=Bronwyn Rojas, anio=2021, edadRecomendada=14, numeroTemporadas=2, genero=Drama, rutaFoto=resources/images/alguienestamintiendo.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=017, titulo=The Society, protagonista=Allie Pressman, anio=2019, edadRecomendada=16, numeroTemporadas=1, genero=Ciencia Ficción, rutaFoto=resources/images/thesociety.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=018, titulo=Riverdale, protagonista=Archie Andrews, anio=2017, edadRecomendada=16, numeroTemporadas=7, genero=Drama, rutaFoto=resources/images/riverdale.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=019, titulo=The A List, protagonista=Mia, anio=2018, edadRecomendada=12, numeroTemporadas=2, genero=Terror, rutaFoto=resources/images/thealist.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=020, titulo=Daybreak, protagonista=Josh Wheeler, anio=2019, edadRecomendada=16, numeroTemporadas=1, genero=Aventura, rutaFoto=resources/images/daybreak.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=021, titulo=The Warrior Nun, protagonista=Ava Silva, anio=2020, edadRecomendada=16, numeroTemporadas=2, genero=Aventura, rutaFoto=resources/images/thewarriornun.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=022, titulo=Pretty Little Liars, protagonista=Aria Montgomery, anio=2010, edadRecomendada=14, numeroTemporadas=7, genero=Drama, rutaFoto=resources/images/prettylittleliars.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=023, titulo=Prison Break, protagonista=Michael Scofield, anio=2005, edadRecomendada=16, numeroTemporadas=5, genero=Drama, rutaFoto=resources/images/prisonbreak.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=024, titulo=Por 13 Razones, protagonista=Clay Jensen, anio=2017, edadRecomendada=16, numeroTemporadas=4, genero=Drama, rutaFoto=resources/images/por13razones.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=025, titulo=The 100, protagonista=Clarke Griffin, anio=2014, edadRecomendada=14, numeroTemporadas=7, genero=Ciencia Ficción, rutaFoto=resources/images/the100.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=026, titulo=The Rain, protagonista=Simone Andersen, anio=2018, edadRecomendada=16, numeroTemporadas=3, genero=Ciencia Ficción, rutaFoto=resources/images/therain.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=027, titulo=Stranger Things, protagonista=Eleven, anio=2016, edadRecomendada=16, numeroTemporadas=4, genero=Ciencia Ficción, rutaFoto=resources/images/strangerthings.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=028, titulo=Manifest, protagonista=Michaela Stone, anio=2018, edadRecomendada=14, numeroTemporadas=4, genero=Ciencia Ficción, rutaFoto=resources/images/manifest.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=029, titulo=How I Met Your Mother, protagonista=Ted Mosby, anio=2005, edadRecomendada=16, numeroTemporadas=9, genero=Comedia, rutaFoto=resources/images/howimetyourmother.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=030, titulo=Emily in Paris, protagonista=Emily Cooper, anio=2020, edadRecomendada=12, numeroTemporadas=3, genero=Romance, rutaFoto=resources/images/emilyinparis.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=031, titulo=Chicas buenas, protagonista=Beth Boland, anio=2018, edadRecomendada=16, numeroTemporadas=4, genero=Comedia, rutaFoto=resources/images/chicasbuenas.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=032, titulo=ClickBait, protagonista=Nick Brewer, anio=2021, edadRecomendada=16, numeroTemporadas=1, genero=Drama, rutaFoto=resources/images/clickbait.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=033, titulo=El juego del calamar, protagonista=Seong Gi-Hun, anio=2021, edadRecomendada=16, numeroTemporadas=1, genero=Terror, rutaFoto=resources/images/eljuegodelcalamar.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=034, titulo=Heartstopper, protagonista=Charlie Spring, anio=2022, edadRecomendada=12, numeroTemporadas=2, genero=Romance, rutaFoto=resources/images/heartstopper.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=035, titulo=Lost in Space, protagonista=Will Robinson, anio=2018, edadRecomendada=14, numeroTemporadas=3, genero=Ciencia Ficción, rutaFoto=resources/images/lostinspace.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=036, titulo=Spinning Out, protagonista=Kat Baker, anio=2020, edadRecomendada=16, numeroTemporadas=1, genero=Drama, rutaFoto=resources/images/spinningout.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=037, titulo=Trinkets, protagonista=Elodie Davis, anio=2019, edadRecomendada=16, numeroTemporadas=2, genero=Drama, rutaFoto=resources/images/trinkets.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=038, titulo=Wednesday, protagonista=Wednesday Addams, anio=2022, edadRecomendada=14, numeroTemporadas=1, genero=Ciencia Ficción, rutaFoto=resources/images/wednesday.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=039, titulo=The Sinner, protagonista=Harry Ambrose, anio=2017, edadRecomendada=16, numeroTemporadas=4, genero=Drama, rutaFoto=resources/images/thesinner.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=040, titulo=The Last of Us, protagonista=Joel Miller, anio=2023, edadRecomendada=16, numeroTemporadas=1, genero=Ciencia Ficción, rutaFoto=resources/images/thelastofus.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=041, titulo=The Big Bang Theory, protagonista=Sheldon Cooper, anio=2007, edadRecomendada=12, numeroTemporadas=12, genero=Comedia, rutaFoto=resources/images/thebigbangtheory.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=042, titulo=Rebelde, protagonista=Mia Colucci, anio=2004, edadRecomendada=12, numeroTemporadas=3, genero=Drama, rutaFoto=resources/images/rebelde.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=043, titulo=The Boys, protagonista=Hughie Campbell, anio=2019, edadRecomendada=18, numeroTemporadas=4, genero=Ciencia Ficción, rutaFoto=resources/images/theboys.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=044, titulo=Surviving Summer, protagonista=Summer Torres, anio=2022, edadRecomendada=12, numeroTemporadas=1, genero=Drama, rutaFoto=resources/images/survivingsummer.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=045, titulo=Supernatural, protagonista=Sam Winchester, anio=2005, edadRecomendada=16, numeroTemporadas=15, genero=Ciencia Ficción, rutaFoto=resources/images/supernatural.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=046, titulo=La que se avecina, protagonista=Amador Rivas, anio=2007, edadRecomendada=12, numeroTemporadas=13, genero=Comedia, rutaFoto=resources/images/laqueseavecina.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=047, titulo=Maxton Hall, protagonista=James Beaufort, anio=2023, edadRecomendada=16, numeroTemporadas=1, genero=Romance, rutaFoto=resources/images/maxtonhall.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=048, titulo=Modern Family, protagonista=Phil Dunphy, anio=2009, edadRecomendada=12, numeroTemporadas=11, genero=Comedia, rutaFoto=resources/images/modernfamily.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=049, titulo=Euphoria, protagonista=Rue Bennett, anio=2019, edadRecomendada=18, numeroTemporadas=2, genero=Drama, rutaFoto=resources/images/euphoria.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=050, titulo=Gossip Girl, protagonista=Serena van der Woodsen, anio=2007, edadRecomendada=16, numeroTemporadas=6, genero=Drama, rutaFoto=resources/images/gossipgirl.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=051, titulo=From, protagonista=Boyd Stevens, anio=2022, edadRecomendada=16, numeroTemporadas=2, genero=Terror, rutaFoto=resources/images/from.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=052, titulo=El verano en que me enamoré, protagonista=Belly Conklin, anio=2022, edadRecomendada=12, numeroTemporadas=2, genero=Romance, rutaFoto=resources/images/elveranoenquemeenamore.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=053, titulo=El agente nocturno, protagonista=Peter Sutherland, anio=2023, edadRecomendada=14, numeroTemporadas=1, genero=Aventura, rutaFoto=resources/images/elagentenocturno.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=054, titulo=Brooklyn Nine-Nine, protagonista=Jake Peralta, anio=2013, edadRecomendada=12, numeroTemporadas=8, genero=Comedia, rutaFoto=resources/images/brooklynninenine.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=055, titulo=The Umbrella Academy, protagonista=Vanya Hargreeves, anio=2019, edadRecomendada=14, numeroTemporadas=4, genero=Ciencia Ficción, rutaFoto=resources/images/theumbrellaacademy.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=056, titulo=Friends, protagonista=Rachel Green, anio=1994, edadRecomendada=12, numeroTemporadas=10, genero=Comedia, rutaFoto=resources/images/friends.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=057, titulo=You, protagonista=Joe Goldberg, anio=2018, edadRecomendada=16, numeroTemporadas=4, genero=Drama, rutaFoto=resources/images/you.jpg] 
+[01/20/25 02:46:34] [INFORMACIÓN] 57 Series insertadas en la BBDD 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario LunarLion insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario StarSurfer insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario CometChameleon insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario GalaxyGuard insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario DarkRaven insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario SteelSamurai insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario NeonTurtle insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario EclipseElephant insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario WildCat insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario SilverHawk insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario EclipseEagle insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario SolarSloth insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario AsteroidAce insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario RocketRam insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario AstroAlligator insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario SuperNovita insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario SkySwan insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario PolarPenguin insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario PlasmaParrot insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario SpaceSnail insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario GadgetGuru insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario GalaxyGator insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario OceanBreeze insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario ZenZebra insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario VenusViper insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario Skywalker77 insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario MysticQueen insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario GreenGoblin insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario CodeKnight insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario NovaNinja insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario MeteorMongoose insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario GlitchGuru insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario MarsMaverick insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario OrbitOtter insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario SolarFlare insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario StormShark insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario MagicMantis insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario CometCougar insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario StellarStork insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario ShadowHunter insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario SpaceSquirrel insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario RogueRaven insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario JungleJaguar insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario QuantumQueen insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario PhantomFox insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario ElectricEagle insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario MeteorMoose insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario SpaceSeahorse insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario CosmicCrab insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario VortexCulture insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario SkySphinx insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario VortexVulture insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario TurboTiger insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario PixelPanda insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario FireDragon insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario NebulaNerd insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario AstroArmadillo insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario GoldenTiger insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario CosmosCrane insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario RocketRhinoceros insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario AstroApe insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario FlamingoFlyer insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario OrbitOcelot insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario LunarLeopard insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario SuperNova insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario AstroAnt insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario SpaceSquid insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario ThunderKing insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario PlasmaPenguin insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario IronIguana insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario OrbitOrca insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario HorizonHawk insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario SolarSeal insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario GalaxyGiraffe insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario CrimsonWolf insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario StellarSnake insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario AsteroidAxolotl insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario GalaxyGecko insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario CometRider insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario BluePhoenix insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario Starlight insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario FrostWizard insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario BlazeFalcon insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario NebulaNarwhal insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario RocketRaccoon insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario CyberNinja insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario PlutoPanther insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario MightyBear insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario Whirlwind insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario LunarLemur insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario AuroraWolf insertado correctamente. 
+[01/20/25 02:46:34] [INFORMACIÓN] Usuario luiscoro insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Se han guardado los comics en un CSV. 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha borrado la tabla Serie. 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha borrado la tabla Usuario. 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha borrado el fichero de la BBDD. 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha borrado la tabla Serie. 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha borrado la tabla Usuario. 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha borrado el fichero de la BBDD. 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha creado la tabla 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha creado la tabla 
+[01/20/25 02:46:51] [INFORMACIÓN] Se han borrado los datos 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=001, titulo=Arrow, protagonista=Oliver Queen, anio=2012, edadRecomendada=16, numeroTemporadas=8, genero=Aventura, rutaFoto=resources/images/arrow.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=002, titulo=The Sex Lives of College Girls, protagonista=Kimberly, anio=2021, edadRecomendada=18, numeroTemporadas=2, genero=Comedia, rutaFoto=resources/images/thesexlivesofcollegegirls.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=003, titulo=Teen Wolf, protagonista=Scott McCall, anio=2011, edadRecomendada=14, numeroTemporadas=6, genero=Ciencia Ficción, rutaFoto=resources/images/teenwolf.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=004, titulo=Shadowhunters, protagonista=Clary Fray, anio=2016, edadRecomendada=14, numeroTemporadas=3, genero=Ciencia Ficción, rutaFoto=resources/images/shadowhunters.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=005, titulo=Lucifer, protagonista=Lucifer Morningstar, anio=2016, edadRecomendada=16, numeroTemporadas=6, genero=Ciencia Ficción, rutaFoto=resources/images/lucifer.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=006, titulo=DC's Legends of Tomorrow, protagonista=Ray Palmer, anio=2016, edadRecomendada=16, numeroTemporadas=7, genero=Ciencia Ficción, rutaFoto=resources/images/dcslegendsoftomorrow.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=007, titulo=Flash, protagonista=Barry Allen, anio=2014, edadRecomendada=14, numeroTemporadas=9, genero=Ciencia Ficción, rutaFoto=resources/images/flash.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=008, titulo=Supergirl, protagonista=Kara Zor-El, anio=2015, edadRecomendada=12, numeroTemporadas=6, genero=Ciencia Ficción, rutaFoto=resources/images/supergirl.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=009, titulo=The Greenhouse Academy, protagonista=Hayley Shumway, anio=2017, edadRecomendada=10, numeroTemporadas=4, genero=Drama, rutaFoto=resources/images/thegreenhouseacademy.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=010, titulo=The Vampire Diaries, protagonista=Elena Gilbert, anio=2009, edadRecomendada=14, numeroTemporadas=8, genero=Ciencia Ficción, rutaFoto=resources/images/thevampirediaries.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=011, titulo=The Originals, protagonista=Elijah Mikaelson, anio=2013, edadRecomendada=16, numeroTemporadas=5, genero=Ciencia Ficción, rutaFoto=resources/images/theoriginals.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=012, titulo=Legacies, protagonista=Hope Mikaelson, anio=2018, edadRecomendada=14, numeroTemporadas=4, genero=Ciencia Ficción, rutaFoto=resources/images/legacies.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=013, titulo=Outer Banks, protagonista=John B, anio=2020, edadRecomendada=16, numeroTemporadas=3, genero=Aventura, rutaFoto=resources/images/outerbanks.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=014, titulo=Bienvenidos a Eden, protagonista=Amaia, anio=2022, edadRecomendada=16, numeroTemporadas=2, genero=Terror, rutaFoto=resources/images/bienvenidosaeden.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=015, titulo=Sombra y Hueso, protagonista=Alina Starkov, anio=2021, edadRecomendada=14, numeroTemporadas=2, genero=Ciencia Ficción, rutaFoto=resources/images/sombrayhueso.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=016, titulo=Alguien Está Mintiendo, protagonista=Bronwyn Rojas, anio=2021, edadRecomendada=14, numeroTemporadas=2, genero=Drama, rutaFoto=resources/images/alguienestamintiendo.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=017, titulo=The Society, protagonista=Allie Pressman, anio=2019, edadRecomendada=16, numeroTemporadas=1, genero=Ciencia Ficción, rutaFoto=resources/images/thesociety.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=018, titulo=Riverdale, protagonista=Archie Andrews, anio=2017, edadRecomendada=16, numeroTemporadas=7, genero=Drama, rutaFoto=resources/images/riverdale.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=019, titulo=The A List, protagonista=Mia, anio=2018, edadRecomendada=12, numeroTemporadas=2, genero=Terror, rutaFoto=resources/images/thealist.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=020, titulo=Daybreak, protagonista=Josh Wheeler, anio=2019, edadRecomendada=16, numeroTemporadas=1, genero=Aventura, rutaFoto=resources/images/daybreak.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=021, titulo=The Warrior Nun, protagonista=Ava Silva, anio=2020, edadRecomendada=16, numeroTemporadas=2, genero=Aventura, rutaFoto=resources/images/thewarriornun.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=022, titulo=Pretty Little Liars, protagonista=Aria Montgomery, anio=2010, edadRecomendada=14, numeroTemporadas=7, genero=Drama, rutaFoto=resources/images/prettylittleliars.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=023, titulo=Prison Break, protagonista=Michael Scofield, anio=2005, edadRecomendada=16, numeroTemporadas=5, genero=Drama, rutaFoto=resources/images/prisonbreak.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=024, titulo=Por 13 Razones, protagonista=Clay Jensen, anio=2017, edadRecomendada=16, numeroTemporadas=4, genero=Drama, rutaFoto=resources/images/por13razones.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=025, titulo=The 100, protagonista=Clarke Griffin, anio=2014, edadRecomendada=14, numeroTemporadas=7, genero=Ciencia Ficción, rutaFoto=resources/images/the100.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=026, titulo=The Rain, protagonista=Simone Andersen, anio=2018, edadRecomendada=16, numeroTemporadas=3, genero=Ciencia Ficción, rutaFoto=resources/images/therain.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=027, titulo=Stranger Things, protagonista=Eleven, anio=2016, edadRecomendada=16, numeroTemporadas=4, genero=Ciencia Ficción, rutaFoto=resources/images/strangerthings.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=028, titulo=Manifest, protagonista=Michaela Stone, anio=2018, edadRecomendada=14, numeroTemporadas=4, genero=Ciencia Ficción, rutaFoto=resources/images/manifest.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=029, titulo=How I Met Your Mother, protagonista=Ted Mosby, anio=2005, edadRecomendada=16, numeroTemporadas=9, genero=Comedia, rutaFoto=resources/images/howimetyourmother.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=030, titulo=Emily in Paris, protagonista=Emily Cooper, anio=2020, edadRecomendada=12, numeroTemporadas=3, genero=Romance, rutaFoto=resources/images/emilyinparis.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=031, titulo=Chicas buenas, protagonista=Beth Boland, anio=2018, edadRecomendada=16, numeroTemporadas=4, genero=Comedia, rutaFoto=resources/images/chicasbuenas.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=032, titulo=ClickBait, protagonista=Nick Brewer, anio=2021, edadRecomendada=16, numeroTemporadas=1, genero=Drama, rutaFoto=resources/images/clickbait.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=033, titulo=El juego del calamar, protagonista=Seong Gi-Hun, anio=2021, edadRecomendada=16, numeroTemporadas=1, genero=Terror, rutaFoto=resources/images/eljuegodelcalamar.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=034, titulo=Heartstopper, protagonista=Charlie Spring, anio=2022, edadRecomendada=12, numeroTemporadas=2, genero=Romance, rutaFoto=resources/images/heartstopper.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=035, titulo=Lost in Space, protagonista=Will Robinson, anio=2018, edadRecomendada=14, numeroTemporadas=3, genero=Ciencia Ficción, rutaFoto=resources/images/lostinspace.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=036, titulo=Spinning Out, protagonista=Kat Baker, anio=2020, edadRecomendada=16, numeroTemporadas=1, genero=Drama, rutaFoto=resources/images/spinningout.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=037, titulo=Trinkets, protagonista=Elodie Davis, anio=2019, edadRecomendada=16, numeroTemporadas=2, genero=Drama, rutaFoto=resources/images/trinkets.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=038, titulo=Wednesday, protagonista=Wednesday Addams, anio=2022, edadRecomendada=14, numeroTemporadas=1, genero=Ciencia Ficción, rutaFoto=resources/images/wednesday.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=039, titulo=The Sinner, protagonista=Harry Ambrose, anio=2017, edadRecomendada=16, numeroTemporadas=4, genero=Drama, rutaFoto=resources/images/thesinner.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=040, titulo=The Last of Us, protagonista=Joel Miller, anio=2023, edadRecomendada=16, numeroTemporadas=1, genero=Ciencia Ficción, rutaFoto=resources/images/thelastofus.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=041, titulo=The Big Bang Theory, protagonista=Sheldon Cooper, anio=2007, edadRecomendada=12, numeroTemporadas=12, genero=Comedia, rutaFoto=resources/images/thebigbangtheory.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=042, titulo=Rebelde, protagonista=Mia Colucci, anio=2004, edadRecomendada=12, numeroTemporadas=3, genero=Drama, rutaFoto=resources/images/rebelde.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=043, titulo=The Boys, protagonista=Hughie Campbell, anio=2019, edadRecomendada=18, numeroTemporadas=4, genero=Ciencia Ficción, rutaFoto=resources/images/theboys.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=044, titulo=Surviving Summer, protagonista=Summer Torres, anio=2022, edadRecomendada=12, numeroTemporadas=1, genero=Drama, rutaFoto=resources/images/survivingsummer.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=045, titulo=Supernatural, protagonista=Sam Winchester, anio=2005, edadRecomendada=16, numeroTemporadas=15, genero=Ciencia Ficción, rutaFoto=resources/images/supernatural.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=046, titulo=La que se avecina, protagonista=Amador Rivas, anio=2007, edadRecomendada=12, numeroTemporadas=13, genero=Comedia, rutaFoto=resources/images/laqueseavecina.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=047, titulo=Maxton Hall, protagonista=James Beaufort, anio=2023, edadRecomendada=16, numeroTemporadas=1, genero=Romance, rutaFoto=resources/images/maxtonhall.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=048, titulo=Modern Family, protagonista=Phil Dunphy, anio=2009, edadRecomendada=12, numeroTemporadas=11, genero=Comedia, rutaFoto=resources/images/modernfamily.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=049, titulo=Euphoria, protagonista=Rue Bennett, anio=2019, edadRecomendada=18, numeroTemporadas=2, genero=Drama, rutaFoto=resources/images/euphoria.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=050, titulo=Gossip Girl, protagonista=Serena van der Woodsen, anio=2007, edadRecomendada=16, numeroTemporadas=6, genero=Drama, rutaFoto=resources/images/gossipgirl.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=051, titulo=From, protagonista=Boyd Stevens, anio=2022, edadRecomendada=16, numeroTemporadas=2, genero=Terror, rutaFoto=resources/images/from.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=052, titulo=El verano en que me enamoré, protagonista=Belly Conklin, anio=2022, edadRecomendada=12, numeroTemporadas=2, genero=Romance, rutaFoto=resources/images/elveranoenquemeenamore.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=053, titulo=El agente nocturno, protagonista=Peter Sutherland, anio=2023, edadRecomendada=14, numeroTemporadas=1, genero=Aventura, rutaFoto=resources/images/elagentenocturno.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=054, titulo=Brooklyn Nine-Nine, protagonista=Jake Peralta, anio=2013, edadRecomendada=12, numeroTemporadas=8, genero=Comedia, rutaFoto=resources/images/brooklynninenine.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=055, titulo=The Umbrella Academy, protagonista=Vanya Hargreeves, anio=2019, edadRecomendada=14, numeroTemporadas=4, genero=Ciencia Ficción, rutaFoto=resources/images/theumbrellaacademy.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=056, titulo=Friends, protagonista=Rachel Green, anio=1994, edadRecomendada=12, numeroTemporadas=10, genero=Comedia, rutaFoto=resources/images/friends.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] Se ha insertado la Serie: Serie [codigo=057, titulo=You, protagonista=Joe Goldberg, anio=2018, edadRecomendada=16, numeroTemporadas=4, genero=Drama, rutaFoto=resources/images/you.jpg] 
+[01/20/25 02:46:51] [INFORMACIÓN] 57 Series insertadas en la BBDD 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario LunarLion insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario StarSurfer insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario CometChameleon insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario GalaxyGuard insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario DarkRaven insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario SteelSamurai insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario NeonTurtle insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario EclipseElephant insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario WildCat insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario SilverHawk insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario EclipseEagle insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario SolarSloth insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario AsteroidAce insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario RocketRam insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario AstroAlligator insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario SuperNovita insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario SkySwan insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario PolarPenguin insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario PlasmaParrot insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario SpaceSnail insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario GadgetGuru insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario GalaxyGator insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario OceanBreeze insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario ZenZebra insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario VenusViper insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario Skywalker77 insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario MysticQueen insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario GreenGoblin insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario CodeKnight insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario NovaNinja insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario MeteorMongoose insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario GlitchGuru insertado correctamente. 
+[01/20/25 02:46:51] [INFORMACIÓN] Usuario MarsMaverick insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario OrbitOtter insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario SolarFlare insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario StormShark insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario MagicMantis insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario CometCougar insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario StellarStork insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario ShadowHunter insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario SpaceSquirrel insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario RogueRaven insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario JungleJaguar insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario QuantumQueen insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario PhantomFox insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario ElectricEagle insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario MeteorMoose insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario SpaceSeahorse insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario CosmicCrab insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario VortexCulture insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario SkySphinx insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario VortexVulture insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario TurboTiger insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario PixelPanda insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario FireDragon insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario NebulaNerd insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario AstroArmadillo insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario GoldenTiger insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario CosmosCrane insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario RocketRhinoceros insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario AstroApe insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario FlamingoFlyer insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario OrbitOcelot insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario LunarLeopard insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario SuperNova insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario AstroAnt insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario SpaceSquid insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario ThunderKing insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario PlasmaPenguin insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario IronIguana insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario OrbitOrca insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario HorizonHawk insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario SolarSeal insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario GalaxyGiraffe insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario CrimsonWolf insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario StellarSnake insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario AsteroidAxolotl insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario GalaxyGecko insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario CometRider insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario BluePhoenix insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario Starlight insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario FrostWizard insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario BlazeFalcon insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario NebulaNarwhal insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario RocketRaccoon insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario CyberNinja insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario PlutoPanther insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario MightyBear insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario Whirlwind insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario LunarLemur insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario AuroraWolf insertado correctamente. 
+[01/20/25 02:46:52] [INFORMACIÓN] Usuario luiscoro insertado correctamente. 
+[01/20/25 02:46:55] [INFORMACIÓN] Se ha borrado la tabla Serie. 
+[01/20/25 02:46:55] [INFORMACIÓN] Se ha borrado la tabla Usuario. 
+[01/20/25 02:46:55] [INFORMACIÓN] Se ha borrado el fichero de la BBDD. 
