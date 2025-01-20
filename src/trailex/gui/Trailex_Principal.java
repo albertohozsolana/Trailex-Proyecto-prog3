@@ -761,9 +761,12 @@ public class Trailex_Principal extends JFrame {
 		panel_combi.add(panel_obj, BorderLayout.NORTH);	
 		
 		combinaciones.add(panel_combi);
+		combinaciones.setSize(800, 600);
+		combinaciones.setTitle("Combinaciones de series");
+		combinaciones.setIconImage(null);
 		combinaciones.setVisible(true);
 		combinaciones.setLocationRelativeTo(null);
-		combinaciones.setSize(800, 600);
+		combinaciones.setLocationRelativeTo(null);
 		
 		
 	}
