@@ -3,8 +3,8 @@ package trailex.gui;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import trailex.db.GestorBD;
 import trailex.domain.Serie;
-import trailex.persistence.GestorBD;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

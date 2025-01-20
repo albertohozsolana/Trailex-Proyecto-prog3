@@ -2,6 +2,7 @@ package trailex.gui;
 
 import java.awt.BorderLayout;
 
+import trailex.db.GestorBD;
 import trailex.domain.GestorRecordatorio;
 
 import java.awt.Color;
@@ -55,7 +56,6 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
-import trailex.persistence.GestorBD;
 import trailex.domain.Pelicula;
 import trailex.domain.Recordatorio;
 import trailex.domain.Serie;
@@ -141,9 +141,15 @@ public class Trailex_Principal extends JFrame {
 	}
 	
 	public void Reiniciar() {
-		System.exit(0);
-		Trailex_Principal tp1= new Trailex_Principal();
+	    SwingUtilities.invokeLater(() -> {
+	        // Cierra la ventana actual
+	        dispose();
+
+	        // Crea una nueva instancia de la aplicación
+	        Trailex_Principal nuevaVentana = new Trailex_Principal();
+	    });
 	}
+
 	
 	
 	
@@ -719,8 +725,8 @@ public class Trailex_Principal extends JFrame {
 			selectorDialog.add(botonPerfil);
 		}
 
-		// Si no hay imágenes cargadas, muestra un mensaje en el diálogo
-		if (selectorDialog.getComponentCount() == 0) {
+		// Si no hay imágenes cargadas, muestra un mensaje en el diálogo	
+		if (selectorDialog.getComponentCount() == 0) {	//IAG chatgpt adaptado, ayuda a solucionar errores
 			JLabel errorLabel = new JLabel("No se pudieron cargar las imágenes de perfil.");
 			errorLabel.setForeground(turquesa);
 			errorLabel.setBackground(BackgroundColorProgram);

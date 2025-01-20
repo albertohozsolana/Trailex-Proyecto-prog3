@@ -1,4 +1,4 @@
-package trailex.persistence;
+package trailex.db;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -721,7 +721,7 @@ public class GestorBD {
 	    }
 	}
 	
-	public void eliminarSerieFavorita(String nickname, String codigoSerie) {
+	public void eliminarSerieFavorita(String nickname, String codigoSerie) { 
 		System.out.println(nickname);
 		System.out.println(codigoSerie);
 	    String sqlSelect = "SELECT favoritos FROM Usuario WHERE nickname = ?";

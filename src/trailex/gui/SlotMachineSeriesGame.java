@@ -1,7 +1,8 @@
 package trailex.gui;
 
+import trailex.db.GestorBD;
 import trailex.domain.Serie;
-import trailex.persistence.GestorBD;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -26,8 +27,8 @@ public class SlotMachineSeriesGame extends JDialog {
     private List<Serie> series;
     private List<Serie> seriesFiltradas;
 
-    public SlotMachineSeriesGame() {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    public SlotMachineSeriesGame() { //IAG chatgpt adaptado, ayuda a solucionar errores (el programa colapsa si se le exige mucho (iniciarlo y pararlo muy rapido repetidas veces))
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); //linea escrita por IAG
         int width = (int) (screenSize.width * 0.5); // 50% del ancho de la pantalla
         int height = (int) (screenSize.height * 0.5); // 50% del alto de la pantalla
         this.setSize(width, height);
@@ -102,7 +103,7 @@ public class SlotMachineSeriesGame extends JDialog {
         label.setOpaque(true);
     }
 
-    private void startGame() {
+    private void startGame() { //funcion corregida por IAG para intentar descongestionar el hilo.
         if (hilo != null && hilo.isAlive()) {
             hilo.interrupt(); // Interrumpe cualquier hilo en ejecución por seguridad
         }
@@ -117,7 +118,7 @@ public class SlotMachineSeriesGame extends JDialog {
                 }
                 try {
                     Thread.sleep(100); // Control de velocidad de animación
-                } catch (InterruptedException ex) {
+                } catch (InterruptedException ex) { //Linea escrita por IAG
                     Thread.currentThread().interrupt(); // Asegura la interrupción del hilo
                 }
             }
@@ -140,7 +141,7 @@ public class SlotMachineSeriesGame extends JDialog {
             Serie serieGanadora = seriesFiltradas.stream()
                     .filter(serie -> slots[0].getIcon().toString().contains(serie.getRutaFoto()))
                     .findFirst()
-                    .orElse(null);
+                    .orElse(null); //estas tres lineas fueron una mejora hecha por IAG 
 
             if (serieGanadora != null) {
                 Trailex_Principal.mostrarInfoSerie(serieGanadora); // Muestra la información de la serie ganadora
