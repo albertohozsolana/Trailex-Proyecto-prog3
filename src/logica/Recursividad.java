@@ -11,21 +11,21 @@ import trailex.domain.Videoclub;
 
 public class Recursividad {
 
-
-	public static void combinacionesPorGenero(List<Serie> series, String genero, int n_series, int n_combinaciones) {
+	// CREAMOS UNA FUNCION QUE LLAMA A UN MÉTODO RECURSIVO PARA PODER GENERAR COMBINACIONES DE SERIES POR GÉNERO
+	public static List<List<Serie>> combinacionesPorGenero(List<Serie> series, String genero, int n_series) {
 		List<List<Serie>> resultado = new ArrayList<>();
-		combinacionesPorGeneroR(series, genero, n_series, n_combinaciones, new ArrayList<>(),resultado, 0);
+		combinacionesPorGeneroR(series, genero, n_series, new ArrayList<>(),resultado, 0);
 		
 		if (resultado.isEmpty()) {
-			System.out.println("No se han encontrado " + n_combinaciones + " combinaciones de "+ n_series + " series para el género " + genero);
-		}
-		for (List<Serie> list : resultado) {
-			System.out.println(list + "\n");
+			System.out.println("No se han encontrado " + n_series + " series para el género " + genero);
+			return null;
+		} else {
+			return resultado;
 		}
 
 	}
 	
-	public static void combinacionesPorGeneroR(List<Serie> series, String genero, int n_series, int n_combinaciones, List<Serie> temp, List<List<Serie>> resultado, int start) {
+	public static void combinacionesPorGeneroR(List<Serie> series, String genero, int n_series, List<Serie> temp, List<List<Serie>> resultado, int start) {
 		if (temp.size()==n_series) {
 			List<Serie> ordenada = new ArrayList<>(temp);
 			
@@ -37,7 +37,7 @@ public class Recursividad {
 				}
 			});
 			
-			if (!resultado.contains(ordenada) && resultado.size()<n_combinaciones) {
+			if (!resultado.contains(ordenada)) {
 				resultado.add(ordenada);
 				return;
 			}
@@ -50,7 +50,7 @@ public class Recursividad {
 
 				if (primera_serie.getGenero().equalsIgnoreCase(genero)) {
 					temp.add(primera_serie);
-					combinacionesPorGeneroR(series, genero, n_series, n_combinaciones, temp, resultado, i+1);
+					combinacionesPorGeneroR(series, genero, n_series, temp, resultado, i+1);
 					temp.remove(temp.size()-1);
 				}
 			}
@@ -59,7 +59,62 @@ public class Recursividad {
 		
 	}
 	
+	// CREAMOS UNA FUNCION QUE LLAMA A UN MÉTODO RECURSIVO PARA PODER GENERAR COMBINACIONES DE SERIES EN FUNCIÓN DEL NÚMERO DE TEMPORADAS
+	public static List<List<Serie>> combinacionesPorTemporada(List<Serie> series, int n_temporadas) {
+		List<List<Serie>> resultado = new ArrayList<>();
+		
+		combinacionesPorTempR(series, n_temporadas, new ArrayList<Serie>(), resultado);
+		
+		if (resultado.isEmpty()) {
+			System.out.println("No se han encontrado ninguna serie con " + n_temporadas + " temporadas.");
+			return null;
+		} else {
+			return resultado;
+		}
+
+	}
+	
+	public static void combinacionesPorTempR(List<Serie> series, int n_temporadas, List<Serie> temp, List<List<Serie>> resultado) {
+		if (num_temporadas(temp) == n_temporadas) {
+			List<Serie> ordenada = new ArrayList<>(temp);
+			
+			ordenada.sort(new Comparator<Serie>() {
+
+				@Override
+				public int compare(Serie o1, Serie o2) {
+					return Integer.compare(Integer.valueOf(o1.getCodigo()), Integer.valueOf(o2.getCodigo()));
+				}
+			});
+			
+			if (!resultado.contains(ordenada)) {
+				resultado.add(ordenada);
+			}
+			
+		} else if (num_temporadas(temp) > n_temporadas) {
+	        return;
+		} else {
+			for (Serie s : series) {
+				if (num_temporadas(temp) < n_temporadas) {
+					temp.add(s);
+					combinacionesPorTempR(series, n_temporadas, temp, resultado);
+					temp.remove(temp.size()-1);
+				}
+			}
+		}
+		
+		
+		
+	}
 	
 	
+	public static int num_temporadas(List<Serie> series) {
+		int total = 0;
+		
+		for (Serie s : series) {
+			total = total + s.getNumeroTemporadas();
+		}
+		
+		return total;
+	}
 
 }

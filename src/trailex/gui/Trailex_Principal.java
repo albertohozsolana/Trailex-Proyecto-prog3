@@ -31,6 +31,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.swing.BorderFactory;
@@ -47,8 +48,10 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
@@ -56,6 +59,7 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
+import logica.Recursividad;
 import trailex.domain.Pelicula;
 import trailex.domain.Recordatorio;
 import trailex.domain.Serie;
@@ -102,6 +106,8 @@ public class Trailex_Principal extends JFrame {
 	private JPanel p_grid_comedia, p_grid_romance, p_grid_aventura, p_grid_drama, p_grid_cf, p_grid_terror;
 	private JTextField searchBar;
 	private JComboBox<String> genreSelector;
+	
+	private List<List<Serie>> series_combi = new ArrayList<List<Serie>>();
 
 	// Atributos para acceder desde otra clase
 	static JButton f_perfil;
@@ -562,6 +568,28 @@ public class Trailex_Principal extends JFrame {
 
 		panelFavoritos.add(btnFavoritos); // Añadir el botón al panel
 
+		// SERIE_LIST
+		JButton boton_combi = new JButton("CREAR LISTA");
+		boton_combi.setBorder(borde_boton);
+		boton_combi.setBackground(turquesa);
+		boton_combi.setFocusable(true);
+
+		panelFavoritos.add(boton_combi);
+		boton_combi.addActionListener(e -> {
+			ventana_combinaciones();
+		});
+
+		boton_combi.setPreferredSize(buttonSize);
+		boton_combi.setMaximumSize(buttonSize);
+		boton_combi.setMinimumSize(buttonSize);
+
+		boton_combi.setPreferredSize(buttonSize);
+		boton_combi.setMaximumSize(buttonSize);
+		boton_combi.setMinimumSize(buttonSize);
+
+		boton_combi.setBorder(borde_boton);
+
+		
 		// AÑADIR SERIE
 		JButton boton_añadir = new JButton("CREAR SERIE");
 		boton_añadir.setBorder(borde_boton);
@@ -680,6 +708,134 @@ public class Trailex_Principal extends JFrame {
 		return menu;
 	}
 
+	private void ventana_combinaciones() {
+		
+		// CREAMOS LA VENTANA QUE MOSTRARÁ LAS COMBINACIONES
+		JFrame combinaciones = new JFrame();
+		
+		JPanel panel_combi = new JPanel(new BorderLayout());
+				
+		JPanel panel_obj = new JPanel(new GridLayout(1, 4, 10, 10));
+		
+		// COLOCAMOS UN BOTÓN Y UN JCOMBOBOX PARA GENERAR COMBINACIONES POR GÉNERO 
+		JComboBox jcb_genero = new JComboBox<>(
+				new String[] {"" ,"Comedia", "Romance", "Aventura", "Drama", "Ciencia Ficción", "Terror" });
+		
+		jcb_genero.setBackground(turquesa);
+		panel_obj.add(jcb_genero);
+		
+		Border borde_boton = BorderFactory.createLineBorder(Color.black, 7);
+		
+		JButton boton_genero = new JButton("LISTA POR GÉNERO");
+		boton_genero.setBorder(borde_boton);
+		boton_genero.setBackground(turquesa);
+		boton_genero.setFocusable(true);
+
+		panel_obj.add(boton_genero);
+		boton_genero.addActionListener(e -> {
+			String genero = (String) jcb_genero.getSelectedItem();
+			if (!genero.equals("")) {
+				series_combi = Recursividad.combinacionesPorGenero(listaCompletaSeries, genero, 4);
+				cargarCombi(panel_combi);
+			}
+			System.out.println("Seleccione un género");
+		});		
+		
+		// COLOCAMOS UN BOTÓN Y UN SPINNER PARA LAS COMBINACIONES POR TEMPORADA
+		JButton boton_horas = new JButton("LISTA POR TEMPORADAS");
+		boton_horas.setBorder(borde_boton);
+		boton_horas.setBackground(turquesa);
+		boton_horas.setFocusable(true);
+
+		panel_obj.add(boton_horas);
+		
+		JSpinner sp_num_horas = new JSpinner(new SpinnerNumberModel(1, 1, 5, 1));
+		sp_num_horas.setForeground(turquesa);
+		panel_obj.add(sp_num_horas);
+		
+		boton_horas.addActionListener(e -> {
+			series_combi = Recursividad.combinacionesPorTemporada(listaCompletaSeries, (Integer) sp_num_horas.getValue());
+			cargarCombi(panel_combi);
+		});
+		
+		panel_combi.add(panel_obj, BorderLayout.NORTH);	
+		
+		combinaciones.add(panel_combi);
+		combinaciones.setVisible(true);
+		combinaciones.setLocationRelativeTo(null);
+		combinaciones.setSize(800, 600);
+		
+		
+	}
+	
+	private void cargarCombi(JPanel tot) {
+		// CUANDO SE PULSEN LOS BOTONES DE GENERAR COMBINACIONES LLAMAREMOS A ESTA FUNCIÓN
+		JPanel panel_conseries = new JPanel();
+		panel_conseries.setLayout(new BoxLayout(panel_conseries, BoxLayout.Y_AXIS));
+		
+		// USO DE IA PARA AJUSTAR EL PANEL
+		panel_conseries.setPreferredSize(new Dimension(
+			    tot.getWidth() - 50, // Ancho dinámico basado en el panel padre
+			    series_combi.size() * 300 // Altura basada en la cantidad de combinaciones (200px por combinación aprox.)
+			));
+		
+		int cont = 0;
+		for (List<Serie> lista : series_combi) {
+			if (!lista.isEmpty()) {
+				cont++;
+				
+				JPanel pane_temp = new JPanel();
+				pane_temp.setLayout(new GridLayout(1, lista.size(), 10, 10));
+				
+				TitledBorder border = new TitledBorder("COMBINACION " + cont);
+		        border.setTitlePosition(TitledBorder.TOP); // Posición del título: en la parte superior
+		        border.setTitleJustification(TitledBorder.CENTER); // Centrado del texto en el borde
+		        border.setTitleColor(turquesa);
+		        
+				pane_temp.setBorder(border);
+				
+				for (Serie s : lista) {
+					JLabel label = new JLabel(s.getTitulo());
+					label.setOpaque(true);
+					label.setBackground(Color.black);
+					label.setForeground(azulado);
+					pane_temp.add(label);
+				}
+				panel_conseries.add(pane_temp, BorderLayout.CENTER);	
+			}
+			
+		}
+		
+		// EN EL BUCLE ANTERIOR HEMOS GENERADO LAS COMBINACIONES EN LABELS Y LAS AÑADIMOS AL SCROLLPANE
+		JScrollPane scrollPane = new JScrollPane(panel_conseries);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        
+	    BorderLayout layout = (BorderLayout) tot.getLayout();
+
+	    // USO DE IA: Obtener el componente en la posición CENTER (BorderLayout.CENTER)
+	    Component componenteCentro = layout.getLayoutComponent(BorderLayout.CENTER);
+
+	    // Verificar si hay un componente en el centro y eliminarlo
+	    if (componenteCentro != null) {
+	        tot.remove(componenteCentro);
+	    }
+
+	    
+	    tot.add(scrollPane, BorderLayout.CENTER);
+        
+	    scrollPane.revalidate();
+	    scrollPane.repaint();
+        tot.revalidate();
+        tot.repaint();
+ 
+        
+	}
+
+	
+	
+	
+	
 	public void mostrarSelectorFotoPerfil(JButton f_perfil) {
 		// Crear ventana emergente de selección
 		selectorDialog = new JDialog((Frame) null, "Seleccionar Foto de Perfil", true);
